@@ -21,10 +21,11 @@ export default function Home() {
       <HomePageSection4 />
 
       <HomePageSection5 />
+      <HomePageSection6 />
       {/* 
       <HomePageSection3 />
       
-      <HomePageSection6 />
+      
       <HomePageSection7 />
       <HomePageSection8 />
       <HomePageSection9 /> */}

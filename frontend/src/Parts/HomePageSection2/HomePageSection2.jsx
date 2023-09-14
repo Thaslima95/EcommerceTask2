@@ -35,13 +35,24 @@ export default function HomePageSection2() {
     <>
       <Grid
         container
-        xs={9}
+        xs={10}
         md={12}
-        sx={{ top: "592px", position: "absolute" }}
+        sx={{
+          top: { md: "592px", xs: "330px" },
+          position: "absolute",
+        }}
       >
         <Grid item md={1}></Grid>
-        <Grid container xs={12} md={9} sx={{}}>
-          <Grid item xs={4} md={3} sx={{ display: { md: "block" } }}>
+        <Grid
+          container
+          xs={12}
+          md={9}
+          sx={{
+            display: { xs: "flex" },
+            flexDirection: { xs: "row" },
+          }}
+        >
+          <Grid item xs={12} md={3} sx={{}}>
             <CountDownBox>
               <ThemeProvider theme={dealstheme}>
                 <Typography variant="h6">Deals and offers</Typography>
@@ -104,10 +115,19 @@ export default function HomePageSection2() {
               </CountBox>
             </CountDownBox>
           </Grid>
-          <Grid item xs={4} md={9} sx={{ display: "flex" }}>
+          <Grid
+            item
+            xs={10}
+            md={9}
+            sx={{
+              display: "flex",
+
+              overflowX: "hidden",
+            }}
+          >
             {specificCategories.map((s) => {
               return (
-                <DealProductBox>
+                <DealProductBox sx={{}}>
                   <DealProductItems>
                     <DealImg src={s.image} />
                   </DealProductItems>

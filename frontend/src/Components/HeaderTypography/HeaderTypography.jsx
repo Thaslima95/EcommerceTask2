@@ -60,13 +60,28 @@ export const Img = styled("img")({
 });
 
 export const InSearch = styled("input")({
-  width: "421px",
+  width: "330px",
   height: "40px",
-  borderLeft: "1px solid #0D6EFD",
-  borderTop: "1px solid #0D6EFD",
-  borderBottom: "1px solid #0D6EFD",
-  borderTopLeftRadius: "5px",
-  borderBottomLeftRadius: "5px",
+  // borderLeft: "1px solid #0D6EFD",
+  // borderTop: "1px solid #0D6EFD",
+  // borderBottom: "1px solid #0D6EFD",
+  // borderTopLeftRadius: "5px",
+  // borderBottomLeftRadius: "5px",
+  border: "1px solid #DEE2E7",
+  top: "10px",
+  position: "relative",
+  borderRadius: "none",
+  "@media (min-width:600px)": {
+    top: "0px",
+    position: "relative",
+    width: "421px",
+    height: "40px",
+    borderLeft: "1px solid #0D6EFD",
+    borderTop: "1px solid #0D6EFD",
+    borderBottom: "1px solid #0D6EFD",
+    borderTopLeftRadius: "5px",
+    borderBottomLeftRadius: "5px",
+  },
 });
 
 export const myTheme = createTheme({

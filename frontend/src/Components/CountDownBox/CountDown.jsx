@@ -152,18 +152,33 @@ dealstheme2.typography.h4 = {
 };
 
 export const DealProductBox = styled("div")({
-  width: "179px",
-  height: "235px",
+  width: "140px",
+  height: "180px",
+
+  "@media (min-width:600px)": {
+    width: "179px",
+    height: "235px",
+  },
 });
 export const DealProductItems = styled("div")({
-  top: "8px",
-  left: "20px",
+  top: "14px",
+  // left: "20px",
+  left: "5px",
   position: "relative",
   background: "#FFFFFF",
+
   //   padding:
   //     "9.333333015441895px 19.28888511657715px 9.333331108093262px 19.288888931274414px",
-  width: "140px",
-  height: "140px",
+  width: "98px",
+  height: "98px",
+
+  "@media (min-width:600px)": {
+    width: "140px",
+    height: "140px",
+    top: "8px",
+    left: "20px",
+    position: "relative",
+  },
 });
 
 dealproductname.typography.subtitle2 = {
@@ -212,23 +227,20 @@ dealproductsale.typography.subtitle2 = {
 };
 
 export const DealLayout = styled("div")({
-  //     width: Hug (61px)
-  // height: Fixed (28px)
-  // top: 190px
-  // left: 57px
   padding: "3px 13px 4px 13px",
   borderRadius: "29px",
-  top: "25px",
-  left: "58px",
+  top: "30px",
   position: "relative",
 
-  //   top: "8px",
-  //   left: "20px",
-  //   position: "relative",
-  background: "#FFE3E3",
-  width: "61px",
-  height: "28px",
   gap: "10px",
+  "@media (min-width:600px)": {
+    top: "25px",
+    left: "58px",
+    position: "relative",
+    background: "#FFE3E3",
+    width: "61px",
+    height: "28px",
+  },
 });
 
 export const DealImg = styled("img")({
@@ -236,12 +248,29 @@ export const DealImg = styled("img")({
   // height: Fixed (28px)
   // top: 190px
   // left: 57px
-  padding: "3px 13px 4px 13px",
+  // padding: "3px 13px 4px 13px",
 
-  width: "140px",
-  height: "140px",
+  width: "98px",
+  height: "98px",
 
   //   top: "8px",
   //   left: "20px",
   //   position: "relative",
 });
+
+// export const BannerImg = styled("div")({
+//   position: "absolute",
+//   width: "300px",
+//   height: "180px",
+//   backgroundImage: `url(${MainImg})`,
+//   backgroundPosition: "center",
+//   backgroundSize: "cover",
+//   backgroundRepeat: "no-repeat",
+//   objectFit: "contain",
+//   "@media (min-width:600px)": {
+//     width: "665px",
+//     height: "365px",
+//     position: "absolute",
+//     marginLeft: "-12px",
+//   },
+// });

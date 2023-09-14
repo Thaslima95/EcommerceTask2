@@ -25,7 +25,11 @@ export default function HomePageSection5() {
         container
         xs={9}
         md={12}
-        sx={{ top: "1120px", position: "absolute", border: "1px solid red" }}
+        sx={{
+          top: { md: "1120px", xs: "930px" },
+          position: "absolute",
+          border: "1px solid red",
+        }}
       >
         {" "}
         {/* <ThemeProvider theme={bannertheme1}>
@@ -73,7 +77,10 @@ export default function HomePageSection5() {
               item
               xs={4}
               md={6}
-              sx={{ display: "flex", border: "1px solid blue" }}
+              sx={{
+                display: { md: "flex", xs: "none" },
+                border: "1px solid blue",
+              }}
             >
               <SupplierFormLayouts component="div">
                 {" "}

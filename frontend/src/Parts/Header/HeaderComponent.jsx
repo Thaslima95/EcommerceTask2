@@ -21,21 +21,20 @@ import { Outlet } from "react-router-dom";
 export default function HeaderComponent() {
   return (
     <>
-      <Grid
-        container
-        xs={9}
-        md={12}
-        sx={{ top: "20px", position: "absolute", border: "1px solid red" }}
-      >
+      <Grid container xs={9} md={12} sx={{ top: "20px", position: "absolute" }}>
         <Grid item xs={1} md={1}></Grid>
-        <Grid container xs={12} md={10} sx={{}}>
-          <Grid item xs={4} md={2} sx={{}}>
-            <Grid>
+        <Grid container xs={12} md={10}>
+          <Grid item xs={12} md={2} sx={{}}>
+            <Grid xs={6} md={8}>
               <img src={logosymbol} alt="" />
               <img
                 src={Brand}
                 alt=""
-                style={{ top: "-8px", position: "relative" }}
+                sx={{
+                  top: { md: "5px", xs: "-45px" },
+                  left: { xs: "20px" },
+                  position: "relative",
+                }}
               />
             </Grid>
           </Grid>
@@ -45,9 +44,9 @@ export default function HeaderComponent() {
             md={6}
             sx={{
               display: "flex",
-              border: "1px solid  #0D6EFD",
+              border: { md: "1px solid  #0D6EFD" },
               height: "40px",
-              borderRadius: "5px",
+              borderRadius: { md: "5px" },
             }}
           >
             <InSearch type="search" placeholder="Search" />
@@ -131,16 +130,17 @@ export default function HeaderComponent() {
         container
         xs={9}
         md={12}
-        sx={{ top: "86px", position: "relative", border: "1px solid green" }}
+        sx={{
+          top: { md: "86px", xs: "120px" },
+          position: "relative",
+        }}
       >
-        <Grid item md={1}>
-          item 1
-        </Grid>
-        <Grid container xs={12} md={10} sx={{ border: "2px solid red" }}>
+        <Grid item md={1}></Grid>
+        <Grid container xs={11} md={10} sx={{}}>
           <HeaderNavbarStyles />
         </Grid>
         <Grid item spacing={4}>
-          <CountryFlag4 />
+          {/* <CountryFlag4 /> */}
         </Grid>
         <Outlet />
       </Grid>

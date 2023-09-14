@@ -27,10 +27,19 @@ export default function HeaderNavbarStyles() {
       <Nav.Item>
         <Nav.Link
           eventKey="link-1"
-          style={{ color: "black", margin: "0px", padding: "0px" }}
+          style={{
+            color: "black",
+            margin: "0px",
+            padding: "0px",
+          }}
         >
           <ThemeProvider theme={theme2}>
-            <Typography variant="subtitle1">Hot Offers</Typography>
+            <Typography
+              variant="subtitle1"
+              sx={{ display: { xs: "none", md: "block" } }}
+            >
+              Hot Offers
+            </Typography>
           </ThemeProvider>
         </Nav.Link>
       </Nav.Item>
@@ -40,7 +49,12 @@ export default function HeaderNavbarStyles() {
           style={{ color: "black", margin: "0px", padding: "0px" }}
         >
           <ThemeProvider theme={theme2}>
-            <Typography variant="subtitle1">Gift boxes</Typography>
+            <Typography
+              variant="subtitle1"
+              sx={{ display: { xs: "none", md: "block" } }}
+            >
+              Gift boxes
+            </Typography>
           </ThemeProvider>
         </Nav.Link>
       </Nav.Item>
@@ -50,7 +64,12 @@ export default function HeaderNavbarStyles() {
           style={{ color: "black", margin: "0px", padding: "0px" }}
         >
           <ThemeProvider theme={theme2}>
-            <Typography variant="subtitle1">Projects</Typography>
+            <Typography
+              variant="subtitle1"
+              sx={{ display: { xs: "none", md: "block" } }}
+            >
+              Projects
+            </Typography>
           </ThemeProvider>
         </Nav.Link>
       </Nav.Item>

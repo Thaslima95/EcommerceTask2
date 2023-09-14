@@ -26,24 +26,43 @@ export default function HomePageSection3() {
   return (
     <Grid
       container
-      xs={9}
+      xs={12}
       md={12}
-      sx={{ top: "852px", position: "absolute", border: "1px solid red" }}
+      sx={{
+        top: { md: "852px", xs: "640px" },
+        position: "absolute",
+      }}
     >
       <Grid item md={1}></Grid>
-      <Grid container xs={12} md={9} sx={{ border: "1px solid green" }}>
-        <Grid item xs={4} md={3} sx={{ display: { md: "block" } }}>
+      <Grid container xs={12} md={9} sx={{}}>
+        <Grid item xs={4} md={3} sx={{ display: { md: "block", xs: "none" } }}>
           1
         </Grid>
-        <Grid item xs={4} md={9} sx={{ display: "flex" }}>
+        <Grid
+          item
+          xs={12}
+          md={9}
+          sx={{
+            display: { md: "flex", xs: "flex" },
+            overflowX: { xs: "hidden", md: "flow" },
+            overflowY: { md: "hidden" },
+          }}
+        >
+          <Grid item sx={{ display: { md: "none", xs: "block" } }}>
+            hello
+          </Grid>
           {value.map((e) => {
             return (
-              <ProductBox sx={{ border: "1px solid red" }}>
+              <ProductBox sx={{}}>
                 {" "}
                 <ThemeProvider theme={headingtheme}>
                   <Typography
                     variant="subtitle2"
-                    sx={{ top: "20px", left: "16px", position: "relative" }}
+                    sx={{
+                      top: { md: "20px", xs: "96px" },
+                      left: { md: "16px" },
+                      position: "relative",
+                    }}
                   >
                     {e.category}
                   </Typography>
@@ -52,15 +71,22 @@ export default function HomePageSection3() {
                   <ThemeProvider theme={pricetheme}>
                     <Typography
                       variant="subtitle2"
-                      sx={{ top: "30px", left: "16px", position: "relative" }}
+                      sx={{
+                        top: { md: "30px", xs: "96px" },
+                        left: { md: "16px" },
+                        position: "relative",
+                      }}
                     >
-                      From <br />
-                      {e.price}
+                      From {e.price}
                     </Typography>
                   </ThemeProvider>
                 </PriceLayout>
                 <PriceImgLayout
-                  sx={{ top: "-15px", left: "85px", position: "relative" }}
+                  sx={{
+                    top: { md: "-15px", xs: "-45px" },
+                    left: { md: "85px" },
+                    position: "relative",
+                  }}
                   src={e.image}
                 />
               </ProductBox>

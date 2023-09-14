@@ -35,7 +35,12 @@ export default function HomePageSection1() {
   }, []);
 
   return (
-    <Grid container xs={9} md={12} sx={{ top: "162px", position: "absolute" }}>
+    <Grid
+      container
+      xs={9}
+      md={12}
+      sx={{ top: { md: "102px", xs: "60px" }, position: "absolute" }}
+    >
       <Grid item md={1}></Grid>
       <Grid container xs={12} md={9} sx={{}}>
         <Grid item xs={4} md={3} sx={{ display: { xs: "none", md: "block" } }}>
@@ -58,7 +63,7 @@ export default function HomePageSection1() {
             </LearnMoreButton>
           </BannerImg>
         </Grid>
-        <Grid item xs={4} md={2} sx={{}}>
+        <Grid item xs={4} md={2} sx={{ display: { xs: "none", md: "block" } }}>
           <Box
             sx={{
               width: "195px",

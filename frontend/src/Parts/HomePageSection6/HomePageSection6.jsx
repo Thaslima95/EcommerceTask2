@@ -6,6 +6,14 @@ import { Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import ApiCalls from "../../API/ApiCalls";
 import { useMemo } from "react";
+import { Grid } from "@mui/material";
+import {
+  ProductBox,
+  RecommendProductLayout,
+  recommendedpricetheme,
+  recommendedsubtexttheme,
+} from "../../Components/RecommendedItemsTheme/RecommedItemsTheme";
+import { ThemeProvider } from "@mui/material";
 
 export default function HomePageSection6() {
   const [products, setProducts] = useState([]);
@@ -15,132 +23,50 @@ export default function HomePageSection6() {
       .catch((err) => console.log(err));
   }, []);
   return (
-    <Container
-      style={{
-        width: "1180px",
-        height: "696px",
-        top: "1856px",
-        left: "130px",
+    <Grid
+      container
+      xs={9}
+      md={12}
+      sx={{
+        top: { md: "1554px", xs: "1120px" },
         position: "absolute",
+        border: "1px solid red",
       }}
     >
-      <Card
-        style={{
-          width: "242px",
-          height: "32px",
-          // top: 1856px
-          // left: 131px
-          border: "none",
-        }}
-      >
-        <Typography
-          style={{
-            //styleName: Title-H3;
-            fontFamily: "Inter",
-            fontSize: "24px",
-            fontWeight: "600",
-            lineHeight: "32px",
-            letterSpacing: "-0.20000000298023224px",
-            textAlign: "left",
+      {" "}
+      <Grid item md={1}>
+        1
+      </Grid>
+      <Grid container xs={12} md={9} sx={{ border: "1px solid green" }}>
+        <Grid item md={12}>
+          R
+        </Grid>
+        <Grid
+          item
+          md={12}
+          sx={{
+            display: { md: "flex" },
+            flexWrap: "wrap",
+            marginLeft: { md: "12px" },
           }}
         >
-          Recommended items
-        </Typography>
-      </Card>
-      <Col
-        lg={2}
-        style={{
-          width: "1180px",
-          height: "640px",
-          // top: 1912px
-          // left: 130px
-          // border: "1px solid red",
-          position: "absolute",
-          display: "flex",
-          flexWrap: "wrap",
-        }}
-      >
-        {products.map((e) => {
-          return (
-            <Link to={`/single/${e.id}`}>
-              <Card
-                // style={{
-                //   width: "1180px",
-                //   height: "640px",
-                //   // top: 1912px
-                //   // left: 130px
-                //   border: "1px solid red",
-                // }}
-                style={{
-                  width: "220px",
-                  height: "310px",
-                  // top: 1912px
-                  // left: 130px
-                  // border: "1px solid blue",
-                  border: "none",
-                }}
-              >
-                <Card.Img
-                  style={{
-                    width: "200px",
-                    height: "200px",
-                    top: "9px",
-                    left: "10px",
-                    position: "relative",
-                    padding:
-                      "14.222222328186035px 24.88888168334961px 15.11112117767334px 24.88888931274414px",
-                  }}
-                  src={e.image}
-                />
-                <Card.Title
-                  style={{
-                    width: "65.53191375732422px",
-                    height: "21.239286422729492px",
-                    // top: 223px
-                    // left: 16px
-                  }}
-                >
-                  <Typography
-                    style={{
-                      //styleName: Text-title;
-                      fontFamily: "Inter",
-                      fontSize: "16px",
-                      fontWeight: "500",
-                      lineHeight: "22px",
-                      letterSpacing: "0px",
-                      textAlign: "left",
-                    }}
-                  >
-                    {e.price}
+          {products.map((p) => {
+            return (
+              <ProductBox>
+                <RecommendProductLayout src={p.image} />
+                <ThemeProvider theme={recommendedpricetheme}>
+                  <Typography variant="subtitle2">${p.price}</Typography>
+                </ThemeProvider>
+                <ThemeProvider theme={recommendedsubtexttheme}>
+                  <Typography variant="subtitle2">
+                    {p.title.substring(0, 20)}
                   </Typography>
-                </Card.Title>
-                <Card.Title
-                  style={{
-                    width: "186px",
-                    height: "53px",
-                    // top: 248.13571166992188px
-                    // left: 16.01214599609375px
-                  }}
-                >
-                  <Typography
-                    style={{
-                      //styleName: Text-info;
-                      fontFamily: "Inter",
-                      fontSize: "16px",
-                      fontWeight: "400",
-                      lineHeight: "24px",
-                      letterSpacing: "-0.20000000298023224px",
-                      textAlign: "left",
-                    }}
-                  >
-                    {e.title.substring(0, 20)}
-                  </Typography>
-                </Card.Title>
-              </Card>
-            </Link>
-          );
-        })}
-      </Col>
-    </Container>
+                </ThemeProvider>
+              </ProductBox>
+            );
+          })}
+        </Grid>
+      </Grid>
+    </Grid>
   );
 }
