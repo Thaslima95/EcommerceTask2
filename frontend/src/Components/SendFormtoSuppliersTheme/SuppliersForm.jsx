@@ -4,6 +4,8 @@ import Bgwarehouse from "../../assets/Images/bg-warehouse.jpg";
 export const suppliertext1theme = createTheme();
 export const suppliertext2theme = createTheme();
 export const quotestexttheme = createTheme();
+
+export const sendinquirytheme = createTheme();
 export const SupplierImg = styled("div")({
   display: "flex",
   position: "absolute",
@@ -65,18 +67,35 @@ export const SupplierFormLayouts = styled("div")({
   boxShadow: " 0px 1px 2px 0px #38383840",
 });
 
-// export const JoinNowButton = styled("button")({
-//   width: "180px",
-//   height: "30px",
-//   top: "65px",
-//   left: "1090px",
-//   position: "absolute",
-//   padding: "0px 10px 0px 10px",
-//   borderRadius: "6px",
-//   border: "1px",
-//   gap: "10px",
-//   background: "linear-gradient(180deg, #127FFF 0%, #0067FF 100%)",
-// });
+export const SendInquiryButton = styled("button")({
+  width: "128px",
+  height: "40px",
+  top: "65px",
+  //   left: "1090px",
+  left: "20px",
+
+  position: "relative",
+  padding: "0px 16px 0px 16px",
+  borderRadius: "6px",
+  border: "1px",
+  gap: "10px",
+  background: "linear-gradient(180deg, #127FFF 0%, #0067FF 100%)",
+});
+
+sendinquirytheme.typography.subtitle1 = {
+  styleName: "text-btn/btn-normal",
+  fontFamily: "Inter",
+  fontSize: "16px",
+  fontWeight: "500",
+  lineHeight: "19.3px",
+  letterSpacing: "0px",
+  textAlign: "center",
+  color: "#FFFFFF",
+
+  [sendinquirytheme.breakpoints.up("md")]: {
+    fontSize: "16px",
+  },
+};
 
 suppliertext2theme.typography.subtitle1 = {
   styleName: "text-info",

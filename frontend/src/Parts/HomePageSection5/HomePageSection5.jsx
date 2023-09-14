@@ -14,6 +14,8 @@ import {
   suppliertext2theme,
   SupplierFormLayouts,
   quotestexttheme,
+  SendInquiryButton,
+  sendinquirytheme,
 } from "../../Components/SendFormtoSuppliersTheme/SuppliersForm";
 import { ThemeProvider } from "@mui/material";
 export default function HomePageSection5() {
@@ -104,6 +106,38 @@ export default function HomePageSection5() {
                   rows={3}
                   placeholder="Type more Details"
                 />
+                <Form.Control
+                  style={{
+                    width: "206px",
+                    height: "40px",
+                    top: "80px",
+                    position: "relative",
+                    left: "20px",
+                    // border: "1px solid red",
+                  }}
+                  placeholder="Quantity"
+                />
+                <Form.Select
+                  style={{
+                    width: "111px",
+                    height: "40px",
+                    border: "1px",
+                    top: "37px",
+                    position: "relative",
+                    left: "250px",
+                  }}
+                >
+                  <option>PCs</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </Form.Select>
+                <SendInquiryButton>
+                  {" "}
+                  <ThemeProvider theme={sendinquirytheme}>
+                    <Typography variant="subtitle1">Send inquiry</Typography>
+                  </ThemeProvider>
+                </SendInquiryButton>
               </SupplierFormLayouts>
             </Grid>
           </SupplierImg>
