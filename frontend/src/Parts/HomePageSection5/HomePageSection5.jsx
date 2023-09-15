@@ -26,32 +26,14 @@ export default function HomePageSection5() {
         xs={9}
         md={12}
         sx={{
-          top: { md: "1120px", xs: "930px" },
+          top: { md: "1120px", xs: "960px" },
           position: "absolute",
-          border: "1px solid red",
         }}
       >
-        {" "}
-        {/* <ThemeProvider theme={bannertheme1}>
-            <Typography variant="subtitle1">Latest trending</Typography>
-          </ThemeProvider>
-          <ThemeProvider theme={bannertheme2}>
-            <Typography variant="h1">Electronic items</Typography>
-          </ThemeProvider>
-          <LearnMoreButton>
-            <ThemeProvider theme={buttontheme}>
-              <Typography variant="subtitle1">Learn More</Typography>
-            </ThemeProvider> */}
-        {/* </LearnMoreButton> */}
         <Grid item md={1}></Grid>
-        <Grid container xs={12} md={9} sx={{ border: "1px solid green" }}>
+        <Grid container xs={12} md={9} sx={{}}>
           <SupplierImg component="div">
-            <Grid
-              item
-              xs={4}
-              md={6}
-              sx={{ display: { md: "block" }, border: "1px solid red" }}
-            >
+            <Grid item xs={4} md={6} sx={{ display: { md: "block" } }}>
               <SupplierTextLayout>
                 {" "}
                 <SupplierTextLayout1>
@@ -62,7 +44,9 @@ export default function HomePageSection5() {
                     </Typography>
                   </ThemeProvider>
                 </SupplierTextLayout1>
-                <SupplierTextLayout2>
+                <SupplierTextLayout2
+                  sx={{ display: { xs: "none", md: "block" } }}
+                >
                   {" "}
                   <ThemeProvider theme={suppliertext2theme}>
                     <Typography variant="subtitle1">
@@ -71,6 +55,14 @@ export default function HomePageSection5() {
                     </Typography>
                   </ThemeProvider>
                 </SupplierTextLayout2>
+                <SendInquiryButton
+                  sx={{ display: { md: "none", xs: "block" } }}
+                >
+                  {" "}
+                  <ThemeProvider theme={sendinquirytheme}>
+                    <Typography variant="subtitle1">Send inquiry</Typography>
+                  </ThemeProvider>
+                </SendInquiryButton>
               </SupplierTextLayout>
             </Grid>
             <Grid

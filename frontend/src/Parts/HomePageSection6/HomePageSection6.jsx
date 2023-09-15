@@ -13,6 +13,7 @@ import {
   recommendedpricetheme,
   recommendedsubtexttheme,
 } from "../../Components/RecommendedItemsTheme/RecommedItemsTheme";
+import { homepageheadingtheme } from "../../Components/HomePageProductsTheme/HomePageHeadingTheme";
 import { ThemeProvider } from "@mui/material";
 
 export default function HomePageSection6() {
@@ -34,12 +35,12 @@ export default function HomePageSection6() {
       }}
     >
       {" "}
-      <Grid item md={1}>
-        1
-      </Grid>
+      <Grid item md={1}></Grid>
       <Grid container xs={12} md={9} sx={{ border: "1px solid green" }}>
         <Grid item md={12}>
-          R
+          <ThemeProvider theme={homepageheadingtheme}>
+            <Typography variant="h3">Recommended items</Typography>
+          </ThemeProvider>
         </Grid>
         <Grid
           item

@@ -23,26 +23,35 @@ export const SupplierImg = styled("div")({
 });
 
 export const SupplierTextLayout = styled("div")({
-  width: "440px",
-  height: "139px",
+  width: "217px",
+  height: "44px",
   top: "20px",
-  left: "20px",
-  position: "relative",
-  border: "3px solid red",
-  // top: 42px
-  // left: 140px
-  // padding: 6.559999942779541px 7.6533379554748535px 6.195554256439209px 7.6533331871032715px
+  // left: "20px",
+  // position: "relative",
+  "@media (min-width:600px)": {
+    width: "440px",
+    height: "139px",
+    top: "20px",
+    left: "20px",
+    position: "relative",
+  },
 });
 export const SupplierTextLayout1 = styled("div")({
-  width: "440px",
-  height: "78px",
-  top: "20px",
-  left: "20px",
+  width: "217px",
+  height: "44px",
+  // top: "20px",
+  // left: "20px",
+  // position: "relative",
+  top: "8px",
+  left: "10px",
   position: "relative",
-  border: "3px solid red",
-  // top: 42px
-  // left: 140px
-  // padding: 6.559999942779541px 7.6533379554748535px 6.195554256439209px 7.6533331871032715px
+  "@media (min-width:600px)": {
+    width: "440px",
+    height: "78px",
+    top: "20px",
+    left: "20px",
+    position: "relative",
+  },
 });
 export const SupplierTextLayout2 = styled("div")({
   width: "390px",
@@ -51,9 +60,6 @@ export const SupplierTextLayout2 = styled("div")({
   left: "20px",
   position: "relative",
   border: "3px solid red",
-  // top: 42px
-  // left: 140px
-  // padding: 6.559999942779541px 7.6533379554748535px 6.195554256439209px 7.6533331871032715px
 });
 
 export const SupplierFormLayouts = styled("div")({
@@ -68,24 +74,31 @@ export const SupplierFormLayouts = styled("div")({
 });
 
 export const SendInquiryButton = styled("button")({
-  width: "128px",
-  height: "40px",
-  top: "65px",
-  //   left: "1090px",
-  left: "20px",
-
+  width: "98px",
+  height: "30px",
+  top: "45px",
+  left: "10px",
   position: "relative",
-  padding: "0px 16px 0px 16px",
+
   borderRadius: "6px",
   border: "1px",
   gap: "10px",
+
   background: "linear-gradient(180deg, #127FFF 0%, #0067FF 100%)",
+  "@media (min-width:600px)": {
+    width: "128px",
+    height: "40px",
+    top: "65px",
+    left: "20px",
+    position: "relative",
+    padding: "0px 16px 0px 16px",
+  },
 });
 
 sendinquirytheme.typography.subtitle1 = {
   styleName: "text-btn/btn-normal",
   fontFamily: "Inter",
-  fontSize: "16px",
+  fontSize: "13px",
   fontWeight: "500",
   lineHeight: "19.3px",
   letterSpacing: "0px",
@@ -114,14 +127,15 @@ suppliertext2theme.typography.subtitle1 = {
 suppliertext1theme.typography.h2 = {
   styleName: "text-H2",
   fontFamily: "Inter",
-  fontSize: "32px",
+  fontSize: "18px",
   fontWeight: "600",
-  lineHeight: "38.73px",
+  lineHeight: "21.73px",
   letterSpacing: "-0.2px",
   color: "#FFFFFF",
 
   [suppliertext1theme.breakpoints.up("md")]: {
     fontSize: "32px",
+    lineHeight: "38.73px",
   },
 };
 

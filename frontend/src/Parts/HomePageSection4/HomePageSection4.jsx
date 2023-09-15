@@ -39,6 +39,9 @@ export default function HomePageSection4() {
         <Grid item xs={4} md={3} sx={{ display: { md: "block", xs: "none" } }}>
           1
         </Grid>
+        <Grid item sx={{ display: { md: "none", xs: "block" } }}>
+          hello
+        </Grid>
         <Grid
           item
           xs={12}
@@ -49,9 +52,6 @@ export default function HomePageSection4() {
             overflowY: { md: "hidden" },
           }}
         >
-          <Grid item sx={{ display: { md: "none", xs: "block" } }}>
-            hello
-          </Grid>
           {value.map((e) => {
             return (
               <ProductBox sx={{}}>

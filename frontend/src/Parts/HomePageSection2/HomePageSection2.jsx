@@ -38,7 +38,7 @@ export default function HomePageSection2() {
         xs={10}
         md={12}
         sx={{
-          top: { md: "592px", xs: "330px" },
+          top: { md: "592px", xs: "280px" },
           position: "absolute",
         }}
       >
@@ -52,7 +52,18 @@ export default function HomePageSection2() {
             flexDirection: { xs: "row" },
           }}
         >
-          <Grid item xs={12} md={3} sx={{}}>
+          <Grid
+            item
+            xs={12}
+            md={3}
+            sx={{
+              display: {
+                xs: "flex",
+                md: "block",
+                flexDirection: { xs: "column", md: "row" },
+              },
+            }}
+          >
             <CountDownBox>
               <ThemeProvider theme={dealstheme}>
                 <Typography variant="h6">Deals and offers</Typography>

@@ -13,9 +13,6 @@ export const dealproductsale = createTheme();
 export const CountDownBox = styled("div")({
   width: "198px",
   height: "113px",
-  //   top: "65px",
-  //   left: "1090px",
-  //   position: "absolute",
   top: "15px",
   left: "15px",
   position: "relative",
@@ -24,29 +21,27 @@ export const CountDownBox = styled("div")({
 });
 
 export const CountBox = styled("div")({
-  //     width: 198px
-  // height: 50px
-  // top: 675px
-  // left: 150px
-  // border-radius: 4px
   display: "flex",
   width: "198px",
-  height: "5px",
+  height: "50px",
   gap: "4px",
   top: "60px",
   position: "absolute",
-  //   top: "65px",
-  //   left: "1090px",
-  //   position: "absolute",
   borderRadius: "4px",
+  "@media (min-width:600px)": {
+    display: "flex",
+    width: "198px",
+    height: "50px",
+    gap: "4px",
+    top: "60px",
+    position: "absolute",
+    borderRadius: "4px",
+  },
 });
 
 export const Counts = styled("div")({
   width: "45px",
   height: "50px",
-  //   top: "65px",
-  //   left: "1090px",
-  //   position: "absolute",
 
   borderRadius: "4px",
 
@@ -103,7 +98,7 @@ dealstheme.typography.h6 = {
 
   styleName: "text-btn/btn-small",
   fontFamily: "Inter",
-  fontSize: "20px",
+  fontSize: "18px",
   fontWeight: "600",
   lineHeight: "28px",
   letterSpacing: "-0.2px",
@@ -139,7 +134,7 @@ dealstheme2.typography.h4 = {
 
   styleName: "Title-H4",
   fontFamily: "Inter",
-  fontSize: "16px",
+  fontSize: "13px",
   fontWeight: "400",
   lineHeight: "19px",
   letterSpacing: "0px",

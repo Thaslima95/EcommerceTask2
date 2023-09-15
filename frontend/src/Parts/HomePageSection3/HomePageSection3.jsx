@@ -29,7 +29,7 @@ export default function HomePageSection3() {
       xs={12}
       md={12}
       sx={{
-        top: { md: "852px", xs: "640px" },
+        top: { md: "852px", xs: "600px" },
         position: "absolute",
       }}
     >
@@ -37,6 +37,9 @@ export default function HomePageSection3() {
       <Grid container xs={12} md={9} sx={{}}>
         <Grid item xs={4} md={3} sx={{ display: { md: "block", xs: "none" } }}>
           1
+        </Grid>
+        <Grid item sx={{ display: { md: "none", xs: "block" } }}>
+          hello
         </Grid>
         <Grid
           item
@@ -48,9 +51,6 @@ export default function HomePageSection3() {
             overflowY: { md: "hidden" },
           }}
         >
-          <Grid item sx={{ display: { md: "none", xs: "block" } }}>
-            hello
-          </Grid>
           {value.map((e) => {
             return (
               <ProductBox sx={{}}>

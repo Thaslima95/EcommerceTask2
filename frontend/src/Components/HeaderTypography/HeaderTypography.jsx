@@ -5,7 +5,6 @@ export const theme = createTheme();
 
 export const theme2 = createTheme();
 theme2.typography.subtitle1 = {
-  //styleName: Text-title;
   fontFamily: "Inter",
   fontSize: "16px",
   fontWeight: "500",
@@ -14,13 +13,8 @@ theme2.typography.subtitle1 = {
   textAlign: "left",
   color: "#1C1C1C",
   marginRight: "18px",
-  // top: "26px",
-  // position: "absolute",
-  "@media (min-width:600px)": {
-    // top: "26px",
-    // position: "absolute",
-    // fontSize: "8px",
-  },
+
+  "@media (min-width:600px)": {},
   [theme.breakpoints.up("md")]: {
     fontSize: "16px",
   },
@@ -62,11 +56,6 @@ export const Img = styled("img")({
 export const InSearch = styled("input")({
   width: "330px",
   height: "40px",
-  // borderLeft: "1px solid #0D6EFD",
-  // borderTop: "1px solid #0D6EFD",
-  // borderBottom: "1px solid #0D6EFD",
-  // borderTopLeftRadius: "5px",
-  // borderBottomLeftRadius: "5px",
   border: "1px solid #DEE2E7",
   top: "10px",
   position: "relative",
