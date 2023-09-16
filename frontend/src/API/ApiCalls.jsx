@@ -4,7 +4,7 @@ import axios from "axios";
 export default {
   getProducts: async function () {
     try {
-      const response = await axios.get(`https://fakestoreapi.com/products`);
+      const response = await axios.get(`/allproducts`);
       return response.data;
     } catch (err) {
       console.log(err);
@@ -12,9 +12,8 @@ export default {
   },
   getCategoris: async function () {
     try {
-      const response = await axios.get(
-        `https://fakestoreapi.com/products/categories`
-      );
+      const response = await axios.get(`/typeofcategory`);
+      console.log(response);
       return response.data;
     } catch (err) {
       console.log(err);
@@ -22,9 +21,7 @@ export default {
   },
   getCategorisProductswithlimit: async function () {
     try {
-      const response = await axios.get(
-        `https://fakestoreapi.com/products/category/electronics?limit=5`
-      );
+      const response = await axios.get(`/getproducts/5`);
       return response.data;
     } catch (err) {
       console.log(err);
@@ -32,9 +29,7 @@ export default {
   },
   getProductswithlimit: async function (val) {
     try {
-      const response = await axios.get(
-        `https://fakestoreapi.com/products?limit=${val}`
-      );
+      const response = await axios.get(`/getproducts/${val}`);
       return response.data;
     } catch (err) {
       console.log(err);
@@ -52,9 +47,7 @@ export default {
   },
   getSpecificCategorisProducts: async function (val) {
     try {
-      const response = await axios.get(
-        `https://fakestoreapi.com/products/category/${val}`
-      );
+      const response = await axios.get(`/category/${val}`);
       return response.data;
     } catch (err) {
       console.log(err);
@@ -62,10 +55,9 @@ export default {
   },
   getSingleProduct: async function (val) {
     try {
-      const response = await axios.get(
-        `https://fakestoreapi.com/products/${val}`
-      );
+      const response = await axios.get(`/singleproduct/${val}`);
       return response.data;
+      console.log(response.data);
     } catch (err) {
       console.log(err);
     }

@@ -14,7 +14,7 @@ homepageheadingtheme.typography.h3 = {
   color: "#1C1C1C",
 
   [homepageheadingtheme.breakpoints.up("md")]: {
-    width: "242px",
+    width: "252px",
     height: "32px",
     fontSize: "24px",
     fontWeight: "600",

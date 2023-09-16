@@ -20,7 +20,7 @@ export default function RelatedProducts() {
       <Row>
         {products.map((e, index) => (
           <Col lg={2} md={5} sm={7}>
-            {console.log(e.image)}
+            {console.log(e.product_image)}
             <Card
               className="d-flex flex-col justify-content-between"
               style={{ border: "none" }}
@@ -34,13 +34,13 @@ export default function RelatedProducts() {
                     // border: "2px solid red",
                   }}
                   variant="top"
-                  src={e.image}
+                  src={e.product_image}
                 />
                 <div className="d-flex flex-row justify-content-start">
                   <div className="mb-3 text-left">
-                    <b>${e.price}</b>
+                    <b>${e.product_price}</b>
                     <br />
-                    {e.title.substring(0, 20)}
+                    {e.product_title.substring(0, 20)}
                     <br />
                   </div>
                 </div>

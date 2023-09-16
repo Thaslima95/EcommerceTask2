@@ -16,7 +16,14 @@ const Img = styled("img")({
 });
 
 export default function PreviewContainer({ category }) {
-  const { title, price, description, image, id } = category;
+  console.log(category);
+  const {
+    product_title,
+    product_price,
+    product_description,
+    product_image,
+    product_id,
+  } = category;
 
   return (
     <>
@@ -34,25 +41,25 @@ export default function PreviewContainer({ category }) {
         <Grid container spacing={2}>
           <Grid item>
             <ButtonBase sx={{ width: 128, height: 128 }}>
-              <Img alt="complex" src={image} />
+              <Img alt="complex" src={product_image} />
             </ButtonBase>
           </Grid>
           <Grid item xs={12} sm container>
             <Grid item xs container direction="column" spacing={2}>
               <Grid item xs>
                 <Typography gutterBottom variant="subtitle1" component="div">
-                  {title}
+                  {product_title}
                 </Typography>
                 <Box sx={{ display: "flex", gap: "10px" }}>
                   <Typography variant="h6" gutterBottom>
-                    ${price}
+                    ${product_price}
                   </Typography>
                   <Typography
                     variant="body2"
                     sx={{ marginTop: "5px" }}
                     gutterBottom
                   >
-                    <strike>${price + 400}</strike>
+                    <strike>${product_price + 400}</strike>
                   </Typography>
                 </Box>
 
@@ -67,9 +74,9 @@ export default function PreviewContainer({ category }) {
               </Grid>
               <Grid item>
                 <Typography sx={{ cursor: "pointer" }} variant="body2">
-                  {description.substring(0, 100)}
+                  {/* {description.substring(0, 100)} */}
                 </Typography>
-                <Link to={`/single/${id}`}>
+                <Link to={`/single/${product_id}`}>
                   <Typography
                     style={{
                       //styleName: text-btn/btn-normal;

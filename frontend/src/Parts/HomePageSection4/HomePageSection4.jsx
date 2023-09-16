@@ -40,7 +40,7 @@ export default function HomePageSection4() {
           1
         </Grid>
         <Grid item sx={{ display: { md: "none", xs: "block" } }}>
-          hello
+          Electornics
         </Grid>
         <Grid
           item

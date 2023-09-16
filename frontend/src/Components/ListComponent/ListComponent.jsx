@@ -32,10 +32,13 @@ export default function ListComponent({ category }) {
     //   </Link>
     // </Col>
     <Box sx={{}}>
-      <StyledLink to={`/category/${category}`} sx={{ textDecoration: "none" }}>
+      <StyledLink
+        to={`/category/${category.category}`}
+        sx={{ textDecoration: "none" }}
+      >
         <ThemeProvider theme={categorytheme}>
           <Typography variant="subtitle1">
-            {category[0].toUpperCase() + category.slice(1)}
+            {category?.category[0].toUpperCase() + category?.category.slice(1)}
           </Typography>
         </ThemeProvider>
       </StyledLink>

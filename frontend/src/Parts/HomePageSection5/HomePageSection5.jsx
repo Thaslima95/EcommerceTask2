@@ -71,7 +71,6 @@ export default function HomePageSection5() {
               md={6}
               sx={{
                 display: { md: "flex", xs: "none" },
-                border: "1px solid blue",
               }}
             >
               <SupplierFormLayouts component="div">
@@ -87,9 +86,6 @@ export default function HomePageSection5() {
                     position: "relative",
                     left: "20px",
                     border: "1px solid #DEE2E7",
-                    // border: "1px solid blue",
-                    // top: "25px",
-                    // position: "relative",
                   }}
                   placeholder="What item do you need?"
                 ></Form.Control>

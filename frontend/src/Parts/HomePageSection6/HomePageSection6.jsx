@@ -26,18 +26,17 @@ export default function HomePageSection6() {
   return (
     <Grid
       container
-      xs={9}
+      xs={12}
       md={12}
       sx={{
-        top: { md: "1554px", xs: "1120px" },
+        top: { md: "1554px", xs: "1149px" },
         position: "absolute",
-        border: "1px solid red",
       }}
     >
       {" "}
       <Grid item md={1}></Grid>
-      <Grid container xs={12} md={9} sx={{ border: "1px solid green" }}>
-        <Grid item md={12}>
+      <Grid container xs={12} md={9} sx={{}}>
+        <Grid item md={12} sx={{}}>
           <ThemeProvider theme={homepageheadingtheme}>
             <Typography variant="h3">Recommended items</Typography>
           </ThemeProvider>
@@ -46,14 +45,15 @@ export default function HomePageSection6() {
           item
           md={12}
           sx={{
-            display: { md: "flex" },
-            flexWrap: "wrap",
+            display: { md: "flex", xs: "flex" },
+            flexWrap: { md: "wrap", xs: "wrap" },
             marginLeft: { md: "12px" },
+            border: "1px solid blue",
           }}
         >
           {products.map((p) => {
             return (
-              <ProductBox>
+              <ProductBox sx={{ border: "1px solid red" }}>
                 <RecommendProductLayout src={p.image} />
                 <ThemeProvider theme={recommendedpricetheme}>
                   <Typography variant="subtitle2">${p.price}</Typography>

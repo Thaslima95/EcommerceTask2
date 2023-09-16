@@ -26,8 +26,6 @@ export const SupplierTextLayout = styled("div")({
   width: "217px",
   height: "44px",
   top: "20px",
-  // left: "20px",
-  // position: "relative",
   "@media (min-width:600px)": {
     width: "440px",
     height: "139px",
@@ -39,9 +37,6 @@ export const SupplierTextLayout = styled("div")({
 export const SupplierTextLayout1 = styled("div")({
   width: "217px",
   height: "44px",
-  // top: "20px",
-  // left: "20px",
-  // position: "relative",
   top: "8px",
   left: "10px",
   position: "relative",
@@ -59,7 +54,6 @@ export const SupplierTextLayout2 = styled("div")({
   top: "30px",
   left: "20px",
   position: "relative",
-  border: "3px solid red",
 });
 
 export const SupplierFormLayouts = styled("div")({
@@ -79,7 +73,6 @@ export const SendInquiryButton = styled("button")({
   top: "45px",
   left: "10px",
   position: "relative",
-
   borderRadius: "6px",
   border: "1px",
   gap: "10px",

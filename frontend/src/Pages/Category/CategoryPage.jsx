@@ -22,6 +22,7 @@ import { useMemo } from "react";
 import PreviewContainer from "../../Components/CategoryPreviewComponent/PreviewContainer";
 import BestTabComponent from "../../Components/BestTabComponent/BestTabComponent";
 import BreadCrumbComponent from "../../Components/BreadCrumbComponent/BreadCrumbComponent";
+import { StyledLink } from "../../Components/BannerTheme/BannerTheme";
 export default function CategoryPage() {
   const [categories, setCategories] = useState([]);
   const [listcategory, setListCategory] = useState([]);
@@ -60,7 +61,9 @@ export default function CategoryPage() {
       .then((res) => setCategories(res))
       .catch((err) => console.log(err));
   }, [val]);
-
+  {
+    console.log(categories);
+  }
   return (
     <>
       <Grid
@@ -122,7 +125,7 @@ export default function CategoryPage() {
                 >
                   {listcategory.map((e) => {
                     return (
-                      <Link to={`/category/${e}`}>
+                      <StyledLink to={`/category/${e.category}`}>
                         <Nav.Item
                           style={{
                             width: "240px",
@@ -131,9 +134,9 @@ export default function CategoryPage() {
                             padding: "9px 11px 8px 0px",
                           }}
                         >
-                          {e}
+                          {e.category}
                         </Nav.Item>
-                      </Link>
+                      </StyledLink>
                     );
                   })}
                 </Nav>

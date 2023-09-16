@@ -40,12 +40,12 @@ export default function SingleProduct() {
       .then((res) => setSingleProduct(res))
       .catch((err) => console.log(err));
   }, [val]);
-  const { image } = singleproduct;
-  console.log(image);
+  const { product_image } = singleproduct;
+  console.log(product_image);
   for (let i = 0; i < 5; i++) {
-    images.push(image);
+    images.push(product_image);
   }
-
+  console.log(images);
   return (
     <>
       <Grid

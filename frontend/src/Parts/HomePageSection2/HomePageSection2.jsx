@@ -140,7 +140,8 @@ export default function HomePageSection2() {
               return (
                 <DealProductBox sx={{}}>
                   <DealProductItems>
-                    <DealImg src={s.image} />
+                    {console.log(s.image)}
+                    <DealImg src={s.product_image} />
                   </DealProductItems>
                   <ThemeProvider theme={dealproductname}>
                     <Typography variant="subtitle2">{s.category}</Typography>
