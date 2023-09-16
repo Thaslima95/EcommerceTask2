@@ -17,23 +17,22 @@ export default function HomePageSection9() {
       sx={{
         top: { md: "2000px", xs: "1149px" },
         position: "absolute",
-        display: { md: "flex" },
-        border: "1px solid blue",
+        display: { md: "flex", xs: "none" },
       }}
     >
       <Grid item md={1}></Grid>
       <Grid container xs={12} md={10}>
-        <Grid item md={3}>
-          1
-        </Grid>
-        <Grid item md={6} sx={{ border: "2px solid red" }}>
+        <Grid item md={3}></Grid>
+        <Grid item md={6}>
           <SubscribeBox>
             <SubscribeHeadingBox>
               <ThemeProvider theme={subscribeheadingtheme}>
-                <Typography variant="h4">Suppliers by region</Typography>
+                <Typography variant="h4">
+                  Subscribe on our newsletter
+                </Typography>
               </ThemeProvider>
               <ThemeProvider theme={subscribeheadingsubtheme}>
-                <Typography variant="h4">
+                <Typography variant="h4" sx={{ marginTop: "10px" }}>
                   Get daily news on upcoming offers from many suppliers all over
                   the world
                 </Typography>
@@ -42,9 +41,7 @@ export default function HomePageSection9() {
             <SubscribeFormLayout></SubscribeFormLayout>
           </SubscribeBox>
         </Grid>
-        <Grid item md={3}>
-          3
-        </Grid>
+        <Grid item md={3}></Grid>
       </Grid>
     </Grid>
   );

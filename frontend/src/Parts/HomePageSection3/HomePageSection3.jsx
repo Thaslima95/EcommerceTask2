@@ -39,7 +39,7 @@ export default function HomePageSection3() {
           1
         </Grid>
         <Grid item sx={{ display: { md: "none", xs: "block" } }}>
-          hello
+          {console.log(value)}
         </Grid>
         <Grid
           item
@@ -77,7 +77,7 @@ export default function HomePageSection3() {
                         position: "relative",
                       }}
                     >
-                      From {e.price}
+                      From {e.product_price}
                     </Typography>
                   </ThemeProvider>
                 </PriceLayout>
@@ -87,7 +87,7 @@ export default function HomePageSection3() {
                     left: { md: "85px" },
                     position: "relative",
                   }}
-                  src={e.image}
+                  src={e.product_image}
                 />
               </ProductBox>
             );

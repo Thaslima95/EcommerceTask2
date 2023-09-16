@@ -19,7 +19,7 @@ export default {
       console.log(err);
     }
   },
-  getCategorisProductswithlimit: async function () {
+  getCategorisProductswithlimit: async function (val) {
     try {
       const response = await axios.get(`/getproducts/5`);
       return response.data;

@@ -8,24 +8,20 @@ export const footertheme2 = createTheme();
 export const FooterBox1 = styled("div")({
   width: "276px",
   height: "157px",
-  border: "1px solid red",
 });
 export const FooterImgBox = styled("div")({
   width: "150px",
   height: "46px",
-  border: "1px solid red",
 });
 
 export const FooterTextBox = styled("div")({
   width: "277px",
   height: "48px",
-  border: "1px solid red",
 });
 
 export const IconLayoutBoxfooter = styled("div")({
   width: "200px",
   height: "32px",
-  border: "1px solid red",
 });
 
 footertheme1.typography.subtitle1 = {

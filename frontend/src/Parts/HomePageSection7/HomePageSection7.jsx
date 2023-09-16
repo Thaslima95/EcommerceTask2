@@ -34,7 +34,7 @@ export default function HomePageSection7() {
       sx={{
         top: { md: "1554px", xs: "1149px" },
         position: "absolute",
-        display: { md: "flex" },
+        display: { md: "flex", xs: "none" },
       }}
     >
       <Grid item md={1}></Grid>

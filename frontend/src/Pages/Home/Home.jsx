@@ -17,12 +17,13 @@ export default function Home() {
     <>
       <HomePageSection1 />
       <HomePageSection2 />
+      <HomePageSection3 />
       <HomePageSection7 />
       <HomePageSection8 />
       <HomePageSection9 />
       <Footer2 />
       {/* 
-      <HomePageSection3 />
+      
       <HomePageSection4 />
 
       <HomePageSection5 />
