@@ -26,7 +26,7 @@ export default function HomePageSection2() {
   const [specificCategories, setSpecificCategories] = useState([]);
 
   useMemo(() => {
-    ApiCalls.getCategorisProductswithlimit()
+    ApiCalls.getCategorisProductswithlimit(5)
       .then((res) => setSpecificCategories(res))
       .catch((err) => console.log(err));
   }, []);

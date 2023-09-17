@@ -1,7 +1,7 @@
 import React from "react";
 import { Typography } from "@mui/material";
 import { useState } from "react";
-// import Interior from ".../../assets/Images/interior.jpg";
+import InteriorImg from "../../assets/Images/left-aside.png";
 
 import { Link } from "react-router-dom";
 import ApiCalls from "../../API/ApiCalls";
@@ -9,6 +9,7 @@ import { useMemo } from "react";
 import { Grid } from "@mui/material";
 import { ThemeProvider } from "@mui/material";
 import {
+  DecorImgLayout,
   PriceLayout,
   ProductBox,
   headingtheme,
@@ -36,7 +37,7 @@ export default function HomePageSection3() {
       <Grid item md={1}></Grid>
       <Grid container xs={12} md={9} sx={{}}>
         <Grid item xs={4} md={3} sx={{ display: { md: "block", xs: "none" } }}>
-          1
+          <DecorImgLayout src={InteriorImg} />
         </Grid>
         <Grid item sx={{ display: { md: "none", xs: "block" } }}>
           {console.log(value)}

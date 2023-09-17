@@ -4,6 +4,7 @@ import HeaderComponent from "../Parts/Header/HeaderComponent";
 import Home from "../Pages/Home/Home";
 import CategoryPage from "../Pages/Category/CategoryPage";
 import SingleProduct from "../Components/SingleProductComponent/SingleProduct";
+import CartPage from "../Pages/Cart/CartPage";
 
 export default function RoutesFile() {
   return (
@@ -15,7 +16,8 @@ export default function RoutesFile() {
         {/* <Route path="/single/:id" element={<SingleProduct />} />
         <Route path="/filter/:category" element={<FilterComponent />} /> */}
       </Route>
-      {/* <Route path="/cart" element={<CartPage />} />
+      <Route path="/cart" element={<CartPage />} />
+      {/* 
 
       <Route path="/cart2" element={<CartPage2 />} /> */}
     </Routes>

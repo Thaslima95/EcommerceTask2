@@ -4,6 +4,16 @@ import { Container, Col, Card } from "react-bootstrap";
 import { useState } from "react";
 import ApiCalls from "../../API/ApiCalls";
 import { useMemo } from "react";
+import {
+  RelatedProdcutsBox,
+  RelatedProdcutsImgBox,
+  RelatedProdcutsTextBox,
+  relatedproducttexttheme,
+  relatedproductpricetheme,
+} from "../RelatedProductsTheme/RelatedProductsTheme";
+import { Grid, Typography } from "@mui/material";
+import { homepageheadingtheme } from "../HomePageProductsTheme/HomePageHeadingTheme";
+import { ThemeProvider } from "@mui/material";
 
 export default function RelatedProducts() {
   const [products, setProducts] = useState([]);
@@ -15,40 +25,23 @@ export default function RelatedProducts() {
   }, []);
 
   return (
-    <Container>
-      <Row>Related Products</Row>
-      <Row>
-        {products.map((e, index) => (
-          <Col lg={2} md={5} sm={7}>
-            {console.log(e.product_image)}
-            <Card
-              className="d-flex flex-col justify-content-between"
-              style={{ border: "none" }}
-            >
-              <Card.Body className="">
-                <Card.Img
-                  style={{
-                    width: "200px",
-                    height: "200px",
-                    paddingLeft: "10px",
-                    // border: "2px solid red",
-                  }}
-                  variant="top"
-                  src={e.product_image}
-                />
-                <div className="d-flex flex-row justify-content-start">
-                  <div className="mb-3 text-left">
-                    <b>${e.product_price}</b>
-                    <br />
-                    {e.product_title.substring(0, 20)}
-                    <br />
-                  </div>
-                </div>
-              </Card.Body>
-            </Card>
-          </Col>
-        ))}
-      </Row>
-    </Container>
+    <>
+      {products.map((e) => {
+        return (
+          <RelatedProdcutsBox>
+            <RelatedProdcutsImgBox src={e.product_image} />
+            <RelatedProdcutsTextBox>
+              {" "}
+              <ThemeProvider theme={relatedproducttexttheme}>
+                <Typography>{e.product_title.substring(0, 20)}</Typography>
+              </ThemeProvider>
+              <ThemeProvider theme={relatedproductpricetheme}>
+                <Typography>${e.product_price}</Typography>
+              </ThemeProvider>
+            </RelatedProdcutsTextBox>
+          </RelatedProdcutsBox>
+        );
+      })}
+    </>
   );
 }

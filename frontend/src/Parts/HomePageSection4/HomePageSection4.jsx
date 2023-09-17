@@ -2,7 +2,7 @@ import React from "react";
 
 import { Typography } from "@mui/material";
 import { useState } from "react";
-// import Interior from ".../../assets/Images/interior.jpg";
+import Tech from "../../assets/Images/tech.jpg";
 
 import { Link } from "react-router-dom";
 import ApiCalls from "../../API/ApiCalls";
@@ -15,6 +15,7 @@ import {
   headingtheme,
   pricetheme,
   PriceImgLayout,
+  DecorImgLayout,
 } from "../../Components/HomePageProductsTheme/HomePageProductsTheme";
 
 export default function HomePageSection4() {
@@ -30,14 +31,14 @@ export default function HomePageSection4() {
       xs={12}
       md={12}
       sx={{
-        top: { md: "980px", xs: "790px" },
+        top: { md: "1100px", xs: "790px" },
         position: "absolute",
       }}
     >
       <Grid item md={1}></Grid>
       <Grid container xs={12} md={9} sx={{}}>
         <Grid item xs={4} md={3} sx={{ display: { md: "block", xs: "none" } }}>
-          1
+          <DecorImgLayout src={Tech} />
         </Grid>
         <Grid item sx={{ display: { md: "none", xs: "block" } }}>
           Electornics
@@ -78,7 +79,7 @@ export default function HomePageSection4() {
                         position: "relative",
                       }}
                     >
-                      From {e.price}
+                      From {e.product_price}
                     </Typography>
                   </ThemeProvider>
                 </PriceLayout>
@@ -88,7 +89,7 @@ export default function HomePageSection4() {
                     left: { md: "85px" },
                     position: "relative",
                   }}
-                  src={e.image}
+                  src={e.product_image}
                 />
               </ProductBox>
             );

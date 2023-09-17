@@ -23,6 +23,7 @@ import PreviewContainer from "../../Components/CategoryPreviewComponent/PreviewC
 import BestTabComponent from "../../Components/BestTabComponent/BestTabComponent";
 import BreadCrumbComponent from "../../Components/BreadCrumbComponent/BreadCrumbComponent";
 import { StyledLink } from "../../Components/BannerTheme/BannerTheme";
+import RangeSlider from "../../Components/PriceRangeComponent/PriceRangeComponent";
 export default function CategoryPage() {
   const [categories, setCategories] = useState([]);
   const [listcategory, setListCategory] = useState([]);
@@ -130,6 +131,7 @@ export default function CategoryPage() {
                           style={{
                             width: "240px",
                             height: "36px",
+                            color: "black",
 
                             padding: "9px 11px 8px 0px",
                           }}
@@ -159,31 +161,7 @@ export default function CategoryPage() {
                 <List
                   style={brandhide ? { display: "block" } : { display: "none" }}
                 >
-                  {[109, 114, 64].map((price) => {
-                    const labelId = `checkbox-list-label-${price}`;
-
-                    return (
-                      <ListItem key={price}>
-                        <ListItemButton
-                          role={undefined}
-                          onClick={handleToggle(price)}
-                          dense
-                        >
-                          <ListItemIcon>
-                            <Checkbox
-                              edge="start"
-                              checked={checked.indexOf(price) !== -1}
-                              tabIndex={-1}
-                              disableRipple
-                              inputProps={{ "aria-labelledby": labelId }}
-                            />
-                          </ListItemIcon>
-
-                          <ListItemText id={labelId} primary={`${price}`} />
-                        </ListItemButton>
-                      </ListItem>
-                    );
-                  })}
+                  <RangeSlider></RangeSlider>
                 </List>
               </Box>
             </Grid>
@@ -229,7 +207,7 @@ export default function CategoryPage() {
                   </h4>
                 ))}
             </Grid>
-            <Grid item xs={12} md={8}>
+            <Grid item xs={12} md={12}>
               {searchTerm
                 ? categories
                     .filter(({ title }) =>

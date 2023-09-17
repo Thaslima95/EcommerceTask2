@@ -36,7 +36,6 @@ export default function BestTabComponent() {
           style={{
             width: "144px",
             height: "36px",
-
             padding: "6px 16px 6px 0px",
           }}
         >

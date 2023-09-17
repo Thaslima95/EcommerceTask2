@@ -5,8 +5,19 @@ import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import Grid from "@mui/material/Grid";
-import Paper from "@mui/material/Paper";
-import ButtonBase from "@mui/material/ButtonBase";
+import { ThemeProvider } from "@mui/material/styles";
+import {
+  PreviewBox,
+  PreviewBoxImg,
+  productheadingtheme,
+  PreviewBoxDetails,
+  productheadingpricetheme,
+  PreviewTextBox,
+  productheadingorderstheme,
+  PreviewRatingBox,
+  productheadingshippingtheme,
+  productviewdetailstheme,
+} from "../PreviewContainerTheme/PreviewContainerTheme";
 
 const Img = styled("img")({
   margin: "auto",
@@ -27,85 +38,50 @@ export default function PreviewContainer({ category }) {
 
   return (
     <>
-      <Paper
-        sx={{
-          p: 2,
-          // margin: "auto",
-          Width: 900,
-          minWidth: 200,
-          flexGrow: 1,
-          backgroundColor: (theme) =>
-            theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-        }}
-      >
-        <Grid container spacing={2}>
-          <Grid item>
-            <ButtonBase sx={{ width: 128, height: 128 }}>
-              <Img alt="complex" src={product_image} />
-            </ButtonBase>
-          </Grid>
-          <Grid item xs={12} sm container>
-            <Grid item xs container direction="column" spacing={2}>
-              <Grid item xs>
-                <Typography gutterBottom variant="subtitle1" component="div">
-                  {product_title}
+      <Grid md={12}>
+        <PreviewBox sx={{ display: "flex" }}>
+          <PreviewBoxImg src={product_image} />
+          <PreviewBoxDetails>
+            {" "}
+            <ThemeProvider theme={productheadingtheme}>
+              <Typography variant="subtitle2">{product_title}</Typography>
+            </ThemeProvider>
+            <ThemeProvider theme={productheadingpricetheme}>
+              <Typography variant="subtitle2">${product_price}</Typography>
+            </ThemeProvider>
+            <PreviewRatingBox sx={{ display: "flex" }}>
+              <Rating
+                name="size-small"
+                defaultValue={2}
+                size="small"
+                sx={{ marginRight: "5px" }}
+              />
+              <ThemeProvider theme={productheadingorderstheme}>
+                <Typography variant="subtitle2" sx={{ marginRight: "8px" }}>
+                  152 orders
                 </Typography>
-                <Box sx={{ display: "flex", gap: "10px" }}>
-                  <Typography variant="h6" gutterBottom>
-                    ${product_price}
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    sx={{ marginTop: "5px" }}
-                    gutterBottom
-                  >
-                    <strike>${product_price + 400}</strike>
-                  </Typography>
-                </Box>
-
-                <Box sx={{ color: "text.primary" }}>
-                  <Rating
-                    name="hover-feedback"
-                    value="3.5"
-                    precision={0.5}
-                    readOnly
-                  />
-                </Box>
-              </Grid>
-              <Grid item>
-                <Typography sx={{ cursor: "pointer" }} variant="body2">
-                  {/* {description.substring(0, 100)} */}
+              </ThemeProvider>
+              <ThemeProvider theme={productheadingshippingtheme}>
+                <Typography variant="subtitle2" sx={{ marginRight: "8px" }}>
+                  Free Shipping
                 </Typography>
-                <Link to={`/single/${product_id}`}>
-                  <Typography
-                    style={{
-                      //styleName: text-btn/btn-normal;
-                      fontFamily: "Inter",
-                      fontSize: "16px",
-                      fontWeight: "500",
-                      lineHeight: "19px",
-                      letterSpacing: "0em",
-                      textAlign: "left",
-                      color: " #0D6EFD",
-                    }}
-                  >
-                    View details
-                  </Typography>
-                </Link>
-              </Grid>
-            </Grid>
-            <Grid
-              item
+              </ThemeProvider>
+            </PreviewRatingBox>
+            <PreviewTextBox
               sx={{
-                display: "flex",
-                flexDirection: "column",
-
-                alignItems: "flex-end",
+                display: { md: "block", xs: "none" },
               }}
-            ></Grid>
-          </Grid>
-        </Grid>
-      </Paper>
+            >
+              {product_description}
+              <Link to={`/single/${product_id}`}>
+                <ThemeProvider theme={productviewdetailstheme}>
+                  <Typography variant="subtitle2">View details</Typography>
+                </ThemeProvider>
+              </Link>
+            </PreviewTextBox>
+          </PreviewBoxDetails>
+        </PreviewBox>
+      </Grid>
     </>
   );
 }

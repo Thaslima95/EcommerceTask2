@@ -84,6 +84,7 @@ app.get("/getproducts/:limit",(req,res)=>{
 })
 app.get("/singleproduct/:id",(req,res)=>{
     const id=req.params.id;
+    console.log(id)
     const sql="SELECT * from products WHERE product_id=? and is_deleted=0";
     db.query(sql,[id],(err,data)=>{
         if(err) throw err;
@@ -199,7 +200,17 @@ if(err) throw err;
 app.get('/cartdetails/:user_id',(req,res)=>{
     const userid=req.params.user_id;
     console.log(userid)
-    const sql=`select product_price,product_title ,quantity,cart_total from products as p inner join cart as c on p.product_id=c.product_id where c.user_id=${userid} and c.is_deleted=0`
+    const sql=`select product_price,product_title ,quantity,cart_total,product_image from products as p inner join cart as c on p.product_id=c.product_id where c.user_id=${userid} and c.is_deleted=0`
+    db.query(sql,(err,data)=>{
+      if(err) throw err;
+    return res.json(data)
+    })   
+})
+
+app.get('/cartdetails/:user_id',(req,res)=>{
+    const userid=req.params.user_id;
+    console.log(userid)
+    const sql=`select sum(cart_total) as total from cart  where user_id=${userid} and is_deleted=0 group by ${userid}`
     db.query(sql,(err,data)=>{
       if(err) throw err;
     return res.json(data)

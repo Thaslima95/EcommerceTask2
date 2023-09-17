@@ -21,7 +21,7 @@ export default {
   },
   getCategorisProductswithlimit: async function (val) {
     try {
-      const response = await axios.get(`/getproducts/5`);
+      const response = await axios.get(`/getproducts/${val}`);
       return response.data;
     } catch (err) {
       console.log(err);
@@ -56,6 +56,31 @@ export default {
   getSingleProduct: async function (val) {
     try {
       const response = await axios.get(`/singleproduct/${val}`);
+      return response.data;
+      console.log(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  addtoCart: async function (product_id, userid, quantity) {
+    try {
+      const response = await axios.post(`/addtocart`, {
+        user_id: userid,
+        productid: product_id,
+        quantity: quantity,
+      });
+      if (response.data) {
+        return response.data;
+      }
+      console.log(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  getCartItems: async function (userid) {
+    try {
+      const response = await axios.get(`/cartdetails/${userid}`);
+      console.log(response.data);
       return response.data;
       console.log(response.data);
     } catch (err) {
