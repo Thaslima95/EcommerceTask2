@@ -29,7 +29,7 @@ export default function HomePageSection8() {
       xs={12}
       md={12}
       sx={{
-        top: { md: "1834px", xs: "1149px" },
+        top: { md: "2104px", xs: "1149px" },
         position: "absolute",
         display: { md: "flex", xs: "none" },
       }}

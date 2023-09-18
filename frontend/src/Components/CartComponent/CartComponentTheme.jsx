@@ -102,7 +102,7 @@ cartTitle.typography.subtitle1 = {
   lineHeight: "22px",
   letterSpacing: "0px",
   textAlign: "left",
-  color: "red",
+  color: "#1C1C1C",
 
   position: "relative",
   "@media (min-width:600px)": {

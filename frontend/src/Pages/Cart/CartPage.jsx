@@ -96,31 +96,23 @@ export default function CartPage() {
   };
   return (
     <>
-      <Grid container sx={{ border: "2px solid red" }} md={12} xs={10}>
-        <Grid container sx={{ border: "2px solid blue", marginTop: "20px" }}>
+      <Grid container md={12} xs={10}>
+        <Grid container sx={{ marginTop: "20px" }}>
           {windowWidth > 798 ? (
             <>
               <Grid item md={1}></Grid>
-              <Grid
-                container
-                xs={12}
-                md={9}
-                sx={{
-                  border: "2px solid green",
-                }}
-              >
+              <Grid container xs={12} md={9}>
                 <FooterImgBox>
                   <img src={logosymbol} alt="" />
                   <img src={Brand} alt="" />
                 </FooterImgBox>
                 <Grid item md={7}></Grid>
-                <Grid item xs md={3} sx={{ border: "3px solid yellow" }}>
+                <Grid item xs md={3}>
                   <Box
                     sx={{
                       display: "flex",
                       justifyContent: "flex-end",
                       gap: "30px",
-                      border: "2px solid green",
                     }}
                   >
                     <Box
@@ -180,76 +172,70 @@ export default function CartPage() {
                   </Box>
                 </Grid>
               </Grid>
-              <Grid container sx={{ border: "2px solid blue" }}>
+              <Grid container sx={{ marginTop: "60px" }}>
                 <Grid item md={1}></Grid>
-                <Grid
-                  container
-                  xs={12}
-                  md={9}
-                  sx={{
-                    border: "2px solid green",
-                  }}
-                >
-                  MY Cart (3)
+                <Grid container xs={12} md={9}>
+                  MY Cart ({cart.length})
                 </Grid>
               </Grid>
-              <Grid container sx={{ border: "2px solid green" }}>
+              <Grid container>
                 <Grid item md={1}></Grid>
                 <Grid
                   container
                   xs={12}
                   md={7}
                   sx={{
-                    border: "2px solid brown",
                     display: "block",
                   }}
                 >
                   {cart.map((e) => {
                     return <CartComponent cart={e}></CartComponent>;
                   })}
-                  <Box
-                    sx={{
-                      border: "2px solid yellow",
-                      display: { md: "flex", xs: "none" },
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <BacktoShopButton sx={{ display: "flex" }}>
-                      <img
-                        src={Back}
-                        alt=""
-                        style={{
-                          top: "10px",
-                          position: "relative",
-                          left: "10px",
-                        }}
-                      />
-                      <ThemeProvider theme={backtoshopbuttontheme}>
-                        <Typography
-                          sx={{
+                  <Grid md={10}>
+                    <Box
+                      sx={{
+                        display: { md: "flex", xs: "none" },
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <BacktoShopButton sx={{ display: "flex" }}>
+                        <img
+                          src={Back}
+                          alt=""
+                          style={{
                             top: "10px",
                             position: "relative",
-                            left: "15px",
+                            left: "10px",
                           }}
-                          variant="subtitle1"
-                        >
-                          Back to Shop
-                        </Typography>
-                      </ThemeProvider>
-                    </BacktoShopButton>
-                    <RemoveAllButton>
-                      <ThemeProvider
-                        theme={removeAllbuttontheme}
-                      ></ThemeProvider>
-                      <Typography variant="subtitle1">Remove all</Typography>
-                    </RemoveAllButton>
-                  </Box>
+                        />
+                        <ThemeProvider theme={backtoshopbuttontheme}>
+                          <Typography
+                            sx={{
+                              top: "10px",
+                              position: "relative",
+                              left: "15px",
+                            }}
+                            variant="subtitle1"
+                          >
+                            Back to Shop
+                          </Typography>
+                        </ThemeProvider>
+                      </BacktoShopButton>
+                      <RemoveAllButton sx={{ marginLeft: "-40px" }}>
+                        <ThemeProvider
+                          theme={removeAllbuttontheme}
+                        ></ThemeProvider>
+                        <Typography variant="subtitle1">Remove all</Typography>
+                      </RemoveAllButton>
+                    </Box>
+                  </Grid>
                 </Grid>
 
-                <Grid md={2} sx={{ border: "1px solid blue" }}>
+                <Grid md={2}>
                   {" "}
                   <Grid sx={{ display: "flex" }}>
                     <Grid item xs sx={{ height: "230px" }}>
+                      <Typography>Have a Coupon?</Typography>
                       <TextField
                         id="outlined-basic"
                         label="Outlined"
@@ -270,6 +256,7 @@ export default function CartPage() {
                       </Typography>
                     </Grid>
                     <Grid item xs sx={{ height: "230px" }}>
+                      <Button></Button>
                       <Button>Apply</Button>
                       <Typography
                         sx={{ top: "90px", position: "relative" }}
@@ -301,16 +288,9 @@ export default function CartPage() {
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid container sx={{ border: "2px solid blue" }}>
+              <Grid container>
                 <Grid item md={1}></Grid>
-                <Grid
-                  container
-                  xs={12}
-                  md={7}
-                  sx={{
-                    border: "2px solid green",
-                  }}
-                >
+                <Grid container xs={12} md={7}>
                   <Grid item md={4}>
                     <Box>
                       <img src={Secure} alt="" />
@@ -328,7 +308,7 @@ export default function CartPage() {
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid container sx={{ border: "2px solid blue" }}>
+              <Grid container>
                 <Grid item md={1}></Grid>
                 <Grid
                   container
@@ -338,34 +318,26 @@ export default function CartPage() {
                     border: "2px solid green",
                   }}
                 >
-                  <Grid item md={12} sx={{ border: "2px solid red" }}>
+                  <Grid item md={12}>
                     <SaveForLaterComponent></SaveForLaterComponent>
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid container sx={{ border: "2px solid blue" }}>
+              <Grid container>
                 <Grid item md={1}></Grid>
-                <Grid
-                  container
-                  xs={12}
-                  md={9}
-                  sx={{
-                    border: "2px solid green",
-                  }}
-                >
-                  <Grid item md={12} sx={{ border: "2px solid red" }}>
+                <Grid container xs={12} md={9}>
+                  <Grid item md={12}>
                     <img src={Banner} alt="" />
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid container sx={{ border: "2px solid blue" }}>
+              <Grid container>
                 <Grid item md={1}></Grid>
                 <Grid
                   container
                   xs={12}
                   md={9}
                   sx={{
-                    border: "2px solid green",
                     top: "40px",
                     position: "relative",
                   }}

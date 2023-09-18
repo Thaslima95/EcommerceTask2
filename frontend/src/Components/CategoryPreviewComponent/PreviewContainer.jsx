@@ -44,10 +44,20 @@ export default function PreviewContainer({ category }) {
           <PreviewBoxDetails>
             {" "}
             <ThemeProvider theme={productheadingtheme}>
-              <Typography variant="subtitle2">{product_title}</Typography>
+              <Typography
+                variant="subtitle2"
+                sx={{ marginBottom: { xs: "5px", md: "15px" } }}
+              >
+                {product_title}
+              </Typography>
             </ThemeProvider>
             <ThemeProvider theme={productheadingpricetheme}>
-              <Typography variant="subtitle2">${product_price}</Typography>
+              <Typography
+                variant="subtitle2"
+                sx={{ top: { xs: "13px" }, position: "relative" }}
+              >
+                ${product_price}
+              </Typography>
             </ThemeProvider>
             <PreviewRatingBox sx={{ display: "flex" }}>
               <Rating
@@ -62,7 +72,14 @@ export default function PreviewContainer({ category }) {
                 </Typography>
               </ThemeProvider>
               <ThemeProvider theme={productheadingshippingtheme}>
-                <Typography variant="subtitle2" sx={{ marginRight: "8px" }}>
+                <Typography
+                  variant="subtitle2"
+                  sx={{
+                    marginRight: "8px",
+                    marginTop: { xs: "23px", md: "0px" },
+                    marginLeft: { xs: "-163px", md: "0px" },
+                  }}
+                >
                   Free Shipping
                 </Typography>
               </ThemeProvider>

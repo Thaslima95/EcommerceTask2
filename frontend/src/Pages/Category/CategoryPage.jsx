@@ -6,10 +6,6 @@ import { Box, Button, Typography } from "@mui/material";
 
 import { useParams, useSearchParams } from "react-router-dom";
 import Vector from "../../assets/Images/Vector.png";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
 import { List } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -72,17 +68,12 @@ export default function CategoryPage() {
         md={10}
         container
         sx={{
-          top: "130px",
+          top: "100px",
           position: "absolute",
           marginLeft: { md: "130px" },
         }}
       >
-        <Grid
-          item
-          xs={12}
-          md={12}
-          sx={{ border: "1px solid red", marginBottom: "30px" }}
-        >
+        <Grid item xs={12} md={12} sx={{ marginBottom: "30px" }}>
           <BreadCrumbComponent />
         </Grid>
         <Grid item xs={12} md={12} sx={{ display: "flex" }}>
@@ -166,21 +157,8 @@ export default function CategoryPage() {
               </Box>
             </Grid>
           </Grid>
-          <Grid item xs={12} md={9} sx={{}}>
-            <Grid
-              item
-              xs={12}
-              md={12}
-              sx={{
-                display: "flex",
-                flexWrap: "wrap",
-
-                justifyContent: "center",
-                alignContent: "center",
-                alignItems: "center",
-                justifyItems: "center",
-              }}
-            >
+          <Grid item xs={12} md={12} sx={{}}>
+            <Grid container xs={12} md={12} sx={{}}>
               <BestTabComponent />
             </Grid>
             <Grid item xs={12} sx={{ display: { xs: "block", md: "none" } }}>

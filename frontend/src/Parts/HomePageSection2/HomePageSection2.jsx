@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
 import ApiCalls from "../../API/ApiCalls";
 import { useMemo } from "react";
-import { Grid } from "@mui/material";
+import { Grid, Box } from "@mui/material";
 import { ThemeProvider } from "@mui/material";
 import {
   CountDownBox,
@@ -35,7 +35,7 @@ export default function HomePageSection2() {
     <>
       <Grid
         container
-        xs={10}
+        xs={12}
         md={12}
         sx={{
           top: { md: "592px", xs: "280px" },
@@ -64,81 +64,116 @@ export default function HomePageSection2() {
               },
             }}
           >
-            <CountDownBox>
-              <ThemeProvider theme={dealstheme}>
-                <Typography variant="h6">Deals and offers</Typography>
-              </ThemeProvider>
-              <ThemeProvider theme={dealstheme2}>
-                <Typography variant="h4">Hygiene equipments</Typography>
-              </ThemeProvider>
-              <CountBox>
-                <Counts>
-                  <ThemeProvider theme={countstheme}>
-                    <Typography variant="subtitle2" sx={{ marginLeft: "12px" }}>
-                      04
-                    </Typography>
-                  </ThemeProvider>
-                  <ThemeProvider theme={countssecondstheme}>
-                    <Typography variant="subtitle2" sx={{ marginLeft: "12px" }}>
-                      Hours
-                    </Typography>
-                  </ThemeProvider>
-                </Counts>
-                <Counts>
-                  {" "}
-                  <ThemeProvider theme={countstheme}>
-                    <Typography variant="subtitle2" sx={{ marginLeft: "12px" }}>
-                      13
-                    </Typography>
-                  </ThemeProvider>
-                  <ThemeProvider theme={countssecondstheme}>
-                    <Typography variant="subtitle2" sx={{ marginLeft: "12px" }}>
-                      mins
-                    </Typography>
-                  </ThemeProvider>
-                </Counts>
-                <Counts>
-                  {" "}
-                  <ThemeProvider theme={countstheme}>
-                    <Typography variant="subtitle2" sx={{ marginLeft: "12px" }}>
-                      34
-                    </Typography>
-                  </ThemeProvider>
-                  <ThemeProvider theme={countssecondstheme}>
-                    <Typography variant="subtitle2" sx={{ marginLeft: "12px" }}>
-                      secs
-                    </Typography>
-                  </ThemeProvider>
-                </Counts>
-                <Counts>
-                  {" "}
-                  <ThemeProvider theme={countstheme}>
-                    <Typography variant="subtitle2" sx={{ marginLeft: "12px" }}>
-                      56
-                    </Typography>
-                  </ThemeProvider>
-                  <ThemeProvider theme={countssecondstheme}>
-                    <Typography variant="subtitle2" sx={{ marginLeft: "12px" }}>
-                      mins
-                    </Typography>
-                  </ThemeProvider>
-                </Counts>
-              </CountBox>
+            <CountDownBox sx={{ display: { xs: "flex", md: "block" } }}>
+              <Box>
+                <ThemeProvider theme={dealstheme}>
+                  <Typography variant="h6">Deals and offers</Typography>
+                </ThemeProvider>
+                <ThemeProvider theme={dealstheme2}>
+                  <Typography variant="h4">Hygiene equipments</Typography>
+                </ThemeProvider>
+              </Box>
+              <Box>
+                <CountBox
+                  sx={{
+                    top: { xs: "-10px", md: "10px" },
+                    left: { xs: "-10px", md: "10px" },
+                    position: { xs: "relative" },
+                  }}
+                >
+                  <Counts>
+                    <ThemeProvider theme={countstheme}>
+                      <Typography
+                        variant="subtitle2"
+                        sx={{ marginLeft: "12px" }}
+                      >
+                        04
+                      </Typography>
+                    </ThemeProvider>
+                    <ThemeProvider theme={countssecondstheme}>
+                      <Typography
+                        variant="subtitle2"
+                        sx={{ marginLeft: "12px" }}
+                      >
+                        Hours
+                      </Typography>
+                    </ThemeProvider>
+                  </Counts>
+                  <Counts>
+                    {" "}
+                    <ThemeProvider theme={countstheme}>
+                      <Typography
+                        variant="subtitle2"
+                        sx={{ marginLeft: "12px" }}
+                      >
+                        13
+                      </Typography>
+                    </ThemeProvider>
+                    <ThemeProvider theme={countssecondstheme}>
+                      <Typography
+                        variant="subtitle2"
+                        sx={{ marginLeft: "12px" }}
+                      >
+                        mins
+                      </Typography>
+                    </ThemeProvider>
+                  </Counts>
+                  <Counts>
+                    {" "}
+                    <ThemeProvider theme={countstheme}>
+                      <Typography
+                        variant="subtitle2"
+                        sx={{ marginLeft: "12px" }}
+                      >
+                        34
+                      </Typography>
+                    </ThemeProvider>
+                    <ThemeProvider theme={countssecondstheme}>
+                      <Typography
+                        variant="subtitle2"
+                        sx={{ marginLeft: "12px" }}
+                      >
+                        secs
+                      </Typography>
+                    </ThemeProvider>
+                  </Counts>
+                  <Counts>
+                    {" "}
+                    <ThemeProvider theme={countstheme}>
+                      <Typography
+                        variant="subtitle2"
+                        sx={{ marginLeft: "12px" }}
+                      >
+                        56
+                      </Typography>
+                    </ThemeProvider>
+                    <ThemeProvider theme={countssecondstheme}>
+                      <Typography
+                        variant="subtitle2"
+                        sx={{ marginLeft: "12px" }}
+                      >
+                        mins
+                      </Typography>
+                    </ThemeProvider>
+                  </Counts>
+                </CountBox>
+              </Box>
             </CountDownBox>
           </Grid>
           <Grid
             item
-            xs={10}
+            xs={12}
             md={9}
             sx={{
               display: "flex",
 
               overflowX: "hidden",
+              gap: "20px",
             }}
           >
             {specificCategories.map((s) => {
               return (
-                <DealProductBox sx={{}}>
+                <DealProductBox>
                   <DealProductItems>
                     {console.log(s.image)}
                     <DealImg src={s.product_image} />

@@ -8,13 +8,20 @@ import TableRowsIcon from "@mui/icons-material/TableRows";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
-import { Typography } from "@mui/material";
+import { ThemeProvider, Typography } from "@mui/material";
 import { Card } from "react-bootstrap";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import { Link } from "react-router-dom";
-import { Grid } from "@mui/material";
+import { Grid, Box } from "@mui/material";
 import ApiCalls from "../../API/ApiCalls";
 import { useMemo } from "react";
+import {
+  categorytheme1,
+  categorytheme2,
+  FeaturedBox,
+  VerfiedBox,
+  GroupButtonBox,
+} from "../../Pages/Category/CategoryPageTheme";
 
 export default function BestTabComponent() {
   const categoryname = useParams().category;
@@ -27,67 +34,55 @@ export default function BestTabComponent() {
 
   return (
     <>
-      <Grid item xs={12} md={6}>
-        {categories.length} items in
-        <strong>{categoryname}</strong>
-      </Grid>
-      <Grid item xs={12} md={6} sx={{ display: "flex", gap: "20px" }}>
-        <FormGroup
-          style={{
-            width: "144px",
-            height: "36px",
-            padding: "6px 16px 6px 0px",
-          }}
-        >
-          <FormControlLabel
-            style={{
-              width: "34px",
-              height: "24px",
-              padding: "2px 13px 2px 1px",
-            }}
-            control={<Checkbox />}
-          />
-          <Card.Text style={{ width: "94px", height: "19px" }}>
-            <Typography
-              style={{
-                fontFamily: "Inter",
-                fontSize: "16px",
-                fontWeight: "400",
-                lineHeight: "19px",
-                letterSpacing: "0px",
-                textAlign: "left",
-                color: "#1C1C1C",
-              }}
-            >
-              Verified only
+      <Grid item md={6}>
+        <Box sx={{ display: "flex", marginTop: "10px" }}>
+          <ThemeProvider theme={categorytheme2}>
+            <Typography variant="subtitle2" sx={{ marginRight: "8px" }}>
+              {categories.length} items in
             </Typography>
-          </Card.Text>
-        </FormGroup>
-        <Container
-          style={{
-            width: "172px",
-            height: "40px",
-          }}
-        >
-          <Form.Select>
-            <option>Featured</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </Form.Select>
-        </Container>
-        <ButtonGroup
-          style={{
-            width: "76px",
-            height: "40px",
-          }}
-          aria-label="Basic example"
-        >
-          <TableRowsIcon />
-          <Link to={`/filter/${categoryname}`}>
+          </ThemeProvider>
+          <ThemeProvider theme={categorytheme1}>
+            <Typography variant="h6">{categoryname}</Typography>
+          </ThemeProvider>
+        </Box>
+      </Grid>
+      <Grid item md={6}>
+        <Box sx={{ display: "flex" }}>
+          <VerfiedBox
+            sx={{
+              display: { md: "flex", xs: "none" },
+            }}
+          >
+            {" "}
+            <FormGroup>
+              <FormControlLabel control={<Checkbox />} />
+            </FormGroup>
+            <ThemeProvider theme={categorytheme2}>
+              <Typography
+                variant="subtitle2"
+                sx={{ marginRight: "8px", marginTop: "10px" }}
+              >
+                Verified only
+              </Typography>
+            </ThemeProvider>
+          </VerfiedBox>
+          <FeaturedBox
+            sx={{ marginRight: "12px", display: { md: "flex", xs: "none" } }}
+          >
+            <Form.Select>
+              <option>Featured</option>
+              <option value="1" default>
+                One
+              </option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </Form.Select>
+          </FeaturedBox>
+          <GroupButtonBox sx={{ paddingTop: "5px" }}>
             <GridViewIcon />
-          </Link>
-        </ButtonGroup>
+            <TableRowsIcon />
+          </GroupButtonBox>
+        </Box>
       </Grid>
     </>
   );

@@ -27,11 +27,13 @@ export const PreviewTextBox = styled("div")({
 export const PreviewRatingBox = styled("div")({
   width: "196px",
   height: "17px",
-  top: "35px",
+  top: "15px",
   position: "relative",
   "@media (min-width:600px)": {
     width: "344px",
     height: "19px",
+    top: "35px",
+    position: "relative",
   },
 });
 
@@ -70,17 +72,13 @@ export const PreviewBoxPriceDetails = styled("div")({
 });
 
 productheadingpricetheme.typography.subtitle2 = {
-  width: "184px",
-  height: "19px",
   fontSize: "16px",
-  top: "59px",
+  top: "120px",
   position: "relative",
 
   [productheadingpricetheme.breakpoints.up("md")]: {
-    width: "83px",
-    height: "28px",
     styleName: "Title-H4",
-    top: "40px",
+    top: "120px",
     position: "relative",
     fontSize: "20px",
 
@@ -146,6 +144,7 @@ productheadingshippingtheme.typography.subtitle2 = {
   styleName: "Text-small",
 
   lineHeight: "15.73px",
+  color: "#00B517",
 
   [productheadingshippingtheme.breakpoints.up("md")]: {
     width: "104px",
@@ -160,6 +159,7 @@ productheadingshippingtheme.typography.subtitle2 = {
     lineHeight: "19px",
     letterSpacing: "0px",
     textAlign: "left",
+    color: "#00B517",
   },
 };
 

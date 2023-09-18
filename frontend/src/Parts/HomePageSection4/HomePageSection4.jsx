@@ -15,6 +15,7 @@ import {
   headingtheme,
   pricetheme,
   PriceImgLayout,
+  mobileheadingtheme,
   DecorImgLayout,
 } from "../../Components/HomePageProductsTheme/HomePageProductsTheme";
 
@@ -41,7 +42,12 @@ export default function HomePageSection4() {
           <DecorImgLayout src={Tech} />
         </Grid>
         <Grid item sx={{ display: { md: "none", xs: "block" } }}>
-          Electornics
+          <ThemeProvider
+            theme={mobileheadingtheme}
+            sx={{ display: { md: "none" } }}
+          >
+            <Typography variant="subtitle2">Electronics</Typography>
+          </ThemeProvider>
         </Grid>
         <Grid
           item

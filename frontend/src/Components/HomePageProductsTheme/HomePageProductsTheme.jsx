@@ -2,11 +2,27 @@ import { createTheme } from "@mui/material";
 import { styled } from "@mui/material/styles";
 export const headingtheme = createTheme();
 export const pricetheme = createTheme();
+export const mobileheadingtheme = createTheme();
 
 export const ProductBox = styled("div")({
   width: "223px",
   height: "127px",
 });
+
+mobileheadingtheme.typography.subtitle2 = {
+  styleName: "Title-h5",
+  fontFamily: "Inter",
+  fontSize: "18px",
+  fontWeight: "600",
+  lineHeight: "22px",
+  letterSpacing: "0px",
+  textAlign: "left",
+  color: "#1C1C1C",
+
+  [mobileheadingtheme.breakpoints.up("md")]: {
+    fontSize: "18px",
+  },
+};
 
 headingtheme.typography.subtitle2 = {
   width: "138px",

@@ -15,6 +15,7 @@ import {
   headingtheme,
   pricetheme,
   PriceImgLayout,
+  mobileheadingtheme,
 } from "../../Components/HomePageProductsTheme/HomePageProductsTheme";
 
 export default function HomePageSection3() {
@@ -40,7 +41,12 @@ export default function HomePageSection3() {
           <DecorImgLayout src={InteriorImg} />
         </Grid>
         <Grid item sx={{ display: { md: "none", xs: "block" } }}>
-          {console.log(value)}
+          <ThemeProvider
+            theme={mobileheadingtheme}
+            sx={{ display: { md: "none" } }}
+          >
+            <Typography variant="subtitle2">Home and Outdoor</Typography>
+          </ThemeProvider>
         </Grid>
         <Grid
           item
