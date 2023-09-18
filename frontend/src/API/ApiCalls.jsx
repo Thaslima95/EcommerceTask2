@@ -136,4 +136,29 @@ export default {
       console.log(err);
     }
   },
+  register: async function (username, useremail, password) {
+    try {
+      console.log(username, useremail, password);
+      const response = await axios.post(`/adduser`, {
+        name: username,
+        email: useremail,
+        password: password,
+      });
+      return response.data;
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  login: async function (useremail, password) {
+    try {
+      console.log(useremail, password);
+      const response = await axios.post(`/login`, {
+        email: useremail,
+        password: password,
+      });
+      return response.data;
+    } catch (err) {
+      console.log(err);
+    }
+  },
 };

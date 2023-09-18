@@ -5,6 +5,7 @@ var bodyParser = require('body-parser');
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+const bcrypt=require("bcrypt");
 
 app.use(express.json()) 
 
@@ -26,15 +27,35 @@ db.connect(function (err) {
 
 app.post('/adduser',(req,res)=>{
     const name=req.body.name;
+    console.log(name)
     const email=req.body.email;
     const password=req.body.password;
-    const sql="INSERT INTO users (user_name,user_email,user_password) VALUES ?";
+    console.log(password)
+    //  const salt=await bcrypt.genSalt(10);
+    // const hashedpassword=await bcrypt.hash(password,salt)
+    const sql= "INSERT INTO users (user_name,user_email,user_password) VALUES ?";
     const value=[[name,email,password]];
     db.query(sql,[value],(err,data)=>{
         if(err) throw err;
         console.log(data)
     })
     return res.json("added user")
+})
+
+app.post("/login",(req,res)=>{
+    const email=req.body.email;
+    const password=req.body.password;
+    const sql='SELECT user_id,user_name,user_password from users where user_email=? and user_password=?';
+    db.query(sql,[email,password],(err,data)=>{
+        if(err) throw err;
+        if(data.length>0)
+        {
+            return res.json(data)
+        }
+        else{
+            return res.json("login error")
+        }
+    })
 })
 
 
