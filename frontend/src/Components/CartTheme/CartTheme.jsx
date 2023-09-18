@@ -52,3 +52,13 @@ export const CartImg = styled("img")({
     position: "relative",
   },
 });
+
+export const CartCheckoutBoxmobile = styled("div")({
+  border: "0px, 0px, 1px, 0px",
+
+  width: "320px",
+  height: "206px",
+  borderBottom: "1px solid #DEE2E7",
+  background:
+    "linear-gradient(0deg, #DEE2E7, #DEE2E7),linear-gradient(0deg, #FFFFFF, #FFFFFF)",
+});

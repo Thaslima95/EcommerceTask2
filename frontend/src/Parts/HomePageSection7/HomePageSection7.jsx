@@ -8,6 +8,10 @@ import Two from "../../assets/Images/2.jpg";
 import Three from "../../assets/Images/3.jpg";
 import Four from "../../assets/Images/4.jpg";
 import Five from "../../assets/Images/5.jpg";
+import Search from "../../assets/Images/Search.png";
+import Products from "../../assets/Images/Products.png";
+import Arrowshield from "../../assets/Images/Arrowshield.png";
+import Shield from "../../assets/Images/Shield.png";
 import {
   ServiceBox,
   ServiceImgLayout,
@@ -17,14 +21,18 @@ import {
 
 export default function HomePageSection7() {
   const servicearray = [
-    { image: Two, text: "Source from Industry Hubs", icon: "icon" },
-    { image: Three, text: "Customize Your Products", icon: "icon" },
+    { image: Two, text: "Source from Industry Hubs", icon: Search },
+    { image: Three, text: "Customize Your Products", icon: Products },
     {
       image: Four,
       text: "Fast, reliable shipping by ocean or air",
-      icon: "icong",
+      icon: Arrowshield,
     },
-    { image: Five, text: "Product monitoring and inspection", icon: "icong" },
+    {
+      image: Five,
+      text: "Product monitoring and inspection",
+      icon: Shield,
+    },
   ];
   return (
     <Grid
@@ -53,7 +61,13 @@ export default function HomePageSection7() {
                   <ThemeProvider theme={servicetheme}>
                     <Typography variant="subtitle2">{e.text}</Typography>
                   </ThemeProvider>
-                  <IconLayout></IconLayout>
+                  <IconLayout>
+                    <img
+                      src={e.icon}
+                      alt=""
+                      style={{ left: "18px", position: "relative", top: "5px" }}
+                    />
+                  </IconLayout>
                 </ServiceBox>
               </Grid>
             );

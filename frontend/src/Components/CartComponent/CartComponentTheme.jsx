@@ -47,15 +47,15 @@ carttheme.typography.subtitle1 = {
 };
 
 export const CartComponentBox = styled("div")({
-  width: "360px",
-  height: "165px",
+  width: "320px",
+  height: "155px",
   border: "0px, 0px, 1px, 0px",
   color: "#DEE2E7",
   borderBottom: "1px solid #DEE2E7",
   //   top: "10px",
   //   position: "relative",
   "@media (min-width:600px)": {
-    width: "840px",
+    width: "820px",
     height: "136px",
     top: "0px",
     position: "relative",
@@ -78,13 +78,16 @@ export const CartComponentImgBox = styled("img")({
   height: "63px",
   borderRadius: "6px",
   border: "1px",
-
+  left: "10px",
+  psodition: "reltaive",
   //   top: "10px",
   //   position: "relative",
   "@media (min-width:600px)": {
     width: "80px",
     height: "80px",
     border: "1px solid red",
+    left: "0px",
+    position: "relative",
   },
 });
 
@@ -144,8 +147,8 @@ cartPrice.typography.subtitle1 = {
   width: "54px",
   height: "22px",
   styleName: "Text-title",
-  top: "-50px",
-  left: "150px",
+  top: "80px",
+  left: "-90px",
   fontFamily: "Inter",
   fontSize: "16px",
   fontWeight: "500",
@@ -171,27 +174,48 @@ cartPrice.typography.subtitle1 = {
 };
 
 export const CartRemove = styled("button")({
-  width: "70px",
+  width: "99px",
   height: "30px",
-  border: "0px, 0px, 1px, 0px",
-  padding: "0px, 10px, 0px, 10px",
-  borderRadius: "6px",
-  border: "1px",
-  gap: "10px",
-  background:
-    "linear-gradient(0deg, #DEE2E7, #DEE2E7),linear-gradient(0deg, #FFFFFF, #FFFFFF)",
+  top: "-80px",
+  left: "100px",
+
+  position: "relative",
+  "@media (min-width:600px)": {
+    width: "70px",
+    height: "30px",
+    border: "0px, 0px, 1px, 0px",
+    padding: "0px, 10px, 0px, 10px",
+    borderRadius: "6px",
+    border: "1px",
+    left: "0px",
+    top: "0px",
+    position: "relative",
+    gap: "10px",
+    background:
+      "linear-gradient(0deg, #DEE2E7, #DEE2E7),linear-gradient(0deg, #FFFFFF, #FFFFFF)",
+  },
 });
 
 export const CartSaveForlater = styled("button")({
-  width: "103px",
+  width: "110px",
   height: "30px",
-  border: "0px, 0px, 1px, 0px",
-  padding: "0px, 10px, 0px, 10px",
-  borderRadius: "6px",
-  border: "1px",
-  gap: "10px",
-  background:
-    "linear-gradient(0deg, #DEE2E7, #DEE2E7),linear-gradient(0deg, #FFFFFF, #FFFFFF)",
+  top: "-80px",
+  left: "100px",
+  position: "relative",
+  "@media (min-width:600px)": {
+    width: "103px",
+    height: "30px",
+    top: "0px",
+    left: "0px",
+    position: "relative",
+    border: "0px, 0px, 1px, 0px",
+    padding: "0px, 10px, 0px, 10px",
+    borderRadius: "6px",
+    border: "1px",
+    gap: "10px",
+    background:
+      "linear-gradient(0deg, #DEE2E7, #DEE2E7),linear-gradient(0deg, #FFFFFF, #FFFFFF)",
+  },
 });
 
 cartRemoveTheme.typography.subtitle1 = {

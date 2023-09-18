@@ -13,8 +13,6 @@ import Market from "../../assets/Images/market-button.png";
 import Group from "../../assets/Images/Group.png";
 import { Box } from "@mui/material";
 
-// import Facebook from "../icon-facebook.svg";
-
 import {
   FooterBox1,
   FooterImgBox,

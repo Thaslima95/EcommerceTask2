@@ -6,8 +6,14 @@ import {
   subscribeheadingsubtheme,
   SubscribeFormLayout,
 } from "../../Components/SubscribeTheme/SubscribeTheme";
+import {
+  SendInquiryButton,
+  sendinquirytheme,
+} from "../../Components/SendFormtoSuppliersTheme/SuppliersForm";
+import { Button } from "@mui/material";
 import { ThemeProvider } from "@mui/material";
 import { Typography } from "@mui/material";
+import email from "../../assets/Images/email.png";
 export default function HomePageSection9() {
   return (
     <Grid
@@ -38,7 +44,21 @@ export default function HomePageSection9() {
                 </Typography>
               </ThemeProvider>
             </SubscribeHeadingBox>
-            <SubscribeFormLayout></SubscribeFormLayout>
+            <SubscribeFormLayout style={{ top: "10px", position: "relative" }}>
+              <img
+                src={email}
+                alt=""
+                style={{ left: "25px", position: "relative" }}
+                placeholder="Email"
+              />
+              <input type="text" />
+              <Button
+                variant="contained"
+                sx={{ left: "5px", position: "relative" }}
+              >
+                Subscribe
+              </Button>
+            </SubscribeFormLayout>
           </SubscribeBox>
         </Grid>
         <Grid item md={3}></Grid>

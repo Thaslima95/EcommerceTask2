@@ -19,23 +19,12 @@ export default function Home() {
       <HomePageSection2 />
       <HomePageSection3 />
       <HomePageSection4 />
+      <HomePageSection5 />
+      {/* <HomePageSection6 /> */}
       <HomePageSection7 />
       <HomePageSection8 />
       <HomePageSection9 />
       <Footer2 />
-      {/* 
-      
-     
-
-      <HomePageSection5 />
-      <HomePageSection6 /> */}
-      {/* 
-      <HomePageSection3 />
-      
-      
-      
-      
-      */}
     </>
   );
 }
