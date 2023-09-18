@@ -166,6 +166,7 @@ app.patch("/updatecart",(req,res)=>{
         if(err) throw err;
         if(data.length>0)
         {
+            console.log(data[0].quantity+"quantity")
             const oldquantity=data[0].quantity;
             if(oldquantity<quantity)
             {
@@ -181,8 +182,9 @@ app.patch("/updatecart",(req,res)=>{
             })
             }
             else{
+                console.log(data[0].quantity+"quantity")
                 const diff=quantity-oldquantity;
-                const sql1=`SELECT product_id from products where inventory_quantity > 0`;
+                const sql1=`SELECT product_id,product_price from products where inventory_quantity > 0 and product_id=${productid}`;
                 db.query(sql1,(err,data)=>{
                     if(data.length>0)
                     {
@@ -234,6 +236,7 @@ app.get('/carttotal/:user_id',(req,res)=>{
     const sql=`select sum(cart_total) as total_price,user_id from cart  where user_id=${userid} and is_deleted=0 group by user_id`
     db.query(sql,(err,data)=>{
       if(err) throw err;
+      console.log(data)
     return res.json(data)
     })   
 })

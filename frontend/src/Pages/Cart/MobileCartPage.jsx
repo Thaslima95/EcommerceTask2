@@ -9,10 +9,23 @@ import {
   cartText,
   cartPrice,
 } from "../../Components/CartComponent/CartComponentTheme";
+import ApiCalls from "../../API/ApiCalls";
 
-export default function MobileCartPage({ cart }) {
-  const [qty, setQty] = React.useState(cart.product_quantity);
+export default function MobileCartPage({ cart, details, carttotal }) {
+  const [qty, setQty] = React.useState(cart.quantity);
 
+  const handleadd = (quty) => {
+    console.log(quty + 1);
+    const q = quty + 1;
+    ApiCalls.updateCart(1, cart.product_id, q)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+    details();
+    carttotal();
+  };
+  const handleremove = () => {
+    console.log(cart.quantity - 1);
+  };
   const handleChange = (event) => {
     setQty(event.target.value);
     console.log(qty);
@@ -48,9 +61,9 @@ export default function MobileCartPage({ cart }) {
         <Box sx={{ top: "80px", left: "-260px", position: "relative" }}>
           {" "}
           <div className="countHandler" style={{ display: "flex" }}>
-            <button> - </button>
+            <button onClick={() => handleadd(cart.quantity)}> - </button>
             <input value={cart.quantity} />
-            <button> + </button>
+            <button onClick={() => handleadd(cart.quantity)}> + </button>
           </div>
         </Box>
 

@@ -19,7 +19,7 @@ import { ThemeProvider } from "@mui/material";
 import { Typography, Box } from "@mui/material";
 import ApiCalls from "../../API/ApiCalls";
 
-export default function CartComponent({ cart }) {
+export default function CartComponent({ cart, details, carttotal }) {
   const [qty, setQty] = React.useState(cart.product_quantity);
 
   const handleChange = (event) => {
@@ -28,6 +28,8 @@ export default function CartComponent({ cart }) {
     ApiCalls.updateCart(1, cart.product_id, event.target.value)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
+    details();
+    carttotal();
   };
 
   const removeCart = (productid, qty, userid) => {

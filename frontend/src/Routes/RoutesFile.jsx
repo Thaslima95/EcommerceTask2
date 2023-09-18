@@ -8,6 +8,7 @@ import CartPage from "../Pages/Cart/CartPage";
 import Registration from "../Pages/Register/Resgistration";
 import Gridcolumn from "../Components/Gridcolumn";
 import Login from "../Pages/Login/Login";
+import OrderPlaced from "../Pages/Cart/OrderPlaced";
 
 export default function RoutesFile() {
   return (
@@ -22,6 +23,7 @@ export default function RoutesFile() {
       <Route path="/cart" element={<CartPage />} />
       <Route path="/register" element={<Registration />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/orderplaced" element={<OrderPlaced />} />
       {/* 
         <Route path="/cart" element={<CartPage />} />
       <Route path="/cart2" element={<CartPage2 />} /> */}

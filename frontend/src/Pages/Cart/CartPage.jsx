@@ -49,6 +49,7 @@ import Youtube from "../../assets/Images/youtube3.png";
 import LinkedIn from "../../assets/Images/linkedin3.png";
 import Market from "../../assets/Images/market-button.png";
 import Group from "../../assets/Images/Group.png";
+import { useNavigate } from "react-router-dom";
 
 import {
   FooterBox1,
@@ -63,17 +64,26 @@ export default function CartPage() {
   const [total, setTotal] = useState([]);
   const discount = 53;
   const tax = 10;
+  const navigate = useNavigate();
 
   useEffect(() => {
+    getCartDetails();
+  }, []);
+
+  const getCartDetails = () => {
     ApiCalls.getCartItems(1)
       .then((res) => setCart(res))
       .catch((err) => console.log(err));
-  }, []);
+  };
   useEffect(() => {
+    cartTotalDetails();
+  }, [total]);
+
+  const cartTotalDetails = () => {
     ApiCalls.getCartTotal(1)
       .then((res) => setTotal(res[0]))
       .catch((err) => console.log(err));
-  }, []);
+  };
   console.log(total);
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -93,6 +103,7 @@ export default function CartPage() {
     ApiCalls.checkOut(1)
       .then((res) => console.log(res))
       .then((err) => console.log(err));
+    navigate("/orderplaced");
   };
   return (
     <>
@@ -175,119 +186,151 @@ export default function CartPage() {
               <Grid container sx={{ marginTop: "60px" }}>
                 <Grid item md={1}></Grid>
                 <Grid container xs={12} md={9}>
-                  MY Cart ({cart.length})
+                  MY Cart ({cart && cart.length})
                 </Grid>
               </Grid>
-              <Grid container>
-                <Grid item md={1}></Grid>
-                <Grid
-                  container
-                  xs={12}
-                  md={7}
-                  sx={{
-                    display: "block",
-                  }}
-                >
-                  {cart.map((e) => {
-                    return <CartComponent cart={e}></CartComponent>;
-                  })}
-                  <Grid md={10}>
-                    <Box
+              {cart.length > 0 ? (
+                <>
+                  <Grid container>
+                    <Grid item md={1}></Grid>
+                    <Grid
+                      container
+                      xs={12}
+                      md={7}
                       sx={{
-                        display: { md: "flex", xs: "none" },
-                        justifyContent: "space-between",
+                        display: "block",
                       }}
                     >
-                      <BacktoShopButton sx={{ display: "flex" }}>
-                        <img
-                          src={Back}
-                          alt=""
-                          style={{
-                            top: "10px",
-                            position: "relative",
-                            left: "10px",
+                      {cart.map((e) => {
+                        return (
+                          <CartComponent
+                            cart={e}
+                            details={getCartDetails}
+                            carttotal={cartTotalDetails}
+                          ></CartComponent>
+                        );
+                      })}
+                      <Grid md={10}>
+                        <Box
+                          sx={{
+                            display: { md: "flex", xs: "none" },
+                            justifyContent: "space-between",
                           }}
-                        />
-                        <ThemeProvider theme={backtoshopbuttontheme}>
-                          <Typography
-                            sx={{
-                              top: "10px",
-                              position: "relative",
-                              left: "15px",
-                            }}
-                            variant="subtitle1"
-                          >
-                            Back to Shop
-                          </Typography>
-                        </ThemeProvider>
-                      </BacktoShopButton>
-                      <RemoveAllButton sx={{ marginLeft: "-40px" }}>
-                        <ThemeProvider
-                          theme={removeAllbuttontheme}
-                        ></ThemeProvider>
-                        <Typography variant="subtitle1">Remove all</Typography>
-                      </RemoveAllButton>
-                    </Box>
-                  </Grid>
-                </Grid>
+                        >
+                          <BacktoShopButton sx={{ display: "flex" }}>
+                            <img
+                              src={Back}
+                              alt=""
+                              style={{
+                                top: "10px",
+                                position: "relative",
+                                left: "10px",
+                              }}
+                            />
+                            <ThemeProvider theme={backtoshopbuttontheme}>
+                              <Typography
+                                sx={{
+                                  top: "10px",
+                                  position: "relative",
+                                  left: "15px",
+                                }}
+                                variant="subtitle1"
+                              >
+                                Back to Shop
+                              </Typography>
+                            </ThemeProvider>
+                          </BacktoShopButton>
+                          <RemoveAllButton sx={{ marginLeft: "-40px" }}>
+                            <ThemeProvider
+                              theme={removeAllbuttontheme}
+                            ></ThemeProvider>
+                            <Typography variant="subtitle1">
+                              Remove all
+                            </Typography>
+                          </RemoveAllButton>
+                        </Box>
+                      </Grid>
+                    </Grid>
 
-                <Grid md={2}>
-                  {" "}
-                  <Grid sx={{ display: "flex" }}>
-                    <Grid item xs sx={{ height: "230px" }}>
-                      <Typography>Have a Coupon?</Typography>
-                      <TextField
-                        id="outlined-basic"
-                        label="Outlined"
-                        variant="outlined"
-                        size="small"
-                      />
-                      <Typography sx={{ top: "90px", position: "relative" }}>
-                        SubTotal:
-                      </Typography>
-                      <Typography sx={{ top: "90px", position: "relative" }}>
-                        Discout:
-                      </Typography>
-                      <Typography sx={{ top: "90px", position: "relative" }}>
-                        Tax:
-                      </Typography>
-                      <Typography sx={{ top: "90px", position: "relative" }}>
-                        Total:
-                      </Typography>
-                    </Grid>
-                    <Grid item xs sx={{ height: "230px" }}>
-                      <Button></Button>
-                      <Button>Apply</Button>
-                      <Typography
-                        sx={{ top: "90px", position: "relative" }}
-                      ></Typography>
-                      <Typography sx={{ top: "90px", position: "relative" }}>
-                        {/* ${total?.total.total_price} */}
-                        {total && total.total_price}
-                      </Typography>
-                      <Typography sx={{ top: "90px", position: "relative" }}>
-                        -${discount}
-                      </Typography>
-                      <Typography sx={{ top: "90px", position: "relative" }}>
-                        -${tax}
-                      </Typography>
-                      <Typography sx={{ top: "90px", position: "relative" }}>
-                        ${total.total_price - discount - tax}
-                      </Typography>
+                    <Grid md={2}>
+                      {" "}
+                      <Grid sx={{ display: "flex" }}>
+                        <Grid item xs sx={{ height: "230px" }}>
+                          <Typography>Have a Coupon?</Typography>
+                          <TextField
+                            id="outlined-basic"
+                            label="Outlined"
+                            variant="outlined"
+                            size="small"
+                          />
+                          <Typography
+                            sx={{ top: "90px", position: "relative" }}
+                          >
+                            SubTotal:
+                          </Typography>
+                          <Typography
+                            sx={{ top: "90px", position: "relative" }}
+                          >
+                            Discout:
+                          </Typography>
+                          <Typography
+                            sx={{ top: "90px", position: "relative" }}
+                          >
+                            Tax:
+                          </Typography>
+                          <Typography
+                            sx={{ top: "90px", position: "relative" }}
+                          >
+                            Total:
+                          </Typography>
+                        </Grid>
+                        <Grid item xs sx={{ height: "230px" }}>
+                          <Button></Button>
+                          <Button>Apply</Button>
+                          <Typography
+                            sx={{ top: "90px", position: "relative" }}
+                          ></Typography>
+                          <Typography
+                            sx={{ top: "90px", position: "relative" }}
+                          >
+                            {/* ${total?.total.total_price} */}
+                            {total != undefined && total.total_price}
+                          </Typography>
+                          <Typography
+                            sx={{ top: "90px", position: "relative" }}
+                          >
+                            -${discount}
+                          </Typography>
+                          <Typography
+                            sx={{ top: "90px", position: "relative" }}
+                          >
+                            -${tax}
+                          </Typography>
+                          <Typography
+                            sx={{ top: "90px", position: "relative" }}
+                          >
+                            $
+                            {total != undefined &&
+                              total.total_price - discount - tax}
+                          </Typography>
+                        </Grid>
+                      </Grid>
+                      <Grid xs>
+                        <Button
+                          variant="contained"
+                          color="success"
+                          sx={{ width: "100%", marginTop: "20px" }}
+                          onClick={() => handlecheckout()}
+                        >
+                          Check Out
+                        </Button>
+                      </Grid>
                     </Grid>
                   </Grid>
-                  <Grid xs>
-                    <Button
-                      variant="contained"
-                      color="success"
-                      sx={{ width: "100%", marginTop: "20px" }}
-                      onClick={() => handlecheckout()}
-                    >
-                      Check Out
-                    </Button>
-                  </Grid>
-                </Grid>
-              </Grid>
+                </>
+              ) : (
+                <>Cart is Empty</>
+              )}
               <Grid container>
                 <Grid item md={1}></Grid>
                 <Grid container xs={12} md={7}>
@@ -478,7 +521,13 @@ export default function CartPage() {
                   </Box>
                 </Box>
                 {cart.map((e) => {
-                  return <MobileCartPage cart={e} />;
+                  return (
+                    <MobileCartPage
+                      cart={e}
+                      details={getCartDetails}
+                      carttotal={cartTotalDetails}
+                    />
+                  );
                 })}
                 <CartCheckoutBoxmobile sx={{ border: "2px solid green" }}>
                   <Grid container xs={10}>
