@@ -200,17 +200,17 @@ if(err) throw err;
 app.get('/cartdetails/:user_id',(req,res)=>{
     const userid=req.params.user_id;
     console.log(userid)
-    const sql=`select product_price,product_title ,quantity,cart_total,product_image from products as p inner join cart as c on p.product_id=c.product_id where c.user_id=${userid} and c.is_deleted=0`
+    const sql=`select c.product_id,product_price,product_title ,quantity,cart_total,product_image from products as p inner join cart as c on p.product_id=c.product_id where c.user_id=${userid} and c.is_deleted=0`
     db.query(sql,(err,data)=>{
       if(err) throw err;
     return res.json(data)
     })   
 })
 
-app.get('/cartdetails/:user_id',(req,res)=>{
+app.get('/carttotal/:user_id',(req,res)=>{
     const userid=req.params.user_id;
     console.log(userid)
-    const sql=`select sum(cart_total) as total from cart  where user_id=${userid} and is_deleted=0 group by ${userid}`
+    const sql=`select sum(cart_total) as total_price,user_id from cart  where user_id=${userid} and is_deleted=0 group by user_id`
     db.query(sql,(err,data)=>{
       if(err) throw err;
     return res.json(data)
@@ -220,6 +220,7 @@ app.get('/cartdetails/:user_id',(req,res)=>{
 app.post('/proceedtocheckout/:user_id',(req,res)=>{
     const values=[];
     const userid=req.params.user_id;
+    
     const sql=`SELECT sum(cart_total)as total,product_id from cart where user_id=${userid} and is_deleted=0 group by product_id`
     db.query(sql,(err,data)=>{
         if(err) throw err;

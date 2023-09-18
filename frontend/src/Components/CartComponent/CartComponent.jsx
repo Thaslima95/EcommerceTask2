@@ -17,12 +17,23 @@ import {
 } from "./CartComponentTheme";
 import { ThemeProvider } from "@mui/material";
 import { Typography, Box } from "@mui/material";
+import ApiCalls from "../../API/ApiCalls";
 
 export default function CartComponent({ cart }) {
   const [qty, setQty] = React.useState(cart.product_quantity);
 
   const handleChange = (event) => {
     setQty(event.target.value);
+    console.log(qty);
+    ApiCalls.updateCart(1, cart.product_id, event.target.value)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
+
+  const removeCart = (productid, qty, userid) => {
+    ApiCalls.getRemovecart(1, productid, qty)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
   console.log(cart);
   console.log(qty);
@@ -44,7 +55,12 @@ export default function CartComponent({ cart }) {
         <CartRemove>
           {" "}
           <ThemeProvider theme={cartRemoveTheme}>
-            <Typography variant="subtitle1">Remove</Typography>
+            <Typography
+              onClick={() => removeCart(cart.product_id, cart.quantity, 1)}
+              variant="subtitle1"
+            >
+              Remove
+            </Typography>
           </ThemeProvider>
         </CartRemove>
         <CartSaveForlater>
@@ -55,7 +71,9 @@ export default function CartComponent({ cart }) {
         <CartQuantityBox>
           {" "}
           <FormControl sx={{ m: 1, minWidth: 100 }} size="small">
-            <InputLabel id="demo-select-small-label">QTY</InputLabel>
+            <InputLabel id="demo-select-small-label">
+              QTY:{cart.quantity}
+            </InputLabel>
             <Select
               labelId="demo-select-small-label"
               id="demo-select-small"

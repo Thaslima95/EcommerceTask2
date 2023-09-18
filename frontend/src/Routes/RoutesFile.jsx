@@ -5,6 +5,7 @@ import Home from "../Pages/Home/Home";
 import CategoryPage from "../Pages/Category/CategoryPage";
 import SingleProduct from "../Components/SingleProductComponent/SingleProduct";
 import CartPage from "../Pages/Cart/CartPage";
+import Gridcolumn from "../Components/Gridcolumn";
 
 export default function RoutesFile() {
   return (
@@ -17,8 +18,9 @@ export default function RoutesFile() {
         <Route path="/filter/:category" element={<FilterComponent />} /> */}
       </Route>
       <Route path="/cart" element={<CartPage />} />
+      <Route path="/grid" element={<Gridcolumn />} />
       {/* 
-
+        <Route path="/cart" element={<CartPage />} />
       <Route path="/cart2" element={<CartPage2 />} /> */}
     </Routes>
   );

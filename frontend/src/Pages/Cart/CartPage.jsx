@@ -22,20 +22,22 @@ import ApiCalls from "../../API/ApiCalls";
 // import CartItemComponent from "../../Components/CartItemsComponent/CartItemComponent";
 export default function CartPage() {
   const [cart, setCart] = useState([]);
+  const [total, setTotal] = useState([]);
   const carttotal = [];
+  const discount = 53;
+  const tax = 10;
 
   useEffect(() => {
     ApiCalls.getCartItems(1)
       .then((res) => setCart(res))
       .catch((err) => console.log(err));
   }, []);
-
-  console.log(cart);
-
-  cart && cart.map((e) => carttotal.push(e.cart_total));
-
-  const total =
-    carttotal.length != 0 && carttotal.reduce((prev, curr) => prev + curr);
+  useEffect(() => {
+    ApiCalls.getCartTotal(1)
+      .then((res) => setTotal(res[0]))
+      .catch((err) => console.log(err));
+  }, []);
+  console.log(total);
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -50,6 +52,11 @@ export default function CartPage() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+  const handlecheckout = () => {
+    ApiCalls.checkOut(1)
+      .then((res) => console.log(res))
+      .then((err) => console.log(err));
+  };
   return (
     <>
       <Grid container sx={{ border: "2px solid red" }}>
@@ -198,6 +205,9 @@ export default function CartPage() {
                 <Typography sx={{ top: "90px", position: "relative" }}>
                   Tax:
                 </Typography>
+                <Typography sx={{ top: "90px", position: "relative" }}>
+                  Total:
+                </Typography>
               </Grid>
               <Grid item xs sx={{ height: "230px" }}>
                 <Button>Apply</Button>
@@ -205,10 +215,17 @@ export default function CartPage() {
                   sx={{ top: "90px", position: "relative" }}
                 ></Typography>
                 <Typography sx={{ top: "90px", position: "relative" }}>
-                  ${total?.total}
+                  {/* ${total?.total.total_price} */}
+                  {total && total.total_price}
                 </Typography>
                 <Typography sx={{ top: "90px", position: "relative" }}>
-                  $53
+                  -${discount}
+                </Typography>
+                <Typography sx={{ top: "90px", position: "relative" }}>
+                  -${tax}
+                </Typography>
+                <Typography sx={{ top: "90px", position: "relative" }}>
+                  ${total.total_price - discount - tax}
                 </Typography>
               </Grid>
             </Grid>
@@ -217,6 +234,7 @@ export default function CartPage() {
                 variant="contained"
                 color="success"
                 sx={{ width: "100%", marginTop: "20px" }}
+                onClick={() => handlecheckout()}
               >
                 Check Out
               </Button>

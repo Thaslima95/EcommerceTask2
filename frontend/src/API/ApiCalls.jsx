@@ -87,4 +87,53 @@ export default {
       console.log(err);
     }
   },
+  getCartTotal: async function (userid) {
+    try {
+      const response = await axios.get(`/carttotal/${userid}`);
+      console.log(response.data);
+      return response.data;
+      console.log(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  getRemovecart: async function (userid, productid, quantity) {
+    try {
+      const response = await axios.patch(`/removecart/${productid}`, {
+        user_id: userid,
+        quantity: quantity,
+      });
+      console.log(response.data);
+      return response.data;
+      console.log(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  updateCart: async function (userid, productid, quantity) {
+    console.log("update");
+    try {
+      const response = await axios.patch(`/updatecart`, {
+        user_id: userid,
+        quantity: quantity,
+        product_id: productid,
+      });
+      console.log(response.data);
+      return response.data;
+      console.log(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  checkOut: async function (userid) {
+    console.log("checkout");
+    try {
+      const response = await axios.post(`/proceedtocheckout/${userid}`);
+      console.log(response.data);
+      return response.data;
+      console.log(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  },
 };
