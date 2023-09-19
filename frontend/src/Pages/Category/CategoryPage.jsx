@@ -1,14 +1,11 @@
 import React from "react";
 import { Nav } from "react-bootstrap";
 import { useState } from "react";
-import Checkbox from "@mui/material/Checkbox";
 import { Box, Button, Typography } from "@mui/material";
-
 import { useParams, useSearchParams } from "react-router-dom";
 import Vector from "../../assets/Images/Vector.png";
 import { List } from "@mui/material";
 import { useLocation } from "react-router-dom";
-import { Link } from "react-router-dom";
 import { Grid } from "@mui/material";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -157,8 +154,8 @@ export default function CategoryPage() {
               </Box>
             </Grid>
           </Grid>
-          <Grid item xs={12} md={12} sx={{}}>
-            <Grid container xs={12} md={12} sx={{}}>
+          <Grid item xs={12} md={12}>
+            <Grid container xs={12} md={12}>
               <BestTabComponent />
             </Grid>
             <Grid item xs={12} sx={{ display: { xs: "block", md: "none" } }}>
@@ -177,48 +174,30 @@ export default function CategoryPage() {
                 )}
               </PopupState>
             </Grid>
-            <Grid item xs={12} md={8}>
-              {checked &&
-                checked.map((e) => (
-                  <h4>
-                    {e} <button>remove</button>
-                  </h4>
-                ))}
-            </Grid>
+            <Grid item xs={12} md={8}></Grid>
             <Grid item xs={12} md={12}>
               {searchTerm
                 ? categories
-                    .filter(({ title }) =>
-                      title.toLowerCase().includes(searchTerm)
+                    .filter(({ product_title }) =>
+                      product_title.toLowerCase().includes(searchTerm)
                     )
                     .filter(
-                      ({ title }) =>
-                        !searchTerm || title.toLowerCase().includes(searchTerm)
+                      ({ product_title }) =>
+                        !searchTerm ||
+                        product_title.toLowerCase().includes(searchTerm)
                     )
                     .map((product) => {
                       return <PreviewContainer category={product} />;
                     })
                 : categories
                     .filter(
-                      ({ title }) =>
-                        !searchTerm || title.toLowerCase().includes(searchTerm)
+                      ({ product_title }) =>
+                        !searchTerm ||
+                        product_title.toLowerCase().includes(searchTerm)
                     )
                     .map((product) => {
                       return <PreviewContainer category={product} />;
                     })}
-              {checked?.length != 0
-                ? checked.map((e) =>
-                    categories
-                      .filter((p) => p.price == e)
-                      .map((e) => {
-                        return (
-                          <>
-                            <PreviewContainer category={e} />
-                          </>
-                        );
-                      })
-                  )
-                : " "}
             </Grid>
           </Grid>
         </Grid>

@@ -17,16 +17,13 @@ export default function RoutesFile() {
         <Route index element={<Home />} />
         <Route path="/category/:category" element={<CategoryPage />} />
         <Route path="/single/:id" element={<SingleProduct />} />
-        {/* <Route path="/single/:id" element={<SingleProduct />} />
+        {/* 
         <Route path="/filter/:category" element={<FilterComponent />} /> */}
       </Route>
       <Route path="/cart" element={<CartPage />} />
       <Route path="/register" element={<Registration />} />
       <Route path="/login" element={<Login />} />
       <Route path="/orderplaced" element={<OrderPlaced />} />
-      {/* 
-        <Route path="/cart" element={<CartPage />} />
-      <Route path="/cart2" element={<CartPage2 />} /> */}
     </Routes>
   );
 }

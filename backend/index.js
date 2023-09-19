@@ -97,7 +97,7 @@ app.get("/typeofcategory",(req,res)=>{
 
 app.get("/getproducts/:limit",(req,res)=>{
     const limitval=req.params.limit;
-    const sql=`Select product_title,product_price,product_description,product_image,category from products limit ${limitval}`
+    const sql=`Select product_id,product_title,product_price,product_description,product_image,category from products limit ${limitval}`
     db.query(sql,(err,data)=>{
         if(err) throw err;
         return res.json(data)

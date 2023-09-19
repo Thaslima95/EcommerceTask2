@@ -1,5 +1,4 @@
 import React from "react";
-import { Box } from "@mui/material";
 import Rating from "@mui/material/Rating";
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";

@@ -56,7 +56,7 @@ export default function Footer2() {
               <img src={Youtube} style={{ marginRight: "5px" }} alt="" />
               <img src={Twitter} style={{ marginRight: "5px" }} alt="" />
               <img src={LinkedIn} style={{ marginRight: "5px" }} alt="" />
-              <img src={Twitter} style={{ marginRight: "5px" }} alt="" />
+              <img src={Instagram} style={{ marginRight: "5px" }} alt="" />
             </IconLayoutBoxfooter>
           </FooterBox1>
         </Grid>

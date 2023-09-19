@@ -30,7 +30,7 @@ export default function HomePageSection2() {
       .then((res) => setSpecificCategories(res))
       .catch((err) => console.log(err));
   }, []);
-
+  console.log(specificCategories);
   return (
     <>
       <Grid
@@ -174,10 +174,12 @@ export default function HomePageSection2() {
             {specificCategories.map((s) => {
               return (
                 <DealProductBox>
-                  <DealProductItems>
-                    {console.log(s.image)}
-                    <DealImg src={s.product_image} />
-                  </DealProductItems>
+                  <Link to={`/single/${s.product_id}`}>
+                    <DealProductItems>
+                      {console.log(s.image)}
+                      <DealImg src={s.product_image} />
+                    </DealProductItems>
+                  </Link>
                   <ThemeProvider theme={dealproductname}>
                     <Typography variant="subtitle2">{s.category}</Typography>
                   </ThemeProvider>

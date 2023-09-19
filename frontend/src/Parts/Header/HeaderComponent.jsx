@@ -16,9 +16,10 @@ import { ThemeProvider } from "@mui/material";
 import { Img } from "../../Components/HeaderTypography/HeaderTypography";
 import { InSearch } from "../../Components/HeaderTypography/HeaderTypography";
 import HeaderNavbarStyles from "../../Components/NavbarComponents/HeaderNavbar";
-import CountryFlag4 from "../../Components/CountryFlagDropDownBox/CountryFlag4";
 import { Outlet } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 export default function HeaderComponent() {
+  const [, setSearchparam] = useSearchParams();
   return (
     <>
       <Grid container xs={9} md={12} sx={{ top: "20px", position: "absolute" }}>
@@ -49,7 +50,13 @@ export default function HeaderComponent() {
               borderRadius: { md: "5px" },
             }}
           >
-            <InSearch type="search" placeholder="Search" />
+            <InSearch
+              type="search"
+              placeholder="Search"
+              onChange={(e) => {
+                setSearchparam({ search: e.target.value });
+              }}
+            />
 
             <Grid sx={{ display: { xs: "none", md: "block" } }}>
               <Dropdownbox />
@@ -72,7 +79,6 @@ export default function HeaderComponent() {
                   color: "#8B96A5",
                   width: "27px",
                   height: "41px",
-                  // border: "1px solid red",
                 }}
               >
                 <Img src={Profile} alt="" />
@@ -86,7 +92,6 @@ export default function HeaderComponent() {
                   color: "#8B96A5",
                   width: "27px",
                   height: "41px",
-                  // border: "1px solid red",
                 }}
                 sx={{ display: { xs: "none", md: "block" } }}
               >
@@ -100,7 +105,6 @@ export default function HeaderComponent() {
                   color: "#8B96A5",
                   width: "27px",
                   height: "41px",
-                  // border: "1px solid red",
                 }}
                 sx={{ display: { xs: "none", md: "block" } }}
               >
@@ -139,9 +143,7 @@ export default function HeaderComponent() {
         <Grid container xs={11} md={10} sx={{}}>
           <HeaderNavbarStyles />
         </Grid>
-        <Grid item spacing={4}>
-          {/* <CountryFlag4 /> */}
-        </Grid>
+        <Grid item spacing={4}></Grid>
         <Outlet />
       </Grid>
     </>
