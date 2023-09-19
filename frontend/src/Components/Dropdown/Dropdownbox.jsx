@@ -6,7 +6,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import ApiCalls from "../../API/ApiCalls";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { StyledLink } from "../BannerTheme/BannerTheme";
 
@@ -25,13 +25,15 @@ export default function Dropdownbox() {
   const theme = useTheme();
   const [categories, setCategories] = useState([]);
 
-  useMemo(() => {
+  useEffect(() => {
+    getCategoriesDetails();
+  }, []);
+
+  const getCategoriesDetails = () => {
     ApiCalls.getCategoris()
       .then((res) => setCategories(res))
       .catch((err) => console.log(err));
-  }, []);
-  console.log(categories?.categories);
-  const handleChange = (event) => {};
+  };
 
   return (
     <div>
@@ -44,11 +46,10 @@ export default function Dropdownbox() {
           id="demo-multiple-name"
           multiple
           value={categories}
-          onChange={handleChange}
           input={<OutlinedInput label="Name" />}
           MenuProps={MenuProps}
         >
-          {categories.map((category) => (
+          {categories?.map((category) => (
             <StyledLink to={`/category/${category.category}`}>
               <MenuItem key={category.category} value={category.category}>
                 {category.category}

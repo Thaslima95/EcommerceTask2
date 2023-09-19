@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import Grid from "@mui/material/Grid";
 import { ThemeProvider } from "@mui/material/styles";
+import { useState, useEffect } from "react";
 import {
   PreviewBox,
   PreviewBoxImg,
@@ -27,6 +28,19 @@ const Img = styled("img")({
 });
 
 export default function PreviewContainer({ category }) {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowWidth(window.innerWidth);
+    }
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   console.log(category);
   const {
     product_title,
@@ -46,9 +60,11 @@ export default function PreviewContainer({ category }) {
             <ThemeProvider theme={productheadingtheme}>
               <Typography
                 variant="subtitle2"
-                sx={{ marginBottom: { xs: "5px", md: "15px" } }}
+                sx={{ marginBottom: { xs: "5px", md: "25px" } }}
               >
-                {product_title}
+                {windowWidth > 798
+                  ? product_title
+                  : product_title.substr(0, 20)}
               </Typography>
             </ThemeProvider>
             <ThemeProvider theme={productheadingpricetheme}>

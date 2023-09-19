@@ -2,6 +2,7 @@ import React from "react";
 import { Grid } from "@mui/material";
 import logosymbol from "../../assets/Images/logo-symbol.png";
 import Brand from "../../assets/Images/Brand.png";
+import { Dropdown } from "react-bootstrap";
 import { ThemeProvider } from "@mui/material";
 import { Typography } from "@mui/material";
 import Twitter from "../../assets/Images/twitter3.png";
@@ -19,8 +20,8 @@ import {
   FooterTextBox,
   IconLayoutBoxfooter,
   footertheme1,
+  copyrighttheme,
 } from "../../Components/FooterTheme/FooterTheme";
-// import Store from "../Store.png";
 
 export default function Footer2() {
   return (
@@ -107,7 +108,61 @@ export default function Footer2() {
           </Box>
         </Grid>
         <Grid container xs={12} md={12}>
-          Hello
+          <Grid container xs={12} md={10}>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+            >
+              <ThemeProvider theme={copyrighttheme}>
+                <Typography variant="subtitle1">© 2023 Ecommerce.</Typography>
+              </ThemeProvider>
+              <Dropdown className="show dropdown">
+                <Dropdown.Toggle
+                  variant="primary"
+                  id="dropdown-basic"
+                  className="btn btn-primary"
+                  style={{
+                    position: "absolute",
+                    background: "white",
+                    color: "black",
+                    width: "100px",
+                    height: "24px",
+                    border: "none",
+                    borderRadius: "0px",
+                    margin: "10px",
+                    padding: "0px",
+                    display: "flex",
+                    marginLeft: "550px",
+                  }}
+                >
+                  <Typography
+                    style={{
+                      marginTop: "-10px", //styleName: Text-title;
+                      fontFamily: "Inter",
+                      fontSize: "16px",
+                      fontWeight: "500",
+                      lineHeight: "22px",
+                      letterSpacing: "0px",
+                      textAlign: "left",
+                      color: "#1C1C1C",
+                    }}
+                  >
+                    <img src="https://flagsapi.com/US/flat/32.png" alt="" />{" "}
+                    English
+                  </Typography>
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                  <Dropdown.Item>
+                    {" "}
+                    <img src="https://flagsapi.com/AE/flat/32.png" alt="" />
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </Box>
+          </Grid>
         </Grid>
       </Grid>
     </Grid>

@@ -67,20 +67,30 @@ export default function CartPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    getCartDetails();
+    const controller = new AbortController();
+    const signal = controller.signal;
+    getCartDetails({ signal });
+    return () => {
+      controller.abort();
+    };
   }, []);
 
-  const getCartDetails = () => {
-    ApiCalls.getCartItems(1)
+  const getCartDetails = (signal) => {
+    ApiCalls.getCartItems(1, { signal })
       .then((res) => setCart(res))
       .catch((err) => console.log(err));
   };
   useEffect(() => {
-    cartTotalDetails();
-  }, [total]);
+    const controller = new AbortController();
+    const signal = controller.signal;
+    cartTotalDetails({ signal });
+    return () => {
+      controller.abort();
+    };
+  }, []);
 
-  const cartTotalDetails = () => {
-    ApiCalls.getCartTotal(1)
+  const cartTotalDetails = (signal) => {
+    ApiCalls.getCartTotal(1, { signal })
       .then((res) => setTotal(res[0]))
       .catch((err) => console.log(err));
   };
@@ -533,15 +543,22 @@ export default function CartPage() {
                   <Grid container xs={10}>
                     <Grid item xs={6}>
                       <Typography>Items</Typography>
-                      <Typography>Shipping</Typography>
+                      <Typography>Discount</Typography>
                       <Typography>Tax</Typography>
                       <Typography>Total</Typography>
                     </Grid>
                     <Grid item sx={6}>
-                      <Typography>$567</Typography>
-                      <Typography>$67</Typography>
-                      <Typography>$57</Typography>
-                      <Typography>$57</Typography>
+                      <Typography>
+                        {" "}
+                        ${total != undefined && total.total_price}
+                      </Typography>
+                      <Typography> -${discount}</Typography>
+                      <Typography>-${tax}</Typography>
+                      <Typography>
+                        $
+                        {total != undefined &&
+                          total.total_price - discount - tax}
+                      </Typography>
                     </Grid>
                   </Grid>
                   <Button

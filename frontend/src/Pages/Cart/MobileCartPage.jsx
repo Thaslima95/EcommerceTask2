@@ -14,17 +14,21 @@ import ApiCalls from "../../API/ApiCalls";
 export default function MobileCartPage({ cart, details, carttotal }) {
   const [qty, setQty] = React.useState(cart.quantity);
 
-  const handleadd = (quty) => {
+  const handleadd = (quty, id) => {
     console.log(quty + 1);
     const q = quty + 1;
-    ApiCalls.updateCart(1, cart.product_id, q)
+    ApiCalls.updateCart(1, id, q)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
-    details();
-    carttotal();
+    window.location.reload();
   };
-  const handleremove = () => {
-    console.log(cart.quantity - 1);
+  const handleremove = (quty, id) => {
+    console.log(quty - 1);
+    const q = quty - 1;
+    ApiCalls.updateCart(1, id, q)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+    window.location.reload();
   };
   const handleChange = (event) => {
     setQty(event.target.value);
@@ -61,9 +65,17 @@ export default function MobileCartPage({ cart, details, carttotal }) {
         <Box sx={{ top: "80px", left: "-260px", position: "relative" }}>
           {" "}
           <div className="countHandler" style={{ display: "flex" }}>
-            <button onClick={() => handleadd(cart.quantity)}> - </button>
+            <button
+              onClick={() => handleremove(cart.quantity, cart.product_id)}
+            >
+              {" "}
+              -{" "}
+            </button>
             <input value={cart.quantity} />
-            <button onClick={() => handleadd(cart.quantity)}> + </button>
+            <button onClick={() => handleadd(cart.quantity, cart.product_id)}>
+              {" "}
+              +{" "}
+            </button>
           </div>
         </Box>
 

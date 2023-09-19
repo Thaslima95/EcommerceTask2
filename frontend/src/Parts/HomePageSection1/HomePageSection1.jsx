@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Typography } from "@mui/material";
 import ListComponent from "../../Components/ListComponent/ListComponent";
 import { Box } from "@mui/material";
@@ -28,11 +28,25 @@ import { joinbuttontheme } from "../../Components/Button/JoinNowButton";
 export default function HomePageSection1() {
   const [categories, setCategories] = useState([]);
 
-  useMemo(() => {
-    ApiCalls.getCategoris()
+  // useMemo(() => {
+  //   ApiCalls.getCategoris()
+  //     .then((res) => setCategories(res))
+  //     .catch((err) => console.log(err));
+  // }, []);
+  useEffect(() => {
+    const controller = new AbortController();
+    const signal = controller.signal;
+    getCategoriesDetails({ signal });
+    return () => {
+      controller.abort();
+    };
+  }, []);
+
+  const getCategoriesDetails = (signal) => {
+    ApiCalls.getCategoris({ signal })
       .then((res) => setCategories(res))
       .catch((err) => console.log(err));
-  }, []);
+  };
 
   return (
     <Grid
