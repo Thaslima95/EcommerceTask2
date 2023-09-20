@@ -23,7 +23,7 @@ import {
   GroupButtonBox,
 } from "../../Pages/Category/CategoryPageTheme";
 
-export default function BestTabComponent() {
+export default function BestTabComponent({ setgrid }) {
   const categoryname = useParams().category;
   const [categories, setCategories] = useState([]);
   useMemo(() => {
@@ -79,8 +79,8 @@ export default function BestTabComponent() {
             </Form.Select>
           </FeaturedBox>
           <GroupButtonBox sx={{ paddingTop: "5px" }}>
-            <GridViewIcon />
-            <TableRowsIcon />
+            <GridViewIcon onClick={() => setgrid(true)} />
+            <TableRowsIcon onClick={() => setgrid(false)} />
           </GroupButtonBox>
         </Box>
       </Grid>

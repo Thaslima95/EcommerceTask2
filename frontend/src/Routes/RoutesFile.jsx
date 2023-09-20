@@ -17,8 +17,6 @@ export default function RoutesFile() {
         <Route index element={<Home />} />
         <Route path="/category/:category" element={<CategoryPage />} />
         <Route path="/single/:id" element={<SingleProduct />} />
-        {/* 
-        <Route path="/filter/:category" element={<FilterComponent />} /> */}
       </Route>
       <Route path="/cart" element={<CartPage />} />
       <Route path="/register" element={<Registration />} />

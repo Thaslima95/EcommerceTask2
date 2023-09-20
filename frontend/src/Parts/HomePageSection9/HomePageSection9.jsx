@@ -6,10 +6,7 @@ import {
   subscribeheadingsubtheme,
   SubscribeFormLayout,
 } from "../../Components/SubscribeTheme/SubscribeTheme";
-import {
-  SendInquiryButton,
-  sendinquirytheme,
-} from "../../Components/SendFormtoSuppliersTheme/SuppliersForm";
+import "./section9.css";
 import { Button } from "@mui/material";
 import { ThemeProvider } from "@mui/material";
 import { Typography } from "@mui/material";
@@ -49,9 +46,12 @@ export default function HomePageSection9() {
                 src={email}
                 alt=""
                 style={{ left: "25px", position: "relative" }}
-                placeholder="Email"
               />
-              <input type="text" />
+              <input
+                type="text"
+                placeholder="Email"
+                style={{ outline: "none", border: "none" }}
+              />
               <Button
                 variant="contained"
                 sx={{ left: "5px", position: "relative" }}

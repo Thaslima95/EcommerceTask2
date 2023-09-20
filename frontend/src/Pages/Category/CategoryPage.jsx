@@ -17,12 +17,14 @@ import BestTabComponent from "../../Components/BestTabComponent/BestTabComponent
 import BreadCrumbComponent from "../../Components/BreadCrumbComponent/BreadCrumbComponent";
 import { StyledLink } from "../../Components/BannerTheme/BannerTheme";
 import RangeSlider from "../../Components/PriceRangeComponent/PriceRangeComponent";
+import GridViewContainer from "../../Components/CategoryGridviewContainer/GridViewContainer";
 export default function CategoryPage() {
   const [categories, setCategories] = useState([]);
   const [listcategory, setListCategory] = useState([]);
   const [hide, setHide] = useState(false);
   const [brandhide, setBrandHide] = useState(false);
   const [checked, setChecked] = useState([]);
+  const [grid, setgrid] = useState(null);
   const location = useLocation();
   const [searchparam] = useSearchParams();
   const val = useParams().category;
@@ -156,7 +158,7 @@ export default function CategoryPage() {
           </Grid>
           <Grid item xs={12} md={12}>
             <Grid container xs={12} md={12}>
-              <BestTabComponent />
+              <BestTabComponent setgrid={setgrid} />
             </Grid>
             <Grid item xs={12} sx={{ display: { xs: "block", md: "none" } }}>
               <PopupState variant="popover" popupId="demo-popup-menu">
@@ -175,7 +177,7 @@ export default function CategoryPage() {
               </PopupState>
             </Grid>
             <Grid item xs={12} md={8}></Grid>
-            <Grid item xs={12} md={12}>
+            <Grid container xs={12} md={10}>
               {searchTerm
                 ? categories
                     .filter(({ product_title }) =>
@@ -187,7 +189,13 @@ export default function CategoryPage() {
                         product_title.toLowerCase().includes(searchTerm)
                     )
                     .map((product) => {
-                      return <PreviewContainer category={product} />;
+                      return grid ? (
+                        <GridViewContainer
+                          category={product}
+                        ></GridViewContainer>
+                      ) : (
+                        <PreviewContainer category={product} />
+                      );
                     })
                 : categories
                     .filter(
@@ -196,7 +204,13 @@ export default function CategoryPage() {
                         product_title.toLowerCase().includes(searchTerm)
                     )
                     .map((product) => {
-                      return <PreviewContainer category={product} />;
+                      return grid ? (
+                        <GridViewContainer
+                          category={product}
+                        ></GridViewContainer>
+                      ) : (
+                        <PreviewContainer category={product} />
+                      );
                     })}
             </Grid>
           </Grid>

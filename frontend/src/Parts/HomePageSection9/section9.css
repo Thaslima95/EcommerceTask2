@@ -1,0 +1,6 @@
+input::placeholder {
+  position: relative;
+
+  left: 25px;
+  color: #999;
+}

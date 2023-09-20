@@ -151,50 +151,6 @@ export default function HomePageSection3() {
                   </Grid>
                 );
               })}
-          {/* {value.map((e) => {
-            return (
-              <Grid item md={3} xs={6}>
-                <ProductBox sx={{ border: "2px solid green" }}>
-                  {" "}
-                  <ThemeProvider theme={headingtheme}>
-                    <Typography
-                      variant="subtitle2"
-                      sx={{
-                        top: { md: "20px", xs: "96px" },
-                        left: { md: "16px" },
-                        position: "relative",
-                      }}
-                    >
-                      {e.category}
-                    </Typography>
-                  </ThemeProvider>
-                  <PriceLayout>
-                    <ThemeProvider theme={pricetheme}>
-                      <Typography
-                        variant="subtitle2"
-                        sx={{
-                          top: { md: "30px", xs: "96px" },
-                          left: { md: "16px" },
-                          position: "relative",
-                        }}
-                      >
-                        From <br />
-                        USD {e.product_price}
-                      </Typography>
-                    </ThemeProvider>
-                  </PriceLayout>
-                  <PriceImgLayout
-                    sx={{
-                      top: { md: "-15px", xs: "-45px" },
-                      left: { md: "85px" },
-                      position: "relative",
-                    }}
-                    src={e.product_image}
-                  />
-                </ProductBox>
-              </Grid>
-            );
-          })} */}
         </Grid>
       </Grid>
     </Grid>
