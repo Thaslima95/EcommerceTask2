@@ -13,7 +13,6 @@ export default {
   getCategoris: async function () {
     try {
       const response = await axios.get(`/typeofcategory`);
-      console.log(response);
       return response.data;
     } catch (err) {
       console.log(err);
@@ -57,7 +56,6 @@ export default {
     try {
       const response = await axios.get(`/singleproduct/${val}`);
       return response.data;
-      console.log(response.data);
     } catch (err) {
       console.log(err);
     }
@@ -72,7 +70,6 @@ export default {
       if (response.data) {
         return response.data;
       }
-      console.log(response.data);
     } catch (err) {
       console.log(err);
     }
@@ -80,9 +77,7 @@ export default {
   getCartItems: async function (userid) {
     try {
       const response = await axios.get(`/cartdetails/${userid}`);
-      console.log(response.data);
       return response.data;
-      console.log(response.data);
     } catch (err) {
       console.log(err);
     }
@@ -90,9 +85,7 @@ export default {
   getCartTotal: async function (userid) {
     try {
       const response = await axios.get(`/carttotal/${userid}`);
-      console.log(response.data);
       return response.data;
-      console.log(response.data);
     } catch (err) {
       console.log(err);
     }
@@ -103,42 +96,33 @@ export default {
         user_id: userid,
         quantity: quantity,
       });
-      console.log(response.data);
       return response.data;
-      console.log(response.data);
     } catch (err) {
       console.log(err);
     }
   },
   updateCart: async function (userid, productid, quantity) {
-    console.log("update");
     try {
       const response = await axios.patch(`/updatecart`, {
         user_id: userid,
         quantity: quantity,
         product_id: productid,
       });
-      console.log(response.data);
       return response.data;
-      console.log(response.data);
     } catch (err) {
       console.log(err);
     }
   },
   checkOut: async function (userid) {
-    console.log("checkout");
     try {
       const response = await axios.post(`/proceedtocheckout/${userid}`);
-      console.log(response.data);
       return response.data;
-      console.log(response.data);
     } catch (err) {
       console.log(err);
     }
   },
   register: async function (username, useremail, password) {
     try {
-      console.log(username, useremail, password);
       const response = await axios.post(`/adduser`, {
         name: username,
         email: useremail,
@@ -151,7 +135,6 @@ export default {
   },
   login: async function (useremail, password) {
     try {
-      console.log(useremail, password);
       const response = await axios.post(`/login`, {
         email: useremail,
         password: password,
@@ -170,7 +153,6 @@ export default {
     }
   },
   saveforlater: async function (userid, productid, quantity) {
-    console.log("api calls", userid, productid, quantity);
     try {
       const response = await axios.post(`/saveforlater`, {
         user_id: userid,
@@ -183,10 +165,8 @@ export default {
     }
   },
   getsaveforlateritems: async function (userid) {
-    console.log("api calls", userid);
     try {
       const response = await axios.get(`/getsaveforlateritems/${userid}`);
-      console.log(response.data);
       return response.data;
     } catch (err) {
       console.log(err);
