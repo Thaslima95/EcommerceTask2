@@ -2,7 +2,7 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
 import { useState } from "react";
-
+import { Button } from "react-bootstrap";
 function valuetext(value) {
   return `${value}`;
 }
@@ -13,6 +13,8 @@ export default function RangeSlider() {
   const handleChange = (event) => {
     setValue(event.target.value);
   };
+  console.log(value);
+  const handlepricerange = () => {};
 
   return (
     <Box sx={{ width: 100, top: "10px", left: "10px", position: "relative" }}>
@@ -25,6 +27,7 @@ export default function RangeSlider() {
         min={500}
         max={3000}
       />
+      <Button onClick={console.log("e")}>Apply</Button>
     </Box>
   );
 }

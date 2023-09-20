@@ -29,13 +29,13 @@ export default function HomePageSection8() {
       xs={12}
       md={12}
       sx={{
-        top: { md: "2104px", xs: "1149px" },
+        top: { md: "2804px", xs: "1149px" },
         position: "absolute",
         display: { md: "flex", xs: "none" },
       }}
     >
       <Grid item md={1}></Grid>
-      <Grid container xs={12} md={10} sx={{}}>
+      <Grid container xs={12} md={10}>
         <Grid item md={12} sx={{}}>
           <ThemeProvider theme={homepageheadingtheme}>
             <Typography variant="h3">Suppliers by region</Typography>

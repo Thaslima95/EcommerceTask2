@@ -23,13 +23,26 @@ export default function HomePageSection6() {
       .then((res) => setProducts(res))
       .catch((err) => console.log(err));
   }, []);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowWidth(window.innerWidth);
+    }
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   return (
     <Grid
       container
       xs={12}
       md={12}
       sx={{
-        top: { md: "1554px", xs: "1149px" },
+        top: { md: "1854px", xs: "1149px" },
         position: "absolute",
       }}
     >
@@ -42,30 +55,53 @@ export default function HomePageSection6() {
           </ThemeProvider>
         </Grid>
         <Grid
-          item
+          container
           md={12}
           sx={{
             display: { md: "flex", xs: "flex" },
             flexWrap: { md: "wrap", xs: "wrap" },
             marginLeft: { md: "12px" },
-            border: "1px solid blue",
           }}
         >
-          {products.map((p) => {
-            return (
-              <ProductBox sx={{ border: "1px solid red" }}>
-                <RecommendProductLayout src={p.image} />
-                <ThemeProvider theme={recommendedpricetheme}>
-                  <Typography variant="subtitle2">${p.price}</Typography>
-                </ThemeProvider>
-                <ThemeProvider theme={recommendedsubtexttheme}>
-                  <Typography variant="subtitle2">
-                    {p.title.substring(0, 20)}
-                  </Typography>
-                </ThemeProvider>
-              </ProductBox>
-            );
-          })}
+          {windowWidth > 798
+            ? products.map((p) => {
+                return (
+                  <Grid item md={3}>
+                    <ProductBox>
+                      <RecommendProductLayout src={p.product_image} />
+                      <ThemeProvider theme={recommendedpricetheme}>
+                        <Typography variant="subtitle2">
+                          ${p.product_price}
+                        </Typography>
+                      </ThemeProvider>
+                      <ThemeProvider theme={recommendedsubtexttheme}>
+                        <Typography variant="subtitle2">
+                          {p.product_title.substring(0, 20)}
+                        </Typography>
+                      </ThemeProvider>
+                    </ProductBox>
+                  </Grid>
+                );
+              })
+            : products.slice(0, 4).map((p) => {
+                return (
+                  <Grid item md={3}>
+                    <ProductBox>
+                      <RecommendProductLayout src={p.product_image} />
+                      <ThemeProvider theme={recommendedpricetheme}>
+                        <Typography variant="subtitle2">
+                          ${p.product_price}
+                        </Typography>
+                      </ThemeProvider>
+                      <ThemeProvider theme={recommendedsubtexttheme}>
+                        <Typography variant="subtitle2">
+                          {p.product_title.substring(0, 20)}
+                        </Typography>
+                      </ThemeProvider>
+                    </ProductBox>
+                  </Grid>
+                );
+              })}
         </Grid>
       </Grid>
     </Grid>

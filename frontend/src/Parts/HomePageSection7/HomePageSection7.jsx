@@ -40,7 +40,7 @@ export default function HomePageSection7() {
       xs={12}
       md={12}
       sx={{
-        top: { md: "1854px", xs: "1149px" },
+        top: { md: "2554px", xs: "1149px" },
         position: "absolute",
         display: { md: "flex", xs: "none" },
       }}

@@ -6,7 +6,7 @@ import CategoryPage from "../Pages/Category/CategoryPage";
 import SingleProduct from "../Components/SingleProductComponent/SingleProduct";
 import CartPage from "../Pages/Cart/CartPage";
 import Registration from "../Pages/Register/Resgistration";
-import Gridcolumn from "../Components/Gridcolumn";
+
 import Login from "../Pages/Login/Login";
 import OrderPlaced from "../Pages/Cart/OrderPlaced";
 

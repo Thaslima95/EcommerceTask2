@@ -7,6 +7,7 @@ export const cartText = createTheme();
 export const cartPrice = createTheme();
 export const cartSaveforLaterTheme = createTheme();
 export const cartRemoveTheme = createTheme();
+export const cartHeadingTitle = createTheme();
 
 export const theme2 = createTheme();
 theme2.typography.subtitle1 = {
@@ -52,8 +53,6 @@ export const CartComponentBox = styled("div")({
   border: "0px, 0px, 1px, 0px",
   color: "#DEE2E7",
   borderBottom: "1px solid #DEE2E7",
-  //   top: "10px",
-  //   position: "relative",
   "@media (min-width:600px)": {
     width: "820px",
     height: "136px",
@@ -73,19 +72,40 @@ export const CartQuantityBox = styled("div")({
   color: "red",
 });
 
+export const CartHeading = styled("div")({
+  width: "132px",
+  height: "32px",
+});
+export const CartHeaderImgBox = styled("div")({
+  color: "#8B96A5",
+  width: "45px",
+  height: "41px",
+});
+cartHeadingTitle.typography.h3 = {
+  styleName: "Text-H3",
+
+  fontFamily: "Inter",
+  fontSize: "24px",
+  fontWeight: "600",
+  lineHeight: "32px",
+  letterSpacing: "0px",
+  textAlign: "left",
+  color: "#1C1C1C",
+  [cartHeadingTitle.breakpoints.up("md")]: {
+    fontSize: "24px",
+  },
+};
+
 export const CartComponentImgBox = styled("img")({
   width: "63px",
   height: "63px",
   borderRadius: "6px",
   border: "1px",
   left: "10px",
-  psodition: "reltaive",
-  //   top: "10px",
-  //   position: "relative",
+  position: "reltaive",
   "@media (min-width:600px)": {
     width: "80px",
     height: "80px",
-    border: "1px solid red",
     left: "0px",
     position: "relative",
   },
@@ -155,7 +175,7 @@ cartPrice.typography.subtitle1 = {
   lineHeight: "22px",
   letterSpacing: "0px",
   textAlign: "right",
-  color: "red",
+  color: "black",
 
   position: "relative",
   "@media (min-width:600px)": {

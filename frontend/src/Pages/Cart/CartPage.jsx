@@ -3,7 +3,9 @@ import Box from "@mui/material/Box";
 import {
   SaveforLaterBox,
   SaveforLaterImgBox,
+  saveforlatertexttheme,
   SaveforTextMobileBox,
+  saveforlaterpricetheme,
 } from "../../Components/SaveForLaterComponent/SaveforLaterTheme";
 import Brand from "../../assets/Images/Brand.png";
 import Grid from "@mui/material/Grid";
@@ -15,6 +17,9 @@ import {
   CartSaveForlater,
   cartSaveforLaterTheme,
   cartRemoveTheme,
+  cartHeadingTitle,
+  CartHeading,
+  CartHeaderImgBox,
 } from "../../Components/CartComponent/CartComponentTheme";
 import {
   CartImg,
@@ -59,9 +64,11 @@ import {
   footertheme1,
 } from "../../Components/FooterTheme/FooterTheme";
 import MobileCartPage from "./MobileCartPage";
+import { useMemo } from "react";
 export default function CartPage() {
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState([]);
+  const [saveforlater, setSaveforlater] = useState([]);
   const discount = 53;
   const tax = 10;
   const navigate = useNavigate();
@@ -95,6 +102,20 @@ export default function CartPage() {
       .catch((err) => console.log(err));
   };
   console.log(total);
+
+  useMemo(() => {
+    const getsaveforlaterlist = (userid) => {
+      ApiCalls.getsaveforlateritems(userid)
+        .then((res) => setSaveforlater(res))
+        .catch((err) => console.log(err));
+    };
+    getsaveforlaterlist(1);
+  }, []);
+  console.log(saveforlater);
+
+  const handleBack = () => {
+    window.history.back();
+  };
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -136,67 +157,46 @@ export default function CartPage() {
                       gap: "30px",
                     }}
                   >
-                    <Box
-                      style={{
-                        color: "#8B96A5",
-                        width: "27px",
-                        height: "41px",
-                        // border: "1px solid red",
-                      }}
-                    >
+                    <CartHeaderImgBox>
                       <CartImg src={Profile} alt="" />
 
                       <ThemeProvider theme={carttheme}>
                         <Typography variant="subtitle1">Profile</Typography>
                       </ThemeProvider>
-                    </Box>
-                    <Box
-                      style={{
-                        color: "#8B96A5",
-                        width: "27px",
-                        height: "41px",
-                        // border: "1px solid red",
-                      }}
-                      sx={{ display: { xs: "none", md: "block" } }}
-                    >
+                    </CartHeaderImgBox>
+                    <CartHeaderImgBox>
                       <CartImg src={Message2} alt="" />
                       <ThemeProvider theme={carttheme}>
                         <Typography variant="subtitle1">Message</Typography>
                       </ThemeProvider>
-                    </Box>
-                    <Box
-                      style={{
-                        color: "#8B96A5",
-                        width: "27px",
-                        height: "41px",
-                        // border: "1px solid red",
-                      }}
-                      sx={{ display: { xs: "none", md: "block" } }}
-                    >
+                    </CartHeaderImgBox>
+
+                    <CartHeaderImgBox>
                       <CartImg src={Heart} alt="" />
                       <ThemeProvider theme={carttheme}>
                         <Typography variant="subtitle1">Orders</Typography>
                       </ThemeProvider>
-                    </Box>
-                    <Box
-                      style={{
-                        color: "#8B96A5",
-                        width: "45px",
-                        height: "41px",
-                      }}
-                    >
+                    </CartHeaderImgBox>
+
+                    <CartHeaderImgBox>
                       <CartImg src={Cart2} alt="" />
                       <ThemeProvider theme={carttheme}>
                         <Typography variant="subtitle1">My cart</Typography>
                       </ThemeProvider>
-                    </Box>
+                    </CartHeaderImgBox>
                   </Box>
                 </Grid>
               </Grid>
               <Grid container sx={{ marginTop: "60px" }}>
                 <Grid item md={1}></Grid>
                 <Grid container xs={12} md={9}>
-                  MY Cart ({cart && cart.length})
+                  <CartHeading>
+                    <ThemeProvider theme={cartHeadingTitle}>
+                      <Typography variant="h3">
+                        My cart ({cart && cart.length})
+                      </Typography>
+                    </ThemeProvider>
+                  </CartHeading>
                 </Grid>
               </Grid>
               {cart.length > 0 ? (
@@ -227,7 +227,10 @@ export default function CartPage() {
                             justifyContent: "space-between",
                           }}
                         >
-                          <BacktoShopButton sx={{ display: "flex" }}>
+                          <BacktoShopButton
+                            sx={{ display: "flex" }}
+                            onClick={handleBack}
+                          >
                             <img
                               src={Back}
                               alt=""
@@ -269,7 +272,7 @@ export default function CartPage() {
                           <Typography>Have a Coupon?</Typography>
                           <TextField
                             id="outlined-basic"
-                            label="Outlined"
+                            label="Add Coupon"
                             variant="outlined"
                             size="small"
                           />
@@ -303,25 +306,32 @@ export default function CartPage() {
                           <Typography
                             sx={{ top: "90px", position: "relative" }}
                           >
-                            {/* ${total?.total.total_price} */}
                             {total != undefined && total.total_price}
                           </Typography>
                           <Typography
-                            sx={{ top: "90px", position: "relative" }}
+                            sx={{
+                              top: "90px",
+                              position: "relative",
+                              color: "#FA3434",
+                            }}
                           >
                             -${discount}
                           </Typography>
                           <Typography
-                            sx={{ top: "90px", position: "relative" }}
+                            sx={{
+                              top: "90px",
+                              position: "relative",
+                              color: "#00B517",
+                            }}
                           >
-                            -${tax}
+                            +${tax}
                           </Typography>
                           <Typography
                             sx={{ top: "90px", position: "relative" }}
                           >
                             $
                             {total != undefined &&
-                              total.total_price - discount - tax}
+                              total.total_price - discount + tax}
                           </Typography>
                         </Grid>
                       </Grid>
@@ -361,19 +371,21 @@ export default function CartPage() {
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid container>
-                <Grid item md={1}></Grid>
-                <Grid
-                  container
-                  xs={12}
-                  md={9}
-                  sx={{
-                    border: "2px solid green",
-                  }}
-                >
-                  <Grid item md={12}>
-                    <SaveForLaterComponent></SaveForLaterComponent>
+              <Grid container xs sx={{ marginTop: "15px" }}>
+                <Grid md={1}></Grid>
+                <Grid container xs md={9}>
+                  <Grid item md={12} sx={{}}>
+                    <Typography variant="h4">Saved for later</Typography>
                   </Grid>
+                  {saveforlater.map((e) => {
+                    return (
+                      <Grid item md={3}>
+                        <SaveForLaterComponent
+                          later={e}
+                        ></SaveForLaterComponent>
+                      </Grid>
+                    );
+                  })}
                 </Grid>
               </Grid>
               <Grid container>
@@ -539,7 +551,7 @@ export default function CartPage() {
                     />
                   );
                 })}
-                <CartCheckoutBoxmobile sx={{ border: "2px solid green" }}>
+                <CartCheckoutBoxmobile>
                   <Grid container xs={10}>
                     <Grid item xs={6}>
                       <Typography>Items</Typography>
@@ -570,22 +582,44 @@ export default function CartPage() {
                     Check Out
                   </Button>
                 </CartCheckoutBoxmobile>
-                <Typography>Save for Later</Typography>
-                <SaveforLaterBox sx={{ border: "2px solid red" }}>
-                  <SaveforLaterImgBox />
-                  <SaveforTextMobileBox></SaveforTextMobileBox>
-                  <CartRemove>
-                    {" "}
-                    <ThemeProvider theme={cartRemoveTheme}>
-                      <Typography variant="subtitle1">Move to cart</Typography>
-                    </ThemeProvider>
-                  </CartRemove>
-                  <CartSaveForlater>
-                    <ThemeProvider theme={cartSaveforLaterTheme}>
-                      <Typography variant="subtitle1">Remove</Typography>
-                    </ThemeProvider>
-                  </CartSaveForlater>
-                </SaveforLaterBox>
+                <Typography>Saved for Later</Typography>
+                {saveforlater.map((e) => {
+                  return (
+                    <SaveforLaterBox>
+                      <SaveforLaterImgBox src={e.product_image} />
+                      <SaveforTextMobileBox
+                        sx={{ marginLeft: "110px", marginTop: "-80px" }}
+                      >
+                        <ThemeProvider theme={saveforlatertexttheme}>
+                          <Typography variant="subtitle1">
+                            {e.product_title.substr(0, 20)}
+                          </Typography>
+                        </ThemeProvider>
+                        <ThemeProvider theme={saveforlaterpricetheme}>
+                          <Typography
+                            sx={{ marginTop: "-20px" }}
+                            variant="subtitle1"
+                          >
+                            {e.product_price}
+                          </Typography>
+                        </ThemeProvider>
+                      </SaveforTextMobileBox>
+                      <CartRemove sx={{ marginTop: "100px" }}>
+                        {" "}
+                        <ThemeProvider theme={cartRemoveTheme}>
+                          <Typography variant="subtitle1">
+                            Move to cart
+                          </Typography>
+                        </ThemeProvider>
+                      </CartRemove>
+                      <CartSaveForlater>
+                        <ThemeProvider theme={cartSaveforLaterTheme}>
+                          <Typography variant="subtitle1">Remove</Typography>
+                        </ThemeProvider>
+                      </CartSaveForlater>
+                    </SaveforLaterBox>
+                  );
+                })}
               </Grid>
             </>
           )}

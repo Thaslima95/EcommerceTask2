@@ -14,7 +14,6 @@ theme2.typography.subtitle1 = {
   color: "#1C1C1C",
   marginRight: "18px",
 
-  "@media (min-width:600px)": {},
   [theme2.breakpoints.up("md")]: {
     fontSize: "16px",
   },
@@ -28,8 +27,8 @@ carttheme.typography.subtitle1 = {
   lineHeight: "15px",
   letterSpacing: "0px",
   textAlign: "center",
-  marginLeft: "-4px",
-  top: "26px",
+  marginLeft: "-15px",
+  top: "30px",
   position: "relative",
   "@media (min-width:600px)": {
     top: "0px",

@@ -5,7 +5,7 @@ export const pricetheme = createTheme();
 export const mobileheadingtheme = createTheme();
 
 export const ProductBox = styled("div")({
-  width: "223px",
+  width: "230px",
   height: "127px",
 });
 
@@ -62,8 +62,8 @@ export const PriceLayout = styled("div")({
 });
 
 export const PriceImgLayout = styled("img")({
-  width: "82px",
-  height: "82px",
+  width: "72px",
+  height: "72px",
 });
 
 export const DecorImgLayout = styled("img")({

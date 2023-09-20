@@ -34,16 +34,14 @@ export default function HomePageSection1() {
   //     .catch((err) => console.log(err));
   // }, []);
   useEffect(() => {
-    const controller = new AbortController();
-    const signal = controller.signal;
-    getCategoriesDetails({ signal });
-    return () => {
-      controller.abort();
-    };
+    getCategoriesDetails();
+    // return () => {
+    //   controller.abort();
+    // };
   }, []);
 
-  const getCategoriesDetails = (signal) => {
-    ApiCalls.getCategoris({ signal })
+  const getCategoriesDetails = () => {
+    ApiCalls.getCategoris()
       .then((res) => setCategories(res))
       .catch((err) => console.log(err));
   };

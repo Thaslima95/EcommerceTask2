@@ -33,9 +33,19 @@ export default function CartComponent({ cart, details, carttotal }) {
   };
 
   const removeCart = (productid, qty, userid) => {
-    ApiCalls.getRemovecart(1, productid, qty)
+    ApiCalls.removefromcart(1, productid, qty)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
+    details();
+    carttotal();
+  };
+
+  const handlesaveforlater = (productid, quantity, userid) => {
+    console.log("save for later");
+    ApiCalls.saveforlater(1, productid, quantity)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+    window.location.reload();
   };
   console.log(cart);
   console.log(qty);
@@ -55,7 +65,7 @@ export default function CartComponent({ cart, details, carttotal }) {
             </Typography>
           </ThemeProvider>
           <ThemeProvider theme={cartPrice}>
-            <Typography variant="subtitle1">{cart.product_price}</Typography>
+            <Typography variant="subtitle1">${cart.product_price}</Typography>
           </ThemeProvider>
           <CartRemove>
             {" "}
@@ -70,7 +80,14 @@ export default function CartComponent({ cart, details, carttotal }) {
           </CartRemove>
           <CartSaveForlater>
             <ThemeProvider theme={cartSaveforLaterTheme}>
-              <Typography variant="subtitle1">Save for Later</Typography>
+              <Typography
+                variant="subtitle1"
+                onClick={() =>
+                  handlesaveforlater(cart.product_id, cart.quantity, 1)
+                }
+              >
+                Save for Later
+              </Typography>
             </ThemeProvider>
           </CartSaveForlater>
           <CartQuantityBox>

@@ -30,7 +30,7 @@ export default function Footer2() {
       xs={12}
       md={12}
       sx={{
-        top: { md: "2530px", xs: "1149px" },
+        top: { md: "3200px", xs: "1149px" },
         position: "absolute",
         display: { md: "flex", xs: "none" },
       }}

@@ -97,7 +97,7 @@ export default {
       console.log(err);
     }
   },
-  getRemovecart: async function (userid, productid, quantity) {
+  removefromcart: async function (userid, productid, quantity) {
     try {
       const response = await axios.patch(`/removecart/${productid}`, {
         user_id: userid,
@@ -156,6 +156,37 @@ export default {
         email: useremail,
         password: password,
       });
+      return response.data;
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  getProductsbetweenRange: async function (price1, price2) {
+    try {
+      const response = await axios.get(`/filter/${price1}/${price2}`);
+      return response.data;
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  saveforlater: async function (userid, productid, quantity) {
+    console.log("api calls", userid, productid, quantity);
+    try {
+      const response = await axios.post(`/saveforlater`, {
+        user_id: userid,
+        product_id: productid,
+        quantity: quantity,
+      });
+      return response.data;
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  getsaveforlateritems: async function (userid) {
+    console.log("api calls", userid);
+    try {
+      const response = await axios.get(`/getsaveforlateritems/${userid}`);
+      console.log(response.data);
       return response.data;
     } catch (err) {
       console.log(err);

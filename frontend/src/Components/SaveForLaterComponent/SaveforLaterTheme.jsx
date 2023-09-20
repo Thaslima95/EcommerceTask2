@@ -35,6 +35,7 @@ export const MovetoCartButton = styled("button")({
   height: "40px",
   borderRadius: "6px",
   border: "1px",
+  marginTop: "10px",
   background:
     "linear-gradient(0deg, #DEE2E7, #DEE2E7),linear-gradient(0deg, #FFFFFF, #FFFFFF)",
 });
@@ -49,15 +50,16 @@ movetocartTheme.typography.subtitle1 = {
   lineHeight: "19.36px",
   letterSpacing: "0px",
   textAlign: "left",
-  background: "#0D6EFD",
+  color: "#0D6EFD",
+  marginLeft: "15px",
 };
 
-saveforlaterpricetheme.typography.subtitle1 = {
+saveforlaterpricetheme.typography.h5 = {
   width: "63.23px",
   height: "22px",
   styleName: "Title-h5",
   fontFamily: "Inter",
-  fontSize: "18px",
+  fontSize: "calc(7px + 1vw)",
   fontWeight: "600",
   lineHeight: "22px",
   letterSpacing: "0px",
@@ -75,5 +77,5 @@ saveforlatertexttheme.typography.subtitle1 = {
   lineHeight: "24px",
   letterSpacing: "0px",
   textAlign: "left",
-  color: "#1C1C1C",
+  color: "#606060",
 };

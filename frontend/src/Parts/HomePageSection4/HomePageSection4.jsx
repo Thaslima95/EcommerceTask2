@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Typography } from "@mui/material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Tech from "../../assets/Images/tech.jpg";
 
 import { Link } from "react-router-dom";
@@ -26,6 +26,19 @@ export default function HomePageSection4() {
       .then((res) => setValue(res))
       .catch((err) => console.log(err));
   }, []);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowWidth(window.innerWidth);
+    }
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   return (
     <Grid
       container
@@ -49,57 +62,96 @@ export default function HomePageSection4() {
             <Typography variant="subtitle2">Electronics</Typography>
           </ThemeProvider>
         </Grid>
-        <Grid
-          item
-          xs={12}
-          md={9}
-          sx={{
-            display: { md: "flex", xs: "flex" },
-            overflowX: { xs: "hidden", md: "flow" },
-            overflowY: { md: "hidden" },
-          }}
-        >
-          {value.map((e) => {
-            return (
-              <ProductBox sx={{}}>
-                {" "}
-                <ThemeProvider theme={headingtheme}>
-                  <Typography
-                    variant="subtitle2"
-                    sx={{
-                      top: { md: "20px", xs: "96px" },
-                      left: { md: "16px" },
-                      position: "relative",
-                    }}
-                  >
-                    {e.category}
-                  </Typography>
-                </ThemeProvider>
-                <PriceLayout>
-                  <ThemeProvider theme={pricetheme}>
-                    <Typography
-                      variant="subtitle2"
-                      sx={{
-                        top: { md: "30px", xs: "96px" },
-                        left: { md: "16px" },
-                        position: "relative",
-                      }}
-                    >
-                      From {e.product_price}
-                    </Typography>
-                  </ThemeProvider>
-                </PriceLayout>
-                <PriceImgLayout
-                  sx={{
-                    top: { md: "-15px", xs: "-45px" },
-                    left: { md: "85px" },
-                    position: "relative",
-                  }}
-                  src={e.product_image}
-                />
-              </ProductBox>
-            );
-          })}
+        <Grid container xs={12} md={9}>
+          {windowWidth > 798
+            ? value.map((e) => {
+                return (
+                  <Grid item md={3} xs={6}>
+                    <ProductBox>
+                      {" "}
+                      <ThemeProvider theme={headingtheme}>
+                        <Typography
+                          variant="subtitle2"
+                          sx={{
+                            top: { md: "20px", xs: "96px" },
+                            left: { md: "16px" },
+                            position: "relative",
+                          }}
+                        >
+                          {e.category}
+                        </Typography>
+                      </ThemeProvider>
+                      <PriceLayout>
+                        <ThemeProvider theme={pricetheme}>
+                          <Typography
+                            variant="subtitle2"
+                            sx={{
+                              top: { md: "30px", xs: "96px" },
+                              left: { md: "16px" },
+                              position: "relative",
+                            }}
+                          >
+                            From <br />
+                            USD {e.product_price}
+                          </Typography>
+                        </ThemeProvider>
+                      </PriceLayout>
+                      <PriceImgLayout
+                        sx={{
+                          top: { md: "-15px", xs: "-45px" },
+                          left: { md: "85px" },
+                          position: "relative",
+                        }}
+                        src={e.product_image}
+                      />
+                    </ProductBox>
+                  </Grid>
+                );
+              })
+            : value.slice(0, 2).map((e) => {
+                return (
+                  <Grid item md={3} xs={6}>
+                    <ProductBox>
+                      {" "}
+                      <ThemeProvider theme={headingtheme}>
+                        <Typography
+                          variant="subtitle2"
+                          sx={{
+                            top: { md: "20px", xs: "96px" },
+                            left: { md: "16px" },
+                            position: "relative",
+                          }}
+                        >
+                          {e.category}
+                        </Typography>
+                      </ThemeProvider>
+                      <PriceLayout>
+                        <ThemeProvider theme={pricetheme}>
+                          <Typography
+                            variant="subtitle2"
+                            sx={{
+                              top: { md: "30px", xs: "96px" },
+                              left: { md: "16px" },
+                              position: "relative",
+                            }}
+                          >
+                            From <br />
+                            USD {e.product_price}
+                          </Typography>
+                        </ThemeProvider>
+                      </PriceLayout>
+                      <PriceImgLayout
+                        sx={{
+                          top: { md: "-15px", xs: "-45px" },
+                          left: { md: "85px" },
+                          position: "relative",
+                        }}
+                        src={e.product_image}
+                      />
+                    </ProductBox>
+                  </Grid>
+                );
+              })}
         </Grid>
       </Grid>
     </Grid>

@@ -11,22 +11,27 @@ import {
   SaveforLaterImgBox,
 } from "./SaveforLaterTheme";
 
-export default function SaveForLaterComponent({ cart }) {
+export default function SaveForLaterComponent({ later }) {
+  console.log(later);
+  console.log(typeof later.product_title);
+  console.log(later.product_title.substr(0, 200));
+  const truncatedtitle = later.product_title.substr(0, 50);
+  console.log(truncatedtitle);
   const localcart = JSON.parse(localStorage.getItem("itemcart"));
   return (
     <>
-      <SaveforLaterBox sx={{ border: "1px solid green" }}>
-        <SaveforLaterImgBox />
+      <SaveforLaterBox>
+        <SaveforLaterImgBox src={later.product_image} />
         <ThemeProvider theme={saveforlaterpricetheme}>
-          <Typography>$99.50</Typography>
+          <Typography variant="h5">${later.product_price}</Typography>
         </ThemeProvider>
         <ThemeProvider theme={saveforlatertexttheme}>
-          <Typography>GoPro HERO6 4K Action Camera - Black</Typography>
+          <Typography>{truncatedtitle}</Typography>
         </ThemeProvider>
         <MovetoCartButton sx={{ display: "flex" }}>
           <img src={cartimage} alt="" />
           <ThemeProvider theme={movetocartTheme}>
-            <Typography>Move to cart</Typography>
+            <Typography variant="subtitle1">Move to cart</Typography>
           </ThemeProvider>
         </MovetoCartButton>
       </SaveforLaterBox>
