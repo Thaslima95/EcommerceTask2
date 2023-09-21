@@ -4,6 +4,7 @@ import { Dropdown } from "react-bootstrap";
 import { Nav, Col } from "react-bootstrap";
 import { ThemeProvider } from "@mui/material";
 import { theme2 } from "../HeaderTypography/HeaderTypography";
+import Hamburger from "../../assets/Images/Hamburger.png";
 import { Form } from "react-bootstrap";
 
 export default function HeaderNavbarStyles() {
@@ -13,7 +14,18 @@ export default function HeaderNavbarStyles() {
       onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
     >
       <Nav.Item>
-        <Nav.Link href="/home"></Nav.Link>
+        <Nav.Link
+          href="/home"
+          style={{
+            color: "black",
+            marginTop: "-3px",
+            marginRight: "8px",
+            padding: "0px",
+          }}
+        >
+          {" "}
+          <img src={Hamburger} alt="" />
+        </Nav.Link>
       </Nav.Item>
       <Nav.Item>
         <Nav.Link

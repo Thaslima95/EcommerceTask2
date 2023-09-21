@@ -1,6 +1,5 @@
 import React from "react";
-import { Row } from "react-bootstrap";
-import { Container, Col, Card } from "react-bootstrap";
+
 import { useState, useEffect } from "react";
 import { Typography } from "@mui/material";
 import { Link } from "react-router-dom";

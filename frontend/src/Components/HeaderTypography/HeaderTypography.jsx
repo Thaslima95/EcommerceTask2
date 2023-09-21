@@ -67,7 +67,7 @@ export const InSearch = styled("input")({
     height: "40px",
     borderLeft: "1px solid #0D6EFD",
     borderTop: "1px solid #0D6EFD",
-    borderBottom: "1px solid #0D6EFD",
+    borderBottom: "2px solid #0D6EFD",
     borderTopLeftRadius: "5px",
     borderBottomLeftRadius: "5px",
   },

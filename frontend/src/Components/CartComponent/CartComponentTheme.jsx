@@ -8,6 +8,7 @@ export const cartPrice = createTheme();
 export const cartSaveforLaterTheme = createTheme();
 export const cartRemoveTheme = createTheme();
 export const cartHeadingTitle = createTheme();
+export const saveforlaterheading = createTheme();
 
 export const theme2 = createTheme();
 theme2.typography.subtitle1 = {
@@ -19,8 +20,6 @@ theme2.typography.subtitle1 = {
   textAlign: "left",
   color: "#1C1C1C",
   marginRight: "18px",
-
-  "@media (min-width:600px)": {},
   [theme2.breakpoints.up("md")]: {
     fontSize: "16px",
   },
@@ -265,5 +264,19 @@ cartSaveforLaterTheme.typography.subtitle1 = {
   position: "relative",
   [cartSaveforLaterTheme.breakpoints.up("md")]: {
     fontSize: "13px",
+  },
+};
+
+saveforlaterheading.typography.h6 = {
+  styleName: "Text-H4",
+  fontFamily: "Inter",
+  fontSize: "20px",
+  fontWeight: "600",
+  lineHeight: "28px",
+  letterSpacing: "0px",
+  textAlign: "left",
+  color: "#1C1C1C",
+  [saveforlaterheading.breakpoints.up("md")]: {
+    fontSize: "20px",
   },
 };

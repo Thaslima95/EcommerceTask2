@@ -19,6 +19,7 @@ import {
   cartRemoveTheme,
   cartHeadingTitle,
   CartHeading,
+  saveforlaterheading,
   CartHeaderImgBox,
 } from "../../Components/CartComponent/CartComponentTheme";
 import {
@@ -351,7 +352,7 @@ export default function CartPage() {
               ) : (
                 <>Cart is Empty</>
               )}
-              <Grid container>
+              <Grid container sx={{ marginTop: "50px" }}>
                 <Grid item md={1}></Grid>
                 <Grid container xs={12} md={7}>
                   <Grid item md={4}>
@@ -371,11 +372,15 @@ export default function CartPage() {
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid container xs sx={{ marginTop: "15px" }}>
+              <Grid container xs sx={{ marginTop: "50px" }}>
                 <Grid md={1}></Grid>
                 <Grid container xs md={9}>
-                  <Grid item md={12} sx={{}}>
-                    <Typography variant="h4">Saved for later</Typography>
+                  <Grid item md={12}>
+                    <ThemeProvider theme={saveforlaterheading}>
+                      <Typography variant="h6" sx={{ marginBottom: "20px" }}>
+                        Saved for later
+                      </Typography>
+                    </ThemeProvider>
                   </Grid>
                   {saveforlater.map((e) => {
                     return (

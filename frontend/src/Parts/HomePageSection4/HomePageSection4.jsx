@@ -99,7 +99,7 @@ export default function HomePageSection4() {
                       <PriceImgLayout
                         sx={{
                           top: { md: "-15px", xs: "-45px" },
-                          left: { md: "85px" },
+                          left: { md: "135px" },
                           position: "relative",
                         }}
                         src={e.product_image}

@@ -81,9 +81,6 @@ countssecondstheme.typography.subtitle2 = {
   height: "15px",
   top: "24px",
   position: "absolute",
-  // top: 612px
-  // left: 150px
-  //styleName: Title-H4;
 
   fontFamily: "Inter",
   fontSize: "11px",
@@ -102,9 +99,6 @@ countssecondstheme.typography.subtitle2 = {
 dealstheme.typography.h6 = {
   width: "155px",
   height: "28px",
-  // top: 612px
-  // left: 150px
-  //styleName: Title-H4;
 
   styleName: "text-btn/btn-small",
   fontFamily: "Inter",
@@ -137,10 +131,6 @@ export const LoginButton = styled("button")({
 dealstheme2.typography.h4 = {
   width: "155px",
   height: "19px",
-  // top: 612px
-  // left: 150px
-  //styleName: Title-H4;
-  //styleName: Text-base;
 
   styleName: "Title-H4",
   fontFamily: "Inter",
@@ -167,13 +157,10 @@ export const DealProductBox = styled("div")({
 });
 export const DealProductItems = styled("div")({
   top: "14px",
-  // left: "20px",
   left: "5px",
   position: "relative",
   background: "#FFFFFF",
 
-  //   padding:
-  //     "9.333333015441895px 19.28888511657715px 9.333331108093262px 19.288888931274414px",
   width: "98px",
   height: "98px",
 
@@ -187,13 +174,6 @@ export const DealProductItems = styled("div")({
 });
 
 dealproductname.typography.subtitle2 = {
-  //   width: "155px",
-  //   height: "19px",
-  //   // top: 612px
-  // left: 150px
-  //styleName: Title-H4;
-  //styleName: Text-base;
-  //styleName: Text normal;
   top: "20px",
   position: "relative",
   styleName: "Title-H4",
@@ -211,13 +191,6 @@ dealproductname.typography.subtitle2 = {
 };
 
 dealproductsale.typography.subtitle2 = {
-  //   width: "155px",
-  //   height: "19px",
-  // top: 612px
-  // left: 150px
-  //styleName: Title-H4;
-  //styleName: Text-base;
-
   fontFamily: "Inter",
   fontSize: "14px",
   fontWeight: "500",
@@ -256,24 +229,4 @@ export const DealImg = styled("img")({
     width: "98px",
     height: "98px",
   },
-  //   top: "8px",
-  //   left: "20px",
-  //   position: "relative",
 });
-
-// export const BannerImg = styled("div")({
-//   position: "absolute",
-//   width: "300px",
-//   height: "180px",
-//   backgroundImage: `url(${MainImg})`,
-//   backgroundPosition: "center",
-//   backgroundSize: "cover",
-//   backgroundRepeat: "no-repeat",
-//   objectFit: "contain",
-//   "@media (min-width:600px)": {
-//     width: "665px",
-//     height: "365px",
-//     position: "absolute",
-//     marginLeft: "-12px",
-//   },
-// });

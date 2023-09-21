@@ -19,6 +19,7 @@ export const RemoveAllButton = styled("button")({
   borderRadius: "6px",
   border: "1px",
   gap: "10px",
+  color: "#0D6EFD",
   background:
     "linear-gradient(0deg, #DEE2E7, #DEE2E7),linear-gradient(0deg, #FFFFFF, #FFFFFF)",
   border: "1px solid #DEE2E7",

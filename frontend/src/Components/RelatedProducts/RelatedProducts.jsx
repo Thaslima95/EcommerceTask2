@@ -28,18 +28,20 @@ export default function RelatedProducts() {
     <>
       {products.map((e) => {
         return (
-          <RelatedProdcutsBox>
-            <RelatedProdcutsImgBox src={e.product_image} />
-            <RelatedProdcutsTextBox>
-              {" "}
-              <ThemeProvider theme={relatedproducttexttheme}>
-                <Typography>{e.product_title.substring(0, 20)}</Typography>
-              </ThemeProvider>
-              <ThemeProvider theme={relatedproductpricetheme}>
-                <Typography>${e.product_price}</Typography>
-              </ThemeProvider>
-            </RelatedProdcutsTextBox>
-          </RelatedProdcutsBox>
+          <Grid item md={1.5} xs={3.5}>
+            <RelatedProdcutsBox>
+              <RelatedProdcutsImgBox src={e.product_image} />
+              <RelatedProdcutsTextBox>
+                {" "}
+                <ThemeProvider theme={relatedproducttexttheme}>
+                  <Typography>{e.product_title.substring(0, 20)}</Typography>
+                </ThemeProvider>
+                <ThemeProvider theme={relatedproductpricetheme}>
+                  <Typography>${e.product_price}</Typography>
+                </ThemeProvider>
+              </RelatedProdcutsTextBox>
+            </RelatedProdcutsBox>
+          </Grid>
         );
       })}
     </>

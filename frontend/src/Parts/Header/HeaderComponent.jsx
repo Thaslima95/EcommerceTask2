@@ -25,7 +25,7 @@ export default function HeaderComponent() {
       <Grid container xs={9} md={12} sx={{ top: "20px", position: "absolute" }}>
         <Grid item xs={1} md={1}></Grid>
         <Grid container xs={12} md={10}>
-          <Grid item xs={12} md={2} sx={{}}>
+          <Grid item xs={12} md={2}>
             <Grid xs={6} md={8}>
               <img src={logosymbol} alt="" />
               <img
@@ -58,7 +58,13 @@ export default function HeaderComponent() {
               }}
             />
 
-            <Grid sx={{ display: { xs: "none", md: "block" } }}>
+            <Grid
+              sx={{
+                display: { xs: "none", md: "block" },
+                border: "1px solid #0D6EFD",
+                height: "40px",
+              }}
+            >
               <Dropdownbox />
             </Grid>
             <Grid sx={{ display: { xs: "none", md: "block" } }}>
@@ -130,12 +136,24 @@ export default function HeaderComponent() {
         </Grid>
         <Grid item spacing={4}></Grid>
       </Grid>
+      <Grid container xs={9} md={12}>
+        <Grid item md={1}></Grid>
+        <Grid item xs={11} md={10} sx={{}}>
+          <hr
+            style={{
+              marginTop: "80px",
+              marginBottom: "0px",
+              color: "#dadce0",
+            }}
+          />
+        </Grid>
+      </Grid>
       <Grid
         container
         xs={9}
         md={12}
         sx={{
-          top: { md: "86px", xs: "120px" },
+          top: { md: "26px", xs: "80px" },
           position: "relative",
         }}
       >

@@ -18,7 +18,17 @@ import { useNavigate } from "react-router-dom";
 import ApiCalls from "../../API/ApiCalls";
 import { SingleproductBox } from "../SingleProductBox/SingleProductBox";
 import { useMemo, useEffect } from "react";
-import { singleproductHeadingtheme } from "../SingleProductBox/SingleProductBox";
+import {
+  singleproductHeadingtheme,
+  inStockTheme,
+  ratingTheme,
+  reviewTheme,
+  soldTheme,
+  multiplepriceTheme,
+  piecesTheme,
+  tableHeadingTheme,
+  tableContentTheme,
+} from "../SingleProductBox/SingleProductBox";
 import { ThemeProvider } from "@emotion/react";
 import BreadCrumbComponent from "../BreadCrumbComponent/BreadCrumbComponent";
 import RelatedProducts from "../RelatedProducts/RelatedProducts";
@@ -67,7 +77,8 @@ export default function SingleProduct() {
       .catch((err) => console.log(err));
   }, [val]);
   console.log(singleproduct);
-  const { product_image, product_title, product_id } = singleproduct;
+  const { product_image, product_title, product_id, product_price } =
+    singleproduct;
   console.log(product_image);
   for (let i = 0; i < 5; i++) {
     images.push(product_image);
@@ -80,10 +91,19 @@ export default function SingleProduct() {
         xs={12}
         md={12}
         sx={{
-          top: { md: "200px" },
+          top: { md: "60px", xs: "100px" },
           position: "absolute",
         }}
       >
+        <Grid
+          item
+          xs={12}
+          md={12}
+          sx={{ marginBottom: "30px", marginLeft: "16px" }}
+        >
+          <BreadCrumbComponent />
+        </Grid>
+
         <Grid item md={1}></Grid>
         <Grid container xs={12} md={10}>
           <Grid item xs={12} md={4}>
@@ -101,19 +121,13 @@ export default function SingleProduct() {
                 {images &&
                   images.map((i, idx) => {
                     return (
-                      <Box
-                        sx={{
-                          height: "200px",
-                        }}
-                      >
+                      <Box sx={{ width: "400px", height: "400px" }}>
                         <img
                           src={i}
                           key={idx}
-                          width="200px"
                           style={{
                             objectFit: "contain",
-                            width: "200px",
-                            height: "200px",
+
                             border: "none",
                           }}
                         />
@@ -137,19 +151,26 @@ export default function SingleProduct() {
                   <img
                     src={Check}
                     alt=""
-                    style={{ width: "24px", height: "24px" }}
+                    style={{ width: "14px", height: "14px" }}
                   />{" "}
-                  <span>In Stock</span>
+                  <ThemeProvider theme={inStockTheme}>
+                    <Typography
+                      variant="subtitle1"
+                      sx={{ marginTop: "-5px", marginLeft: "5px" }}
+                    >
+                      In stock
+                    </Typography>
+                  </ThemeProvider>
                 </Grid>
-                <Grid item xs={12} md={12} sx={{ marginBottom: "5px" }}>
+                <Grid item xs={12} md={12} sx={{ marginBottom: "4px" }}>
                   <Box>
                     <ThemeProvider theme={singleproductHeadingtheme}>
-                      <Typography>{product_title}</Typography>
+                      <Typography variant="h6">{product_title}</Typography>
                     </ThemeProvider>
                   </Box>
                 </Grid>
                 <Grid item xs={12} md={12} sx={{ display: "flex" }}>
-                  <Box sx={{ marginRight: "8px" }}>
+                  <Box sx={{ marginRight: "8px", display: "flex" }}>
                     <Rating
                       name="hover-feedback"
                       value="4.5"
@@ -157,61 +178,193 @@ export default function SingleProduct() {
                       readOnly
                       size="small"
                     />
+                    <ThemeProvider theme={ratingTheme}>
+                      <Typography variant="subtitle1">9.3</Typography>
+                    </ThemeProvider>
                   </Box>
                   <Box sx={{ display: "flex", marginRight: "8px" }}>
-                    {" "}
                     <img
                       src={Message}
                       alt=""
-                      style={{ width: "20px", height: "20px" }}
+                      style={{ width: "15px", height: "15px" }}
                     />
-                    <Typography>Review</Typography>
+                    <ThemeProvider theme={reviewTheme}>
+                      <Typography
+                        variant="subtitle1"
+                        sx={{ marginLeft: "5px", marginTop: "-3px" }}
+                      >
+                        32 reviews
+                      </Typography>
+                    </ThemeProvider>
                   </Box>
                   <Box sx={{ display: "flex", marginRight: "8px" }}>
-                    <img src={Bag} alt="" />
-                    <Typography>Sold</Typography>
+                    <img
+                      src={Bag}
+                      alt=""
+                      style={{ width: "15px", height: "15px" }}
+                    />
+                    <ThemeProvider theme={soldTheme}>
+                      <Typography
+                        variant="subtitle1"
+                        sx={{ marginLeft: "5px", marginTop: "-3px" }}
+                      >
+                        153 sold
+                      </Typography>
+                    </ThemeProvider>
                   </Box>
                 </Grid>
-                <Grid item xs={12} md={12} sx={{ display: "flex" }}>
-                  <Box sx={{ marginRight: "10px" }}>
-                    <Typography>$67</Typography>
-                    <Typography>10 Pcs</Typography>
+                <Grid
+                  item
+                  xs={12}
+                  md={12}
+                  sx={{
+                    display: "flex",
+                    background: "#FFF0DF",
+                    marginTop: "10px",
+                  }}
+                >
+                  <Box
+                    sx={{
+                      marginRight: "10px",
+                      width: "100px",
+                      borderRight: "1px solid #BDC1C8",
+                    }}
+                  >
+                    <ThemeProvider theme={multiplepriceTheme}>
+                      <Typography variant="subtitle1">
+                        ${product_price}
+                      </Typography>
+                    </ThemeProvider>
+                    <ThemeProvider theme={piecesTheme}>
+                      <Typography variant="subtitle1">50-100 pcs</Typography>
+                    </ThemeProvider>
+                  </Box>
+                  <Box
+                    sx={{
+                      marginRight: "10px",
+                      width: "100px",
+                      borderRight: "1px solid #BDC1C8",
+                    }}
+                  >
+                    <ThemeProvider theme={multiplepriceTheme}>
+                      <Typography variant="subtitle1" sx={{ color: "#1C1C1C" }}>
+                        ${Number(product_price) - 10}
+                      </Typography>
+                    </ThemeProvider>
+                    <ThemeProvider theme={piecesTheme}>
+                      <Typography variant="subtitle1">100-500 pcs</Typography>
+                    </ThemeProvider>
                   </Box>
                   <Box sx={{ marginRight: "10px" }}>
-                    {" "}
-                    <Typography>$67</Typography>
-                    <Typography>10 Pcs</Typography>
-                  </Box>
-                  <Box sx={{ marginRight: "10px" }}>
-                    <Typography>$67</Typography>
-                    <Typography>10 Pcs</Typography>
+                    <ThemeProvider theme={multiplepriceTheme}>
+                      <Typography variant="subtitle1" sx={{ color: "#1C1C1C" }}>
+                        ${Number(product_price) - 28}
+                      </Typography>
+                    </ThemeProvider>
+                    <ThemeProvider theme={piecesTheme}>
+                      <Typography variant="subtitle1">700+ pcs</Typography>
+                    </ThemeProvider>
                   </Box>
                 </Grid>
                 <Grid item xs={12} md={12} sx={{ display: "flex" }}>
                   <Grid item xs={6} md={6} sx={{ marginTop: "40px" }}>
-                    <Typography>Price</Typography>
-                    <Typography sx={{ marginTop: "10px" }}>Type</Typography>
-                    <Typography>Material</Typography>
-                    <Typography>Design</Typography>
-                    <Typography sx={{ marginTop: "10px" }}>custom</Typography>
-                    <Typography>Warranty</Typography>
+                    <ThemeProvider theme={tableHeadingTheme}>
+                      <Typography
+                        variant="subtitle1"
+                        sx={{ marginBottom: "20px" }}
+                      >
+                        Price
+                      </Typography>
+                    </ThemeProvider>
+                    {["Type", "Material", "Design"].map((e) => {
+                      return (
+                        <ThemeProvider theme={tableHeadingTheme}>
+                          <Typography
+                            variant="subtitle1"
+                            sx={{ marginBottom: "15px" }}
+                          >
+                            {e}
+                          </Typography>
+                        </ThemeProvider>
+                      );
+                    })}
+                    {["Customization"].map((e) => {
+                      return (
+                        <ThemeProvider theme={tableHeadingTheme}>
+                          <Typography
+                            variant="subtitle1"
+                            sx={{ marginBottom: "30px", marginTop: "20px" }}
+                          >
+                            {e}
+                          </Typography>
+                        </ThemeProvider>
+                      );
+                    })}
+                    {["Protection", "Warranty"].map((e) => {
+                      return (
+                        <ThemeProvider theme={tableHeadingTheme}>
+                          <Typography
+                            variant="subtitle1"
+                            sx={{ marginBottom: "15px" }}
+                          >
+                            {e}
+                          </Typography>
+                        </ThemeProvider>
+                      );
+                    })}
                   </Grid>
                   <Grid item xs={6} md={6} sx={{ marginTop: "40px" }}>
-                    <Typography>Negotiable</Typography>
-                    <Typography sx={{ marginTop: "10px" }}>
-                      Type Goes Here
-                    </Typography>
-                    <Typography>Material Goes here</Typography>
-                    <Typography>Modern nice</Typography>
-                    <Typography sx={{ marginTop: "10px" }}>
-                      customized
-                    </Typography>
-                    <Typography>warranty goes here</Typography>
+                    <ThemeProvider theme={tableContentTheme}>
+                      <Typography
+                        variant="subtitle1"
+                        sx={{ marginBottom: "17px" }}
+                      >
+                        Negotiable
+                      </Typography>
+                    </ThemeProvider>
+                    {["Classic  shoes", "Plastic material", "Modern nice"].map(
+                      (e) => {
+                        return (
+                          <ThemeProvider theme={tableContentTheme}>
+                            <Typography
+                              variant="subtitle1"
+                              sx={{ marginBottom: "10px" }}
+                            >
+                              {e}
+                            </Typography>
+                          </ThemeProvider>
+                        );
+                      }
+                    )}
+                    {["Customized logo and design custom packages"].map((e) => {
+                      return (
+                        <ThemeProvider theme={tableHeadingTheme}>
+                          <Typography
+                            variant="subtitle1"
+                            sx={{ marginBottom: "14px", marginTop: "20px" }}
+                          >
+                            {e}
+                          </Typography>
+                        </ThemeProvider>
+                      );
+                    })}
+                    {["Refund Policy", "2 years full warranty "].map((e) => {
+                      return (
+                        <ThemeProvider theme={tableHeadingTheme}>
+                          <Typography
+                            variant="subtitle1"
+                            sx={{ marginBottom: "15px" }}
+                          >
+                            {e}
+                          </Typography>
+                        </ThemeProvider>
+                      );
+                    })}
                   </Grid>
                 </Grid>
               </SingleproductBox>
             ) : (
-              <SingleProductBox2 product_title={product_title} />
+              <SingleProductBox2 product={singleproduct} />
             )}
           </Grid>
           <Grid item xs={12} md={2} sx={{ marginBottom: "50px" }}>
@@ -257,7 +410,7 @@ export default function SingleProduct() {
         xs={12}
         md={12}
         sx={{
-          top: { md: "900px", xs: "1000px" },
+          top: { md: "900px", xs: "1200px" },
           position: "relative",
         }}
       >

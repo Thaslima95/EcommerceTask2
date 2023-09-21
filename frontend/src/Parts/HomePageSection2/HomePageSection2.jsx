@@ -93,9 +93,9 @@ export default function HomePageSection2() {
                     <ThemeProvider theme={countssecondstheme}>
                       <Typography
                         variant="subtitle2"
-                        sx={{ marginLeft: "12px" }}
+                        sx={{ marginLeft: "12px", marginTop: "5px" }}
                       >
-                        Hours
+                        Days
                       </Typography>
                     </ThemeProvider>
                   </Counts>
@@ -112,9 +112,9 @@ export default function HomePageSection2() {
                     <ThemeProvider theme={countssecondstheme}>
                       <Typography
                         variant="subtitle2"
-                        sx={{ marginLeft: "12px" }}
+                        sx={{ marginLeft: "12px", marginTop: "5px" }}
                       >
-                        mins
+                        Hour
                       </Typography>
                     </ThemeProvider>
                   </Counts>
@@ -131,9 +131,9 @@ export default function HomePageSection2() {
                     <ThemeProvider theme={countssecondstheme}>
                       <Typography
                         variant="subtitle2"
-                        sx={{ marginLeft: "12px" }}
+                        sx={{ marginLeft: "12px", marginTop: "5px" }}
                       >
-                        secs
+                        Min
                       </Typography>
                     </ThemeProvider>
                   </Counts>
@@ -150,9 +150,9 @@ export default function HomePageSection2() {
                     <ThemeProvider theme={countssecondstheme}>
                       <Typography
                         variant="subtitle2"
-                        sx={{ marginLeft: "12px" }}
+                        sx={{ marginLeft: "12px", marginTop: "5px" }}
                       >
-                        mins
+                        Sec
                       </Typography>
                     </ThemeProvider>
                   </Counts>

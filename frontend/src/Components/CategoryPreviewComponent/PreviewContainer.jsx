@@ -51,7 +51,7 @@ export default function PreviewContainer({ category }) {
 
   return (
     <>
-      <Grid md={12}>
+      <Grid md={12} sx={{ marginBottom: "30px" }}>
         <PreviewBox sx={{ display: "flex" }}>
           <PreviewBoxImg src={product_image} />
           <PreviewBoxDetails>
@@ -105,9 +105,14 @@ export default function PreviewContainer({ category }) {
               }}
             >
               {product_description}
-              <Link to={`/single/${product_id}`}>
+              <Link
+                to={`/single/${product_id}`}
+                style={{ textDecoration: "none" }}
+              >
                 <ThemeProvider theme={productviewdetailstheme}>
-                  <Typography variant="subtitle2">View details</Typography>
+                  <Typography variant="subtitle2" sx={{ marginTop: "15px" }}>
+                    View details
+                  </Typography>
                 </ThemeProvider>
               </Link>
             </PreviewTextBox>
