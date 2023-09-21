@@ -12,23 +12,21 @@ import {
 } from "./SaveforLaterTheme";
 
 export default function SaveForLaterComponent({ later }) {
-  console.log(later);
-  console.log(typeof later.product_title);
-  console.log(later.product_title.substr(0, 200));
   const truncatedtitle = later.product_title.substr(0, 50);
-  console.log(truncatedtitle);
-  const localcart = JSON.parse(localStorage.getItem("itemcart"));
+
   return (
     <>
       <SaveforLaterBox>
         <SaveforLaterImgBox src={later.product_image} />
         <ThemeProvider theme={saveforlaterpricetheme}>
-          <Typography variant="h5">${later.product_price}</Typography>
+          <Typography variant="h5" sx={{ marginTop: "20px" }}>
+            ${later.product_price}
+          </Typography>
         </ThemeProvider>
         <ThemeProvider theme={saveforlatertexttheme}>
-          <Typography>{truncatedtitle}</Typography>
+          <Typography sx={{ marginTop: "20px" }}>{truncatedtitle}</Typography>
         </ThemeProvider>
-        <MovetoCartButton sx={{ display: "flex" }}>
+        <MovetoCartButton sx={{ display: "flex", marginTop: "20px" }}>
           <img src={cartimage} alt="" />
           <ThemeProvider theme={movetocartTheme}>
             <Typography variant="subtitle1">Move to cart</Typography>

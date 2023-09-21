@@ -21,6 +21,8 @@ import {
   CartHeading,
   saveforlaterheading,
   CartHeaderImgBox,
+  cartTotalheading,
+  cartTotalPrice,
 } from "../../Components/CartComponent/CartComponentTheme";
 import {
   CartImg,
@@ -255,12 +257,11 @@ export default function CartPage() {
                             </ThemeProvider>
                           </BacktoShopButton>
                           <RemoveAllButton sx={{ marginLeft: "-40px" }}>
-                            <ThemeProvider
-                              theme={removeAllbuttontheme}
-                            ></ThemeProvider>
-                            <Typography variant="subtitle1">
-                              Remove all
-                            </Typography>
+                            <ThemeProvider theme={removeAllbuttontheme}>
+                              <Typography variant="subtitle1">
+                                Remove all
+                              </Typography>
+                            </ThemeProvider>
                           </RemoveAllButton>
                         </Box>
                       </Grid>
@@ -292,11 +293,17 @@ export default function CartPage() {
                           >
                             Tax:
                           </Typography>
-                          <Typography
-                            sx={{ top: "90px", position: "relative" }}
-                          >
-                            Total:
-                          </Typography>
+                          <ThemeProvider theme={cartTotalheading}>
+                            <Typography
+                              variant="h5"
+                              sx={{
+                                top: "100px",
+                                position: "relative",
+                              }}
+                            >
+                              Total
+                            </Typography>
+                          </ThemeProvider>
                         </Grid>
                         <Grid item xs sx={{ height: "230px" }}>
                           <Button></Button>
@@ -327,24 +334,36 @@ export default function CartPage() {
                           >
                             +${tax}
                           </Typography>
-                          <Typography
-                            sx={{ top: "90px", position: "relative" }}
-                          >
-                            $
-                            {total != undefined &&
-                              total.total_price - discount + tax}
-                          </Typography>
+                          <ThemeProvider theme={cartTotalPrice}>
+                            <Typography
+                              variant="h6"
+                              sx={{
+                                top: "100px",
+                                position: "relative",
+                              }}
+                            >
+                              $
+                              {total != undefined &&
+                                total.total_price - discount + tax}
+                            </Typography>
+                          </ThemeProvider>
                         </Grid>
                       </Grid>
                       <Grid xs>
                         <Button
                           variant="contained"
                           color="success"
-                          sx={{ width: "100%", marginTop: "20px" }}
+                          sx={{ width: "100%", marginTop: "50px" }}
                           onClick={() => handlecheckout()}
                         >
                           Check Out
                         </Button>
+                        <Box sx={{ border: "2px solid red" }}>
+                          <img src="" alt="" />
+                          <img src="" alt="" />
+                          <img src="" alt="" />
+                          <img src="" alt="" />
+                        </Box>
                       </Grid>
                     </Grid>
                   </Grid>
@@ -393,7 +412,7 @@ export default function CartPage() {
                   })}
                 </Grid>
               </Grid>
-              <Grid container>
+              <Grid container sx={{ marginTop: "40px" }}>
                 <Grid item md={1}></Grid>
                 <Grid container xs={12} md={9}>
                   <Grid item md={12}>

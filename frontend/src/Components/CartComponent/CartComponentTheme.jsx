@@ -9,6 +9,8 @@ export const cartSaveforLaterTheme = createTheme();
 export const cartRemoveTheme = createTheme();
 export const cartHeadingTitle = createTheme();
 export const saveforlaterheading = createTheme();
+export const cartTotalheading = createTheme();
+export const cartTotalPrice = createTheme();
 
 export const theme2 = createTheme();
 theme2.typography.subtitle1 = {
@@ -278,5 +280,33 @@ saveforlaterheading.typography.h6 = {
   color: "#1C1C1C",
   [saveforlaterheading.breakpoints.up("md")]: {
     fontSize: "20px",
+  },
+};
+
+cartTotalheading.typography.h6 = {
+  styleName: "Text-H6",
+  fontFamily: "Inter",
+  fontSize: "16px",
+  fontWeight: "600",
+  lineHeight: "19px",
+  letterSpacing: "0px",
+  textAlign: "left",
+  color: "#1C1C1C",
+  [cartTotalheading.breakpoints.up("md")]: {
+    fontSize: "16px",
+  },
+};
+
+cartTotalPrice.typography.h4 = {
+  styleName: "Text-H4",
+  fontFamily: "Inter",
+  fontSize: "20px",
+  fontWeight: "600",
+  lineHeight: "28px",
+  letterSpacing: "0px",
+  textAlign: "right",
+  color: "#1C1C1C",
+  [cartTotalPrice.breakpoints.up("md")]: {
+    fontSize: "16px",
   },
 };

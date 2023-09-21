@@ -20,8 +20,7 @@ export const RemoveAllButton = styled("button")({
   border: "1px",
   gap: "10px",
   color: "#0D6EFD",
-  background:
-    "linear-gradient(0deg, #DEE2E7, #DEE2E7),linear-gradient(0deg, #FFFFFF, #FFFFFF)",
+
   border: "1px solid #DEE2E7",
 });
 
@@ -48,6 +47,6 @@ removeAllbuttontheme.typography.subtitle1 = {
   lineHeight: "19px",
   letterSpacing: "0px",
   textAlign: "center",
-  background: "#0D6EFD",
+
   color: "0D6EFD",
 };
