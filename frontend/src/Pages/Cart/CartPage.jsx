@@ -7,6 +7,12 @@ import {
   SaveforTextMobileBox,
   saveforlaterpricetheme,
 } from "../../Components/SaveForLaterComponent/SaveforLaterTheme";
+import Payment from "../../assets/Images/payment.png";
+import Payment2 from "../../assets/Images/payment (2).png";
+import Payment3 from "../../assets/Images/payment (3).png";
+import Payment4 from "../../assets/Images/payment (4).png";
+import Payment5 from "../../assets/Images/payment (5).png";
+
 import Brand from "../../assets/Images/Brand.png";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
@@ -146,13 +152,25 @@ export default function CartPage() {
           {windowWidth > 798 ? (
             <>
               <Grid item md={1}></Grid>
-              <Grid container xs={12} md={9}>
+              <Grid container xs={12} md={9} sx={{ border: "1px solid red" }}>
                 <FooterImgBox>
                   <img src={logosymbol} alt="" />
                   <img src={Brand} alt="" />
                 </FooterImgBox>
-                <Grid item md={7}></Grid>
-                <Grid item xs md={3}>
+                <Grid
+                  item
+                  xs={1}
+                  md={6}
+                  lg={7}
+                  sx={{ border: "1px solid red" }}
+                ></Grid>
+                <Grid
+                  item
+                  xs={1}
+                  md={3}
+                  lg={3}
+                  sx={{ border: "1px solid red" }}
+                >
                   <Box
                     sx={{
                       display: "flex",
@@ -190,9 +208,12 @@ export default function CartPage() {
                   </Box>
                 </Grid>
               </Grid>
-              <Grid container sx={{ marginTop: "60px" }}>
+              <Grid
+                container
+                sx={{ marginTop: "60px", border: "1px solid red" }}
+              >
                 <Grid item md={1}></Grid>
-                <Grid container xs={12} md={9}>
+                <Grid container xs={12} md={9} sx={{ border: "1px solid red" }}>
                   <CartHeading>
                     <ThemeProvider theme={cartHeadingTitle}>
                       <Typography variant="h3">
@@ -212,6 +233,7 @@ export default function CartPage() {
                       md={7}
                       sx={{
                         display: "block",
+                        border: "1px solid green",
                       }}
                     >
                       {cart.map((e) => {
@@ -358,11 +380,32 @@ export default function CartPage() {
                         >
                           Check Out
                         </Button>
-                        <Box sx={{ border: "2px solid red" }}>
-                          <img src="" alt="" />
-                          <img src="" alt="" />
-                          <img src="" alt="" />
-                          <img src="" alt="" />
+                        <Box sx={{ marginTop: "10px" }}>
+                          <img
+                            src={Payment}
+                            alt=""
+                            style={{ marginRight: "5px", marginLeft: "5px" }}
+                          />
+                          <img
+                            src={Payment2}
+                            alt=""
+                            style={{ marginRight: "5px", marginLeft: "5px" }}
+                          />
+                          <img
+                            src={Payment3}
+                            alt=""
+                            style={{ marginRight: "5px", marginLeft: "5px" }}
+                          />
+                          <img
+                            src={Payment4}
+                            alt=""
+                            style={{ marginRight: "5px", marginLeft: "5px" }}
+                          />
+                          <img
+                            src={Payment5}
+                            alt=""
+                            style={{ marginRight: "5px", marginLeft: "5px" }}
+                          />
                         </Box>
                       </Grid>
                     </Grid>

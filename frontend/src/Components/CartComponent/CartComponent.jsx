@@ -3,6 +3,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
+import { Grid } from "@mui/material";
 import {
   CartComponentBox,
   CartComponentImgBox,
@@ -51,47 +52,44 @@ export default function CartComponent({ cart, details, carttotal }) {
   console.log(qty);
   return (
     <>
-      <CartComponentBox sx={{ display: "flex", marginTop: "20px" }}>
-        <CartComponentImgBox src={cart.product_image} />
-        <Box>
-          <ThemeProvider theme={cartTitle}>
-            <Typography variant="subtitle1" sx={{ marginLeft: "10px" }}>
-              {cart.product_title}
-            </Typography>
-          </ThemeProvider>
-          <ThemeProvider theme={cartText}>
-            <Typography variant="subtitle1">
-              {cart.product_description}
-            </Typography>
-          </ThemeProvider>
+      <Grid container md={12} sx={{ marginBottom: "30px" }}>
+        <Grid item md={2}>
+          <CartComponentImgBox src={cart.product_image} />
+        </Grid>
+        <Grid item md={6}>
+          <Box>
+            <ThemeProvider theme={cartTitle}>
+              <Typography variant="subtitle1">{cart.product_title}</Typography>
+            </ThemeProvider>
+            <CartRemove>
+              <ThemeProvider theme={cartRemoveTheme}>
+                <Typography
+                  onClick={() => removeCart(cart.product_id, cart.quantity, 1)}
+                  variant="subtitle1"
+                >
+                  Remove
+                </Typography>
+              </ThemeProvider>
+            </CartRemove>
+            <CartSaveForlater>
+              <ThemeProvider theme={cartSaveforLaterTheme}>
+                <Typography
+                  variant="subtitle1"
+                  onClick={() =>
+                    handlesaveforlater(cart.product_id, cart.quantity, 1)
+                  }
+                >
+                  Save for Later
+                </Typography>
+              </ThemeProvider>
+            </CartSaveForlater>
+          </Box>
+        </Grid>
+        <Grid item md={3}>
           <ThemeProvider theme={cartPrice}>
             <Typography variant="subtitle1">${cart.product_price}</Typography>
           </ThemeProvider>
-          <CartRemove>
-            {" "}
-            <ThemeProvider theme={cartRemoveTheme}>
-              <Typography
-                onClick={() => removeCart(cart.product_id, cart.quantity, 1)}
-                variant="subtitle1"
-              >
-                Remove
-              </Typography>
-            </ThemeProvider>
-          </CartRemove>
-          <CartSaveForlater>
-            <ThemeProvider theme={cartSaveforLaterTheme}>
-              <Typography
-                variant="subtitle1"
-                onClick={() =>
-                  handlesaveforlater(cart.product_id, cart.quantity, 1)
-                }
-              >
-                Save for Later
-              </Typography>
-            </ThemeProvider>
-          </CartSaveForlater>
           <CartQuantityBox>
-            {" "}
             <FormControl sx={{ m: 1, minWidth: 100 }} size="small">
               <InputLabel id="demo-select-small-label">
                 QTY:{cart.quantity}
@@ -112,8 +110,8 @@ export default function CartComponent({ cart, details, carttotal }) {
               </Select>
             </FormControl>
           </CartQuantityBox>
-        </Box>
-      </CartComponentBox>
+        </Grid>
+      </Grid>
     </>
   );
 }

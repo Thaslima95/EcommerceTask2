@@ -65,12 +65,10 @@ export const CartComponentBox = styled("div")({
 export const CartQuantityBox = styled("div")({
   width: "123px",
   height: "40px",
-  left: "500px",
-  position: "relative",
-  top: "-80px",
   border: "0px, 0px, 1px, 0px",
   boxShadow: "0px 1px 2px 0px #38383814",
   color: "red",
+  float: "right",
 });
 
 export const CartHeading = styled("div")({
@@ -113,8 +111,6 @@ export const CartComponentImgBox = styled("img")({
 });
 
 cartTitle.typography.subtitle1 = {
-  width: "175px",
-  height: "38px",
   styleName: "Text-title",
 
   fontFamily: "Inter",
@@ -125,10 +121,7 @@ cartTitle.typography.subtitle1 = {
   textAlign: "left",
   color: "#1C1C1C",
 
-  position: "relative",
   "@media (min-width:600px)": {
-    width: "462px",
-    height: "22px",
     fontSize: "16px",
     fontWeight: "500",
     lineHeight: "22px",
@@ -165,11 +158,8 @@ cartText.typography.subtitle1 = {
 };
 
 cartPrice.typography.subtitle1 = {
-  width: "54px",
-  height: "22px",
   styleName: "Text-title",
-  top: "80px",
-  left: "-90px",
+
   fontFamily: "Inter",
   fontSize: "16px",
   fontWeight: "500",
@@ -177,17 +167,10 @@ cartPrice.typography.subtitle1 = {
   letterSpacing: "0px",
   textAlign: "right",
   color: "black",
-
-  position: "relative",
   "@media (min-width:600px)": {
-    width: "54px",
-    height: "22px",
     fontSize: "16px",
     fontWeight: "500",
     lineHeight: "22px",
-    top: "-70px",
-    left: "500px",
-    position: "relative",
   },
   [cartPrice.breakpoints.up("md")]: {
     fontSize: "16px",
