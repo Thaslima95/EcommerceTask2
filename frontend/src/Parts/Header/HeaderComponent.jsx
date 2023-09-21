@@ -26,39 +26,27 @@ export default function HeaderComponent() {
         <Grid item xs={1} md={1}></Grid>
         <Grid container xs={12} md={10}>
           <Grid item xs={12} md={2}>
-            <Grid xs={6} md={8}>
-              <img src={logosymbol} alt="" />
-              <img
-                src={Brand}
-                alt=""
-                sx={{
-                  top: { md: "5px", xs: "-45px" },
-                  left: { xs: "20px" },
-                  position: "relative",
+            <Grid container xs={6} md={12} lg={8}>
+              <Grid item md={4}>
+                <img src={logosymbol} alt="" />
+              </Grid>
+              <Grid item md={7} sx={{ marginTop: "10px" }}>
+                <img src={Brand} alt="" />
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid container xs={9} md={7} lg={7}>
+            <Grid md={6} lg={5}>
+              <InSearch
+                type="search"
+                placeholder="Search"
+                onChange={(e) => {
+                  setSearchparam({ search: e.target.value });
                 }}
               />
             </Grid>
-          </Grid>
-          <Grid
-            item
-            xs={9}
-            md={6}
-            sx={{
-              display: "flex",
-              border: { md: "1px solid  #0D6EFD" },
-              height: "40px",
-              borderRadius: { md: "5px" },
-            }}
-          >
-            <InSearch
-              type="search"
-              placeholder="Search"
-              onChange={(e) => {
-                setSearchparam({ search: e.target.value });
-              }}
-            />
-
             <Grid
+              md={3}
               sx={{
                 display: { xs: "none", md: "block" },
                 border: "1px solid #0D6EFD",
@@ -67,7 +55,7 @@ export default function HeaderComponent() {
             >
               <Dropdownbox />
             </Grid>
-            <Grid sx={{ display: { xs: "none", md: "block" } }}>
+            <Grid sx={{ display: { xs: "none", md: "block" } }} md={3}>
               <SearchButton />
             </Grid>
           </Grid>
