@@ -34,7 +34,7 @@ export default function BestTabComponent({ setgrid }) {
 
   return (
     <>
-      <Grid item md={6}>
+      <Grid item md={5} xl={6}>
         <Box sx={{ display: "flex", marginTop: "10px" }}>
           <ThemeProvider theme={categorytheme2}>
             <Typography variant="subtitle2" sx={{ marginRight: "8px" }}>
@@ -46,7 +46,7 @@ export default function BestTabComponent({ setgrid }) {
           </ThemeProvider>
         </Box>
       </Grid>
-      <Grid item md={6}>
+      <Grid item md={6} xl={6}>
         <Box sx={{ display: "flex" }}>
           <VerfiedBox
             sx={{

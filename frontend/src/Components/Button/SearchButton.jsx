@@ -8,7 +8,7 @@ export default function SearchButton() {
       style={{
         background: "linear-gradient(180deg, #127FFF 0%, #0067FF 100%)",
         color: "White",
-        width: "100px",
+        width: "80%",
         height: "40px",
         borderTopLeftRadius: "0px",
         borderBottomLeftRadius: "0px",

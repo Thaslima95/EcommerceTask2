@@ -67,7 +67,7 @@ export const PriceImgLayout = styled("img")({
 });
 
 export const DecorImgLayout = styled("img")({
-  width: "280px",
+  width: "100%",
   height: "257px",
   border: "1px solid #FFFFFF",
 });

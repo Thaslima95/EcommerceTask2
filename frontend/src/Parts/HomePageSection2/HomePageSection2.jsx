@@ -77,8 +77,8 @@ export default function HomePageSection2() {
                 <CountBox
                   sx={{
                     top: { xs: "-10px", md: "10px" },
-                    left: { xs: "-10px", md: "10px" },
-                    position: { xs: "relative" },
+
+                    position: { xs: "relative", md: "relative" },
                   }}
                 >
                   <Counts>

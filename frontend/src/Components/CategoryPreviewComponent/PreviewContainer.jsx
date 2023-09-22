@@ -51,8 +51,8 @@ export default function PreviewContainer({ category }) {
 
   return (
     <>
-      <Grid md={12} sx={{ marginBottom: "30px" }}>
-        <PreviewBox sx={{ display: "flex" }}>
+      <Grid md={12} sx={{ marginBottom: "40px" }}>
+        <PreviewBox sx={{ display: "flex", gap: "30px" }}>
           <PreviewBoxImg src={product_image} />
           <PreviewBoxDetails>
             {" "}

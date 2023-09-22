@@ -61,6 +61,7 @@ export default {
     }
   },
   addtoCart: async function (product_id, userid, quantity) {
+    console.log(userid);
     try {
       const response = await axios.post(`/addtocart`, {
         user_id: userid,

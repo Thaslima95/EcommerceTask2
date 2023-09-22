@@ -50,10 +50,23 @@ export default function HomePageSection3() {
     >
       <Grid item md={1}></Grid>
       <Grid container xs={12} md={9} sx={{}}>
-        <Grid item xs={4} md={3} sx={{ display: { md: "block", xs: "none" } }}>
+        <Grid
+          item
+          xs={4}
+          md={3}
+          sx={{
+            display: { md: "block", xs: "none" },
+          }}
+        >
           <DecorImgLayout src={InteriorImg} />
         </Grid>
-        <Grid item sx={{ display: { md: "none", xs: "block" } }}>
+        <Grid
+          item
+          md={4}
+          sx={{
+            display: { md: "none", xs: "block" },
+          }}
+        >
           <ThemeProvider
             theme={mobileheadingtheme}
             sx={{ display: { md: "none" } }}
@@ -65,7 +78,7 @@ export default function HomePageSection3() {
           {windowWidth > 798
             ? value.map((e) => {
                 return (
-                  <Grid item md={3} xs={6}>
+                  <Grid item md={3} xs={6} xl={3}>
                     <ProductBox>
                       {" "}
                       <ThemeProvider theme={headingtheme}>
@@ -98,7 +111,7 @@ export default function HomePageSection3() {
                       <PriceImgLayout
                         sx={{
                           top: { md: "-15px", xs: "-45px" },
-                          left: { md: "135px" },
+                          left: { md: "30%", lg: "40%", xl: "50%" },
                           position: "relative",
                         }}
                         src={e.product_image}

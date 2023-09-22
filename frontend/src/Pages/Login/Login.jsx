@@ -15,9 +15,12 @@ export default function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     ApiCalls.login(email, password)
-      .then((res) => setloginDetails(res))
+      .then((res) => localStorage.setItem("ecommuser", JSON.stringify(res)))
       .catch((err) => console.log(err));
+    localStorage.setItem("ecommuser", JSON.stringify(logindetails));
     console.log(logindetails);
+
+    navigate("/");
   };
   return (
     <Grid container>

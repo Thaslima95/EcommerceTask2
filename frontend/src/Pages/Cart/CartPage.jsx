@@ -75,38 +75,41 @@ import {
 import MobileCartPage from "./MobileCartPage";
 import { useMemo } from "react";
 export default function CartPage() {
+  const [userid, setuserid] = useState(0);
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState([]);
   const [saveforlater, setSaveforlater] = useState([]);
   const discount = 53;
   const tax = 10;
   const navigate = useNavigate();
+  const result = JSON.parse(localStorage.getItem("ecommuser")) || [];
+  const user_id = result[0].user_id;
 
   useEffect(() => {
     const controller = new AbortController();
     const signal = controller.signal;
-    getCartDetails({ signal });
+    getCartDetails(user_id, { signal });
     return () => {
       controller.abort();
     };
-  }, []);
+  }, [userid]);
 
-  const getCartDetails = (signal) => {
-    ApiCalls.getCartItems(1, { signal })
+  const getCartDetails = (userid, signal) => {
+    ApiCalls.getCartItems(userid, { signal })
       .then((res) => setCart(res))
       .catch((err) => console.log(err));
   };
   useEffect(() => {
     const controller = new AbortController();
     const signal = controller.signal;
-    cartTotalDetails({ signal });
+    cartTotalDetails(user_id, { signal });
     return () => {
       controller.abort();
     };
   }, []);
 
-  const cartTotalDetails = (signal) => {
-    ApiCalls.getCartTotal(1, { signal })
+  const cartTotalDetails = (userid, signal) => {
+    ApiCalls.getCartTotal(userid, { signal })
       .then((res) => setTotal(res[0]))
       .catch((err) => console.log(err));
   };
@@ -118,7 +121,7 @@ export default function CartPage() {
         .then((res) => setSaveforlater(res))
         .catch((err) => console.log(err));
     };
-    getsaveforlaterlist(1);
+    getsaveforlaterlist(user_id);
   }, []);
   console.log(saveforlater);
 
@@ -140,7 +143,7 @@ export default function CartPage() {
     };
   }, []);
   const handlecheckout = () => {
-    ApiCalls.checkOut(1)
+    ApiCalls.checkOut(user_id)
       .then((res) => console.log(res))
       .then((err) => console.log(err));
     navigate("/orderplaced");
@@ -446,7 +449,7 @@ export default function CartPage() {
                   </Grid>
                   {saveforlater.map((e) => {
                     return (
-                      <Grid item md={3}>
+                      <Grid item md={4} xl={3}>
                         <SaveForLaterComponent
                           later={e}
                         ></SaveForLaterComponent>

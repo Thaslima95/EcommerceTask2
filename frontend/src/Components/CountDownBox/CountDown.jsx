@@ -22,15 +22,16 @@ export const CountDownBox = styled("div")({
 
 export const CountBox = styled("div")({
   display: "flex",
-  width: "143px",
+  width: "75%",
   height: "44px",
   gap: "4px",
   top: "60px",
   position: "absolute",
   borderRadius: "4px",
+
   "@media (min-width:600px)": {
     display: "flex",
-    width: "198px",
+    width: "100%",
     height: "50px",
     gap: "4px",
     top: "60px",
@@ -40,7 +41,7 @@ export const CountBox = styled("div")({
 });
 
 export const Counts = styled("div")({
-  width: "40px",
+  width: "30px",
   height: "50px",
 
   borderRadius: "4px",
@@ -60,10 +61,10 @@ countstheme.typography.subtitle2 = {
   top: "12px",
 
   position: "absolute",
-  width: "22px",
+
   height: "19px",
   fontFamily: "Inter",
-  fontSize: "16px",
+  fontSize: "13px",
   fontWeight: "700",
   lineHeight: "19px",
   letterSpacing: "0px",
@@ -77,15 +78,14 @@ countstheme.typography.subtitle2 = {
 };
 
 countssecondstheme.typography.subtitle2 = {
-  width: "22px",
   height: "15px",
   top: "24px",
   position: "absolute",
 
   fontFamily: "Inter",
-  fontSize: "11px",
+  fontSize: "10px",
   fontWeight: "400",
-  lineHeight: "15px",
+  lineHeight: "10px",
   letterSpacing: "0em",
   textAlign: "center",
   color: "#8B96A5",

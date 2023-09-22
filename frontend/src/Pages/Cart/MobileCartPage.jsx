@@ -13,38 +13,37 @@ import ApiCalls from "../../API/ApiCalls";
 
 export default function MobileCartPage({ cart, details, carttotal }) {
   const [qty, setQty] = React.useState(cart.quantity);
+  const result = JSON.parse(localStorage.getItem("ecommuser")) || [];
+  const user_id = result[0].user_id;
 
   const handleadd = (quty, id) => {
-    console.log(quty + 1);
     const q = quty + 1;
-    ApiCalls.updateCart(1, id, q)
+    ApiCalls.updateCart(user_id, id, q)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
     window.location.reload();
   };
   const handleremove = (quty, id) => {
-    console.log(quty - 1);
     const q = quty - 1;
-    ApiCalls.updateCart(1, id, q)
+    ApiCalls.updateCart(user_id, id, q)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
     window.location.reload();
   };
-  const handleChange = (event) => {
-    setQty(event.target.value);
-    console.log(qty);
-    ApiCalls.updateCart(1, cart.product_id, event.target.value)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
-  };
+  // const handleChange = (event) => {
+  //   setQty(event.target.value);
 
-  const removeCart = (productid, qty, userid) => {
-    ApiCalls.getRemovecart(1, productid, qty)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
-  };
-  console.log(cart);
-  console.log(qty);
+  //   ApiCalls.updateCart(user_id, cart.product_id, event.target.value)
+  //     .then((res) => console.log(res))
+  //     .catch((err) => console.log(err));
+  // };
+
+  // const removeCart = (productid, qty, userid) => {
+  //   ApiCalls.getRemovecart(user_id, productid, qty)
+  //     .then((res) => console.log(res))
+  //     .catch((err) => console.log(err));
+  // };
+
   return (
     <>
       <CartComponentBox sx={{ border: "2px solid green", display: "flex" }}>

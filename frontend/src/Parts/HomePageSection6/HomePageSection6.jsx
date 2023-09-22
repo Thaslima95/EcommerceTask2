@@ -57,15 +57,13 @@ export default function HomePageSection6() {
           container
           md={12}
           sx={{
-            display: { md: "flex", xs: "flex" },
-            flexWrap: { md: "wrap", xs: "wrap" },
             marginLeft: { md: "12px" },
           }}
         >
           {windowWidth > 798
             ? products.map((p) => {
                 return (
-                  <Grid item md={3}>
+                  <Grid item md={4} xl={3}>
                     <ProductBox>
                       <RecommendProductLayout src={p.product_image} />
                       <ThemeProvider theme={recommendedpricetheme}>

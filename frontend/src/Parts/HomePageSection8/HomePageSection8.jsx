@@ -36,7 +36,7 @@ export default function HomePageSection8() {
     >
       <Grid item md={1}></Grid>
       <Grid container xs={12} md={10}>
-        <Grid item md={12} sx={{}}>
+        <Grid item md={12} sx={{ marginBottom: "30px" }}>
           <ThemeProvider theme={homepageheadingtheme}>
             <Typography variant="h3">Suppliers by region</Typography>
           </ThemeProvider>

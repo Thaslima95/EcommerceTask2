@@ -8,7 +8,7 @@ export const JoinNowButton = styled("button")({
   width: "180px",
   height: "30px",
   top: "65px",
-  left: "1090px",
+  // left: "1090px",
   position: "absolute",
   padding: "0px 10px 0px 10px",
   borderRadius: "6px",
@@ -36,7 +36,7 @@ export const LoginButton = styled("button")({
   width: "180px",
   height: "30px",
   top: "105px",
-  left: "1090px",
+  // left: "1090px",
   position: "absolute",
   padding: "0px 10px 0px 10px",
   borderRadius: "6px",
@@ -63,7 +63,7 @@ loginbuttontheme.typography.subtitle1 = {
 
 adbuttontheme.typography.subtitle1 = {
   //styleName: Text-base;
-  width: "144px",
+  // width: "144px",
   height: "57px",
 
   styleName: "text-btn/btn-small",

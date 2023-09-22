@@ -8,7 +8,7 @@ export const footertheme2 = createTheme();
 export const copyrighttheme = createTheme();
 
 export const FooterBox1 = styled("div")({
-  width: "276px",
+  width: "100%",
   height: "157px",
 });
 export const FooterImgBox = styled("div")({
@@ -17,7 +17,7 @@ export const FooterImgBox = styled("div")({
 });
 
 export const FooterTextBox = styled("div")({
-  width: "277px",
+  width: "100%",
   height: "48px",
 });
 
@@ -30,7 +30,7 @@ footertheme1.typography.subtitle1 = {
   styleName: "Text-info",
   color: "#8B96A5",
   fontFamily: "Inter",
-  fontSize: "16px",
+  fontSize: "95%",
   fontWeight: "400",
   lineHeight: "24px",
   letterSpacing: "0px",

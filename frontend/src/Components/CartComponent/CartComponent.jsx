@@ -22,11 +22,13 @@ import ApiCalls from "../../API/ApiCalls";
 
 export default function CartComponent({ cart, details, carttotal }) {
   const [qty, setQty] = React.useState(cart.product_quantity);
+  const result = JSON.parse(localStorage.getItem("ecommuser")) || [];
+  const user_id = result[0].user_id;
 
   const handleChange = (event) => {
     setQty(event.target.value);
     console.log(qty);
-    ApiCalls.updateCart(1, cart.product_id, event.target.value)
+    ApiCalls.updateCart(user_id, cart.product_id, event.target.value)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
     details();
@@ -34,7 +36,7 @@ export default function CartComponent({ cart, details, carttotal }) {
   };
 
   const removeCart = (productid, qty, userid) => {
-    ApiCalls.removefromcart(1, productid, qty)
+    ApiCalls.removefromcart(user_id, productid, qty)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
     details();
@@ -42,8 +44,7 @@ export default function CartComponent({ cart, details, carttotal }) {
   };
 
   const handlesaveforlater = (productid, quantity, userid) => {
-    console.log("save for later");
-    ApiCalls.saveforlater(1, productid, quantity)
+    ApiCalls.saveforlater(userid, productid, quantity)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
     window.location.reload();
@@ -76,7 +77,7 @@ export default function CartComponent({ cart, details, carttotal }) {
                 <Typography
                   variant="subtitle1"
                   onClick={() =>
-                    handlesaveforlater(cart.product_id, cart.quantity, 1)
+                    handlesaveforlater(cart.product_id, cart.quantity, user_id)
                   }
                 >
                   Save for Later

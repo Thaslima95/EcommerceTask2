@@ -28,39 +28,40 @@ import { joinbuttontheme } from "../../Components/Button/JoinNowButton";
 export default function HomePageSection1() {
   const [categories, setCategories] = useState([]);
 
-  // useMemo(() => {
-  //   ApiCalls.getCategoris()
-  //     .then((res) => setCategories(res))
-  //     .catch((err) => console.log(err));
-  // }, []);
-  useEffect(() => {
-    getCategoriesDetails();
-    // return () => {
-    //   controller.abort();
-    // };
-  }, []);
-
   const getCategoriesDetails = () => {
     ApiCalls.getCategoris()
       .then((res) => setCategories(res))
       .catch((err) => console.log(err));
   };
+  useMemo(() => {
+    getCategoriesDetails();
+  }, []);
 
   return (
     <Grid
       container
       xs={9}
       md={12}
-      sx={{ top: { md: "102px", xs: "60px" }, position: "absolute" }}
+      xl={12}
+      sx={{
+        top: { md: "102px", xs: "60px" },
+        position: "absolute",
+      }}
     >
       <Grid item md={1}></Grid>
-      <Grid container xs={12} md={9} sx={{}}>
-        <Grid item xs={4} md={3} sx={{ display: { xs: "none", md: "block" } }}>
+      <Grid container xs={12} md={10} sx={{}}>
+        <Grid
+          item
+          xs={4}
+          md={3}
+          xl={2}
+          sx={{ display: { xs: "none", md: "block" } }}
+        >
           {categories.map((c) => {
             return <ListComponent category={c} />;
           })}
         </Grid>
-        <Grid item xs={4} md={7} sx={{}}>
+        <Grid item xs={12} md={6} lg={6} xl={6}>
           <BannerImg component="div">
             <ThemeProvider theme={bannertheme1}>
               <Typography variant="subtitle1">Latest trending</Typography>
@@ -75,12 +76,24 @@ export default function HomePageSection1() {
             </LearnMoreButton>
           </BannerImg>
         </Grid>
-        <Grid item xs={4} md={2} sx={{ display: { xs: "none", md: "block" } }}>
+        <Grid
+          item
+          xs={4}
+          md={3}
+          lg={3}
+          sx={{
+            display: { xs: "none", md: "block" },
+
+            padding: { xl: "20px" },
+            paddingLeft: { xl: "60px", md: "40px" },
+          }}
+        >
           <Box
             sx={{
               width: "195px",
               height: "150px",
-
+              display: "flex",
+              gap: "10px",
               marginBottom: "8px",
             }}
           >
@@ -90,8 +103,8 @@ export default function HomePageSection1() {
                 alt=""
                 style={{
                   top: "10px",
-                  left: "1100px",
-                  position: "absolute",
+                  // left: "1100px",
+                  // position: "absolute",
                 }}
               />
             </Box>
@@ -99,8 +112,8 @@ export default function HomePageSection1() {
               sx={{
                 width: "112px",
                 height: "38px",
-                left: "1153px",
-                position: "absolute",
+                // left: "1153px",
+                // position: "absolute",
                 top: "10px",
               }}
             >
@@ -132,7 +145,8 @@ export default function HomePageSection1() {
           </Box>
           <Box
             sx={{
-              width: "195",
+              // width: "195",
+              width: "80%",
               height: "95px",
 
               background: "#F38332",
@@ -141,10 +155,7 @@ export default function HomePageSection1() {
             }}
           >
             <ThemeProvider theme={adbuttontheme}>
-              <Typography
-                variant="subtitle1"
-                sx={{ left: "1106px", position: "absolute", top: "175px" }}
-              >
+              <Typography variant="subtitle1" sx={{ padding: "15px" }}>
                 Get US $10 off <br />
                 with a new <br /> supplier
               </Typography>
@@ -152,7 +163,7 @@ export default function HomePageSection1() {
           </Box>
           <Box
             sx={{
-              width: "195",
+              width: "80%",
               height: "95px",
 
               background: "#55BDC3",
@@ -160,10 +171,7 @@ export default function HomePageSection1() {
             }}
           >
             <ThemeProvider theme={adbuttontheme}>
-              <Typography
-                variant="subtitle1"
-                sx={{ left: "1106px", position: "absolute", top: "275px" }}
-              >
+              <Typography variant="subtitle1" sx={{ padding: "10px" }}>
                 Send quotes with <br /> supplier <br /> preferences
               </Typography>
             </ThemeProvider>

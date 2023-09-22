@@ -96,7 +96,7 @@ buttontheme.typography.subtitle1 = {
 };
 export const BannerImg = styled("div")({
   position: "absolute",
-  width: "300px",
+  width: "130%",
   height: "180px",
   backgroundImage: `url(${MainImg})`,
   backgroundPosition: "center",
@@ -104,7 +104,7 @@ export const BannerImg = styled("div")({
   backgroundRepeat: "no-repeat",
   objectFit: "contain",
   "@media (min-width:600px)": {
-    width: "665px",
+    width: "40%",
     height: "365px",
     position: "absolute",
     marginLeft: "-12px",

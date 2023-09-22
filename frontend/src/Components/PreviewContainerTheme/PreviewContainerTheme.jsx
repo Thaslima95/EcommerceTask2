@@ -20,7 +20,7 @@ export const PreviewTextBox = styled("div")({
   top: "55px",
   position: "relative",
   "@media (min-width:600px)": {
-    width: "607px",
+    width: "70%",
     height: "75px",
   },
 });
@@ -164,20 +164,20 @@ productheadingshippingtheme.typography.subtitle2 = {
 };
 
 productviewdetailstheme.typography.subtitle2 = {
-  width: "85px",
+  // width: "85px",
   height: "16px",
 
-  fontSize: "13px",
+  fontSize: "100%",
   styleName: "Text-small",
 
   lineHeight: "15.73px",
 
   [productviewdetailstheme.breakpoints.up("md")]: {
-    width: "94px",
+    // width: "94px",
     height: "19px",
     styleName: "Title-base",
     color: "#0D6EFD",
-    fontSize: "16px",
+    fontSize: "100%",
 
     fontFamily: "Inter",
 

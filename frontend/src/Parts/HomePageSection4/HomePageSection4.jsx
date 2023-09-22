@@ -62,7 +62,7 @@ export default function HomePageSection4() {
             <Typography variant="subtitle2">Electronics</Typography>
           </ThemeProvider>
         </Grid>
-        <Grid container xs={12} md={9}>
+        <Grid container xs={12} md={9} xl={9}>
           {windowWidth > 798
             ? value.map((e) => {
                 return (
@@ -99,7 +99,7 @@ export default function HomePageSection4() {
                       <PriceImgLayout
                         sx={{
                           top: { md: "-15px", xs: "-45px" },
-                          left: { md: "135px" },
+                          left: { md: "30%", lg: "40%", xl: "50%" },
                           position: "relative",
                         }}
                         src={e.product_image}

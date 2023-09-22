@@ -22,11 +22,17 @@ export default function HeaderComponent() {
   const [, setSearchparam] = useSearchParams();
   return (
     <>
-      <Grid container xs={9} md={12} sx={{ top: "20px", position: "absolute" }}>
+      <Grid
+        container
+        xs={9}
+        md={10}
+        xl={12}
+        sx={{ top: "20px", position: "absolute" }}
+      >
         <Grid item xs={1} md={1}></Grid>
         <Grid container xs={12} md={10}>
           <Grid item xs={12} md={2}>
-            <Grid container xs={6} md={12} lg={8}>
+            <Grid container xs={6} md={11} lg={8}>
               <Grid item md={4}>
                 <img src={logosymbol} alt="" />
               </Grid>
@@ -35,8 +41,8 @@ export default function HeaderComponent() {
               </Grid>
             </Grid>
           </Grid>
-          <Grid container xs={9} md={7} lg={7}>
-            <Grid md={6} lg={5}>
+          <Grid container xs={9} md={6} xl={7}>
+            <Grid md={6} xl={6}>
               <InSearch
                 type="search"
                 placeholder="Search"
@@ -47,6 +53,7 @@ export default function HeaderComponent() {
             </Grid>
             <Grid
               md={3}
+              xl={3}
               sx={{
                 display: { xs: "none", md: "block" },
                 border: "1px solid #0D6EFD",
@@ -59,7 +66,7 @@ export default function HeaderComponent() {
               <SearchButton />
             </Grid>
           </Grid>
-          <Grid item xs md={3} sx={{}}>
+          <Grid item xs md={4} xl={2}>
             <Box
               sx={{
                 display: "flex",
@@ -146,7 +153,7 @@ export default function HeaderComponent() {
         }}
       >
         <Grid item md={1}></Grid>
-        <Grid container xs={11} md={10} sx={{}}>
+        <Grid container xs={11} md={10} xl={9}>
           <HeaderNavbarStyles />
         </Grid>
         <Grid item spacing={4}></Grid>

@@ -157,7 +157,7 @@ export default function CategoryPage() {
             </Grid>
           </Grid>
           <Grid item xs={12} md={12}>
-            <Grid container xs={12} md={12}>
+            <Grid container xs={12} md={10} xl={12}>
               <BestTabComponent setgrid={setgrid} />
             </Grid>
             <Grid item xs={12} sx={{ display: { xs: "block", md: "none" } }}>
@@ -177,7 +177,7 @@ export default function CategoryPage() {
               </PopupState>
             </Grid>
             <Grid item xs={12} md={8}></Grid>
-            <Grid container xs={12} md={10}>
+            <Grid container xs={12} md={10} xl={10}>
               {searchTerm
                 ? categories
                     .filter(({ product_title }) =>

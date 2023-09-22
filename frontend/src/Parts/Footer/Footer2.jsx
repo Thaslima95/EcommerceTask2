@@ -43,7 +43,7 @@ export default function Footer2() {
               <img src={logosymbol} alt="" />
               <img src={Brand} alt="" />
             </FooterImgBox>
-            <FooterTextBox sx={{ marginTop: "10px", marginLeft: "10px" }}>
+            <FooterTextBox sx={{ marginTop: "10px" }}>
               <ThemeProvider theme={footertheme1}>
                 <Typography variant="subtitle1">
                   Best information about the company gies here but now lorem
@@ -51,7 +51,7 @@ export default function Footer2() {
                 </Typography>
               </ThemeProvider>
             </FooterTextBox>
-            <IconLayoutBoxfooter sx={{ marginTop: "10px", marginLeft: "10px" }}>
+            <IconLayoutBoxfooter sx={{ marginTop: "20px", marginLeft: "10px" }}>
               <img src={Facebook} style={{ marginRight: "5px" }} alt="" />
               <img src={Youtube} style={{ marginRight: "5px" }} alt="" />
               <img src={Twitter} style={{ marginRight: "5px" }} alt="" />
@@ -109,7 +109,10 @@ export default function Footer2() {
         </Grid>
         <Grid container xs={12} md={12}>
           <Grid container xs={12} md={10}>
-            <Box
+            <Grid
+              item
+              md={10}
+              xl={10}
               sx={{
                 display: "flex",
                 justifyContent: "space-between",
@@ -118,6 +121,8 @@ export default function Footer2() {
               <ThemeProvider theme={copyrighttheme}>
                 <Typography variant="subtitle1">© 2023 Ecommerce.</Typography>
               </ThemeProvider>
+            </Grid>
+            <Grid item xl={2}>
               <Dropdown className="show dropdown">
                 <Dropdown.Toggle
                   variant="primary"
@@ -134,12 +139,11 @@ export default function Footer2() {
                     margin: "10px",
                     padding: "0px",
                     display: "flex",
-                    marginLeft: "550px",
                   }}
                 >
                   <Typography
                     style={{
-                      marginTop: "-10px", //styleName: Text-title;
+                      marginTop: "-10px",
                       fontFamily: "Inter",
                       fontSize: "16px",
                       fontWeight: "500",
@@ -161,7 +165,7 @@ export default function Footer2() {
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
-            </Box>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>

@@ -47,15 +47,15 @@ export default function HomePageSection7() {
     >
       <Grid item md={1}></Grid>
       <Grid container xs={12} md={10} sx={{}}>
-        <Grid item md={12} sx={{}}>
+        <Grid item md={12} sx={{ marginBottom: "30px" }}>
           <ThemeProvider theme={homepageheadingtheme}>
             <Typography variant="h3">Our Services</Typography>
           </ThemeProvider>
         </Grid>
-        <Grid md={12} sx={{ display: "flex" }}>
+        <Grid md={12} sx={{ display: "flex", gap: "10px" }}>
           {servicearray.map((e) => {
             return (
-              <Grid md={3}>
+              <Grid md={4} xl={3}>
                 <ServiceBox>
                   <ServiceImgLayout src={e.image} />
                   <ThemeProvider theme={servicetheme}>

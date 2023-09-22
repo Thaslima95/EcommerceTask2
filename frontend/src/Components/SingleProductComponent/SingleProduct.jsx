@@ -58,10 +58,12 @@ export default function SingleProduct() {
   const [singleproduct, setSingleProduct] = useState([]);
   const images = [];
   const val = useParams().id;
-  const localcart = JSON.parse(localStorage.getItem("itemcart")) || [];
+  const userdetails = JSON.parse(localStorage.getItem("ecommuser")) || [];
+
+  const userid = userdetails[0].user_id;
 
   const handlecart = (product_id) => {
-    ApiCalls.addtoCart(product_id, 1, 1)
+    ApiCalls.addtoCart(product_id, userid, 1)
       .then((res) => {
         console.log(singleproduct);
         navigate("/cart");
@@ -106,14 +108,14 @@ export default function SingleProduct() {
 
         <Grid item md={1}></Grid>
         <Grid container xs={12} md={10}>
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} md={3} xl={4}>
             {images && images.length ? (
               <Carousel
                 showArrows={true}
                 autoPlay
                 infiniteLoop
                 sx={{
-                  width: "380px",
+                  width: { xl: "380px", md: "280px" },
                   height: "380px",
                   display: { xs: "none", md: "block" },
                 }}
@@ -139,7 +141,15 @@ export default function SingleProduct() {
               <Card cover={<img src="" className="mb-3 card-image" />}></Card>
             )}
           </Grid>
-          <Grid item xs={12} md={5}>
+          <Grid
+            item
+            xs={12}
+            md={6}
+            xl={5}
+            sx={{
+              paddingLeft: { md: "20px", xl: "10px" },
+            }}
+          >
             {windowWidth > 768 ? (
               <SingleproductBox>
                 <Grid
