@@ -18,7 +18,6 @@ import { ThemeProvider } from "@mui/material";
 
 export default function SingleProductBox2({ product }) {
   const { product_image, product_title, product_id, product_price } = product;
-  console.log(product);
   return (
     <SingleproductBox>
       <Box sx={{ display: "flex" }}>

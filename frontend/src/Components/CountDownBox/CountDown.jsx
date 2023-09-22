@@ -178,7 +178,7 @@ dealproductname.typography.subtitle2 = {
   position: "relative",
   styleName: "Title-H4",
   fontFamily: "Inter",
-  fontSize: "16px",
+  fontSize: "12px",
   fontWeight: "400",
   lineHeight: "24px",
   letterSpacing: "-0.2px",

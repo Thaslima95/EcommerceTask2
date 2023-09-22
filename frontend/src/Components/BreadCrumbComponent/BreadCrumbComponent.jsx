@@ -18,7 +18,6 @@ export default function BreadCrumbComponent() {
 
   const result = str.split(/[/]/);
 
-  console.log(result);
   const breadcrumbs = [
     <Link
       underline="hover"

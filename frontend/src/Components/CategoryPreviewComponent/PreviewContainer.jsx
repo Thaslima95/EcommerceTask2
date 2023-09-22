@@ -4,6 +4,7 @@ import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import Grid from "@mui/material/Grid";
+import { Box } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import { useState, useEffect } from "react";
 import {
@@ -12,6 +13,7 @@ import {
   productheadingtheme,
   PreviewBoxDetails,
   productheadingpricetheme,
+  productheadingpricetheme2,
   PreviewTextBox,
   productheadingorderstheme,
   PreviewRatingBox,
@@ -40,7 +42,7 @@ export default function PreviewContainer({ category }) {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-  console.log(category);
+
   const {
     product_title,
     product_price,
@@ -66,14 +68,24 @@ export default function PreviewContainer({ category }) {
                   : product_title.substr(0, 20)}
               </Typography>
             </ThemeProvider>
-            <ThemeProvider theme={productheadingpricetheme}>
-              <Typography
-                variant="subtitle2"
-                sx={{ top: { xs: "13px" }, position: "relative" }}
-              >
-                ${product_price}
-              </Typography>
-            </ThemeProvider>
+            <Box sx={{ display: "flex", gap: "15px" }}>
+              <ThemeProvider theme={productheadingpricetheme}>
+                <Typography
+                  variant="subtitle2"
+                  sx={{ top: { xs: "13px" }, position: "relative" }}
+                >
+                  ${product_price}
+                </Typography>
+              </ThemeProvider>
+              <ThemeProvider theme={productheadingpricetheme2}>
+                <Typography
+                  variant="subtitle2"
+                  sx={{ top: { xs: "13px" }, position: "relative" }}
+                >
+                  <strike>${Number(product_price) + 500}</strike>
+                </Typography>
+              </ThemeProvider>
+            </Box>
             <PreviewRatingBox sx={{ display: "flex" }}>
               <Rating
                 name="size-small"

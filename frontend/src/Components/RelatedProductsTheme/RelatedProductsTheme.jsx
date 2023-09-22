@@ -17,8 +17,8 @@ export const RelatedProdcutsBox = styled("div")({
 });
 
 export const RelatedProdcutsImgBox = styled("img")({
-  width: "100%",
-  height: "125px",
+  width: "60%",
+  height: "60%",
   "@media (min-width:600px)": {
     width: "100%",
     height: "172px",

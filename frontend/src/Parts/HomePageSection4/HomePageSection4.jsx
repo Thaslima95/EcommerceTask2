@@ -3,7 +3,11 @@ import React from "react";
 import { Typography } from "@mui/material";
 import { useState, useEffect } from "react";
 import Tech from "../../assets/Images/tech.jpg";
-
+import {
+  RemoveAllButton,
+  removeAllbuttontheme,
+} from "../../Components/Button/BacktoShopButton";
+import ArrowFoward from "../../assets/Images/arrow_forward.png";
 import { Link } from "react-router-dom";
 import ApiCalls from "../../API/ApiCalls";
 import { useMemo } from "react";
@@ -45,7 +49,7 @@ export default function HomePageSection4() {
       xs={12}
       md={12}
       sx={{
-        top: { md: "1100px", xs: "790px" },
+        top: { md: "1100px", xs: "810px" },
         position: "absolute",
       }}
     >
@@ -152,6 +156,26 @@ export default function HomePageSection4() {
                   </Grid>
                 );
               })}
+        </Grid>
+        <Grid
+          item
+          md={4}
+          sx={{
+            display: { md: "none", xs: "flex" },
+            marginTop: "20px",
+          }}
+        >
+          <Link
+            to={`/category/${"allproducts"}`}
+            style={{ textDecoration: "none" }}
+          >
+            <RemoveAllButton sx={{ marginTop: "5px", display: "flex" }}>
+              <ThemeProvider theme={removeAllbuttontheme}>
+                <Typography variant="subtitle1">Source now</Typography>
+              </ThemeProvider>
+              <img src={ArrowFoward} alt="" />
+            </RemoveAllButton>
+          </Link>
         </Grid>
       </Grid>
     </Grid>

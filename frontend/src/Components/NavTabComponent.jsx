@@ -3,7 +3,6 @@ import Tabs from "react-bootstrap/Tabs";
 import React from "react";
 
 export default function NavTabComponent({ description }) {
-  console.log(description);
   return (
     <Tabs
       defaultActiveKey="home"

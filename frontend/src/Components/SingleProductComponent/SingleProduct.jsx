@@ -1,18 +1,14 @@
 import React, { useState } from "react";
 import { Card } from "react-bootstrap";
-
 import Check from "../../assets/Images/Check.png";
 import { Box } from "@mui/material";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import NavTabComponent from "../NavTabComponent";
 import { useParams } from "react-router-dom";
-
 import { Grid, Typography } from "@mui/material";
 import Bag from "../../assets/Images/Bag.png";
-
 import Message from "../../assets/Images/Message.png";
-
 import { Rating } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import ApiCalls from "../../API/ApiCalls";
@@ -42,6 +38,61 @@ import {
 
 export default function SingleProduct() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const navigate = useNavigate();
+  const [singleproduct, setSingleProduct] = useState([]);
+  const images = [];
+  const val = useParams().id;
+  const [cart, setCart] = useState([]);
+  const userdetails = JSON.parse(localStorage.getItem("ecommuser")) || [];
+  const userid = userdetails.length !== 0 && userdetails[0].user_id;
+
+  const handlecart = (product_id) => {
+    if (!userid) {
+      alert("Please login to continue");
+      navigate("/login");
+    } else {
+      ApiCalls.addtoCart(product_id, userid, 1)
+        .then((res) => {
+          navigate("/cart");
+        })
+        .catch((err) => console.log(err));
+    }
+  };
+  useMemo(() => {
+    ApiCalls.getSingleProduct(val)
+      .then((res) => {
+        setSingleProduct(res[0]);
+      })
+      .catch((err) => console.log(err));
+  }, [val]);
+
+  const { product_image, product_title, product_id, product_price } =
+    singleproduct;
+
+  for (let i = 0; i < 5; i++) {
+    images.push(product_image);
+  }
+  const products =
+    cart.length != 0 && cart.filter((e) => e.product_id == product_id);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    const signal = controller.signal;
+    if (userid) {
+      getCartDetails(userid, { signal });
+    }
+    return () => {
+      controller.abort();
+    };
+  }, [userid, product_id]);
+
+  const getCartDetails = (userid, signal) => {
+    ApiCalls.getCartItems(userid, { signal })
+      .then((res) => {
+        setCart(res);
+      })
+      .catch((err) => console.log(err));
+  };
 
   useEffect(() => {
     function handleResize() {
@@ -54,38 +105,7 @@ export default function SingleProduct() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-  const navigate = useNavigate();
-  const [singleproduct, setSingleProduct] = useState([]);
-  const images = [];
-  const val = useParams().id;
-  const userdetails = JSON.parse(localStorage.getItem("ecommuser")) || [];
 
-  const userid = userdetails[0].user_id;
-
-  const handlecart = (product_id) => {
-    ApiCalls.addtoCart(product_id, userid, 1)
-      .then((res) => {
-        console.log(singleproduct);
-        navigate("/cart");
-      })
-      .catch((err) => console.log(err));
-  };
-  useMemo(() => {
-    ApiCalls.getSingleProduct(val)
-      .then((res) => {
-        console.log(singleproduct);
-        setSingleProduct(res[0]);
-      })
-      .catch((err) => console.log(err));
-  }, [val]);
-  console.log(singleproduct);
-  const { product_image, product_title, product_id, product_price } =
-    singleproduct;
-  console.log(product_image);
-  for (let i = 0; i < 5; i++) {
-    images.push(product_image);
-  }
-  console.log(images);
   return (
     <>
       <Grid
@@ -378,17 +398,31 @@ export default function SingleProduct() {
             )}
           </Grid>
           <Grid item xs={12} md={2} sx={{ marginBottom: "50px" }}>
-            <AddtocartButton
-              sx={{
-                marginTop: { md: "200px", xs: "10px" },
-                marginLeft: { xs: "50px", md: "10px" },
-              }}
-              onClick={() => handlecart(product_id)}
-            >
-              <ThemeProvider theme={addtocartbuttontheme}>
-                <Typography>Add to Cart</Typography>
-              </ThemeProvider>
-            </AddtocartButton>
+            {cart.filter((e) => e.product_id == product_id).length != 0 ? (
+              <AddtocartButton
+                sx={{
+                  marginTop: { md: "200px", xs: "10px" },
+                  marginLeft: { xs: "50px", md: "10px" },
+                }}
+                onClick={() => navigate("/cart")}
+              >
+                <ThemeProvider theme={addtocartbuttontheme}>
+                  <Typography>Go to Cart</Typography>
+                </ThemeProvider>
+              </AddtocartButton>
+            ) : (
+              <AddtocartButton
+                sx={{
+                  marginTop: { md: "200px", xs: "10px" },
+                  marginLeft: { xs: "50px", md: "10px" },
+                }}
+                onClick={() => handlecart(product_id)}
+              >
+                <ThemeProvider theme={addtocartbuttontheme}>
+                  <Typography>Add to Cart</Typography>
+                </ThemeProvider>
+              </AddtocartButton>
+            )}
           </Grid>
         </Grid>
       </Grid>

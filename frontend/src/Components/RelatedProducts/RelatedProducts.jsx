@@ -28,7 +28,7 @@ export default function RelatedProducts() {
     <>
       {products.map((e) => {
         return (
-          <Grid item md={2} xs={3.5} xl={1.5}>
+          <Grid item md={2.5} xs={4.5} xl={1.5}>
             <RelatedProdcutsBox>
               <RelatedProdcutsImgBox src={e.product_image} />
               <RelatedProdcutsTextBox>

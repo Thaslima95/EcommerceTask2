@@ -13,7 +13,7 @@ export const BacktoShopButton = styled("button")({
 });
 
 export const RemoveAllButton = styled("button")({
-  width: "115px",
+  width: "155px",
   height: "40px",
   padding: "0px, 16px, 0px, 16px",
   borderRadius: "6px",
@@ -38,7 +38,7 @@ backtoshopbuttontheme.typography.subtitle1 = {
 };
 
 removeAllbuttontheme.typography.subtitle1 = {
-  width: "83px",
+  width: "100px",
   height: "19px",
   styleName: "text-btn/btn-normal",
   fontFamily: "Inter",

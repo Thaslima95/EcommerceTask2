@@ -6,6 +6,7 @@ export const productheadingpricetheme = createTheme();
 export const productheadingorderstheme = createTheme();
 export const productheadingshippingtheme = createTheme();
 export const productviewdetailstheme = createTheme();
+export const productheadingpricetheme2 = createTheme();
 
 export const PreviewBox = styled("div")({
   width: "300px",
@@ -81,6 +82,27 @@ productheadingpricetheme.typography.subtitle2 = {
     top: "120px",
     position: "relative",
     fontSize: "20px",
+
+    fontFamily: "Inter",
+
+    fontWeight: "600",
+    lineHeight: "28px",
+    letterSpacing: "0px",
+    textAlign: "left",
+  },
+};
+
+productheadingpricetheme2.typography.subtitle2 = {
+  fontSize: "16px",
+  top: "120px",
+  position: "relative",
+  color: "#8B96A5",
+
+  [productheadingpricetheme2.breakpoints.up("md")]: {
+    top: "120px",
+    position: "relative",
+    fontSize: "16px",
+    color: "#8B96A5",
 
     fontFamily: "Inter",
 

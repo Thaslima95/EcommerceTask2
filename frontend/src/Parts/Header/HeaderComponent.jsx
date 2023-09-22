@@ -10,6 +10,7 @@ import Profile from "../../assets/Images/Profile.png";
 import Message2 from "../../assets/Images/Message2.png";
 import Heart from "../../assets/Images/Heart.png";
 import Cart2 from "../../assets/Images/Cart2.png";
+import Hamburger from "../../assets/Images/Hamburger.png";
 import "./Header.css";
 import { theme } from "../../Components/HeaderTypography/HeaderTypography";
 import { ThemeProvider } from "@mui/material";
@@ -18,8 +19,24 @@ import { InSearch } from "../../Components/HeaderTypography/HeaderTypography";
 import HeaderNavbarStyles from "../../Components/NavbarComponents/HeaderNavbar";
 import { Outlet } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import Cart1 from "../../assets/Images/Vector (2).png";
+import Profile1 from "../../assets/Images/Vector (3).png";
+import Search from "../../assets/Images/search (2).png";
 export default function HeaderComponent() {
   const [, setSearchparam] = useSearchParams();
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  useEffect(() => {
+    function handleResize() {
+      setWindowWidth(window.innerWidth);
+    }
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   return (
     <>
       <Grid
@@ -32,7 +49,10 @@ export default function HeaderComponent() {
         <Grid item xs={1} md={1}></Grid>
         <Grid container xs={12} md={10}>
           <Grid item xs={12} md={2}>
-            <Grid container xs={6} md={11} lg={8}>
+            <Grid container xs={10} md={11} lg={8}>
+              <Grid item xs={2} sx={{ display: { md: "none", xs: "block" } }}>
+                <img src={Hamburger} alt="" style={{ marginTop: "15px" }} />
+              </Grid>
               <Grid item md={4}>
                 <img src={logosymbol} alt="" />
               </Grid>
@@ -43,6 +63,19 @@ export default function HeaderComponent() {
           </Grid>
           <Grid container xs={9} md={6} xl={7}>
             <Grid md={6} xl={6}>
+              {windowWidth < 798 && (
+                <img
+                  src={Search}
+                  alt=""
+                  style={{
+                    position: "relative",
+                    left: "20px",
+                    top: "10px",
+                    zIndex: "1",
+                  }}
+                />
+              )}
+
               <InSearch
                 type="search"
                 placeholder="Search"
@@ -82,10 +115,15 @@ export default function HeaderComponent() {
                   height: "41px",
                 }}
               >
-                <Img src={Profile} alt="" />
+                <Img src={windowWidth > 798 ? Profile : Profile1} alt="" />
 
                 <ThemeProvider theme={theme}>
-                  <Typography variant="subtitle1">Profile</Typography>
+                  <Typography
+                    variant="subtitle1"
+                    sx={{ display: { xs: "none", md: "block" } }}
+                  >
+                    Profile
+                  </Typography>
                 </ThemeProvider>
               </Box>
               <Box
@@ -121,9 +159,14 @@ export default function HeaderComponent() {
                   height: "41px",
                 }}
               >
-                <Img src={Cart2} alt="" />
+                <Img src={windowWidth > 798 ? Cart2 : Cart1} alt="" />
                 <ThemeProvider theme={theme}>
-                  <Typography variant="subtitle1">My cart</Typography>
+                  <Typography
+                    variant="subtitle1"
+                    sx={{ display: { xs: "none", md: "block" } }}
+                  >
+                    My cart
+                  </Typography>
                 </ThemeProvider>
               </Box>
             </Box>

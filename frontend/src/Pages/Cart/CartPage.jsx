@@ -123,7 +123,6 @@ export default function CartPage() {
     };
     getsaveforlaterlist(user_id);
   }, []);
-  console.log(saveforlater);
 
   const handleBack = () => {
     window.history.back();
@@ -143,6 +142,9 @@ export default function CartPage() {
     };
   }, []);
   const handlecheckout = () => {
+    if (!user_id) {
+      navigate("/login");
+    }
     ApiCalls.checkOut(user_id)
       .then((res) => console.log(res))
       .then((err) => console.log(err));
@@ -155,25 +157,13 @@ export default function CartPage() {
           {windowWidth > 798 ? (
             <>
               <Grid item md={1}></Grid>
-              <Grid container xs={12} md={9} sx={{ border: "1px solid red" }}>
+              <Grid container xs={12} md={9}>
                 <FooterImgBox>
                   <img src={logosymbol} alt="" />
                   <img src={Brand} alt="" />
                 </FooterImgBox>
-                <Grid
-                  item
-                  xs={1}
-                  md={6}
-                  lg={7}
-                  sx={{ border: "1px solid red" }}
-                ></Grid>
-                <Grid
-                  item
-                  xs={1}
-                  md={3}
-                  lg={3}
-                  sx={{ border: "1px solid red" }}
-                >
+                <Grid item xs={1} md={6} lg={7}></Grid>
+                <Grid item xs={1} md={3} lg={3}>
                   <Box
                     sx={{
                       display: "flex",
@@ -211,12 +201,9 @@ export default function CartPage() {
                   </Box>
                 </Grid>
               </Grid>
-              <Grid
-                container
-                sx={{ marginTop: "60px", border: "1px solid red" }}
-              >
+              <Grid container sx={{ marginTop: "60px" }}>
                 <Grid item md={1}></Grid>
-                <Grid container xs={12} md={9} sx={{ border: "1px solid red" }}>
+                <Grid container xs={12} md={9}>
                   <CartHeading>
                     <ThemeProvider theme={cartHeadingTitle}>
                       <Typography variant="h3">
@@ -236,7 +223,6 @@ export default function CartPage() {
                       md={7}
                       sx={{
                         display: "block",
-                        border: "1px solid green",
                       }}
                     >
                       {cart.map((e) => {
@@ -612,6 +598,7 @@ export default function CartPage() {
                     <Typography>Shopping Cart</Typography>
                   </Box>
                 </Box>
+
                 {cart.map((e) => {
                   return (
                     <MobileCartPage
@@ -621,37 +608,44 @@ export default function CartPage() {
                     />
                   );
                 })}
-                <CartCheckoutBoxmobile>
-                  <Grid container xs={10}>
-                    <Grid item xs={6}>
-                      <Typography>Items</Typography>
-                      <Typography>Discount</Typography>
-                      <Typography>Tax</Typography>
-                      <Typography>Total</Typography>
+                {cart.length != 0 ? (
+                  <CartCheckoutBoxmobile>
+                    <Grid container xs={10}>
+                      <Grid item xs={6}>
+                        <Typography>Items</Typography>
+                        <Typography>Discount</Typography>
+                        <Typography>Tax</Typography>
+                        <Typography>Total</Typography>
+                      </Grid>
+                      <Grid item sx={6}>
+                        <Typography>
+                          {" "}
+                          ${total != undefined && total.total_price}
+                        </Typography>
+                        <Typography> -${discount}</Typography>
+                        <Typography>-${tax}</Typography>
+                        <Typography>
+                          $
+                          {total != undefined &&
+                            total.total_price - discount - tax}
+                        </Typography>
+                      </Grid>
                     </Grid>
-                    <Grid item sx={6}>
-                      <Typography>
-                        {" "}
-                        ${total != undefined && total.total_price}
-                      </Typography>
-                      <Typography> -${discount}</Typography>
-                      <Typography>-${tax}</Typography>
-                      <Typography>
-                        $
-                        {total != undefined &&
-                          total.total_price - discount - tax}
-                      </Typography>
-                    </Grid>
-                  </Grid>
-                  <Button
-                    variant="contained"
-                    color="success"
-                    sx={{ width: "100%", marginTop: "20px" }}
-                    onClick={() => handlecheckout()}
-                  >
-                    Check Out
-                  </Button>
-                </CartCheckoutBoxmobile>
+                    <Button
+                      variant="contained"
+                      color="success"
+                      sx={{ width: "100%", marginTop: "20px" }}
+                      onClick={() => handlecheckout()}
+                    >
+                      Check Out
+                    </Button>
+                  </CartCheckoutBoxmobile>
+                ) : (
+                  <>
+                    <h3>Cart is empty</h3>
+                  </>
+                )}
+
                 <Typography>Saved for Later</Typography>
                 {saveforlater.map((e) => {
                   return (

@@ -21,6 +21,7 @@ import GridViewContainer from "../../Components/CategoryGridviewContainer/GridVi
 export default function CategoryPage() {
   const [categories, setCategories] = useState([]);
   const [listcategory, setListCategory] = useState([]);
+  const [products, setProducts] = useState([]);
   const [hide, setHide] = useState(false);
   const [brandhide, setBrandHide] = useState(false);
   const [checked, setChecked] = useState([]);
@@ -28,6 +29,13 @@ export default function CategoryPage() {
   const location = useLocation();
   const [searchparam] = useSearchParams();
   const val = useParams().category;
+
+  let displayarray = [];
+  if (val == "allproducts") {
+    displayarray = products;
+  } else {
+    displayarray = categories;
+  }
 
   const handleToggle = (price) => (e) => {
     e.preventDefault();
@@ -53,13 +61,17 @@ export default function CategoryPage() {
   }, []);
 
   useMemo(() => {
+    ApiCalls.getProducts()
+      .then((res) => setProducts(res))
+      .catch((err) => console.log(err));
+  }, []);
+
+  useMemo(() => {
     ApiCalls.getSpecificCategorisProducts(val)
       .then((res) => setCategories(res))
       .catch((err) => console.log(err));
   }, [val]);
-  {
-    console.log(categories);
-  }
+
   return (
     <>
       <Grid
@@ -158,7 +170,10 @@ export default function CategoryPage() {
           </Grid>
           <Grid item xs={12} md={12}>
             <Grid container xs={12} md={10} xl={12}>
-              <BestTabComponent setgrid={setgrid} />
+              <BestTabComponent
+                setgrid={setgrid}
+                productslength={products.length || categories.length}
+              />
             </Grid>
             <Grid item xs={12} sx={{ display: { xs: "block", md: "none" } }}>
               <PopupState variant="popover" popupId="demo-popup-menu">
@@ -179,7 +194,7 @@ export default function CategoryPage() {
             <Grid item xs={12} md={8}></Grid>
             <Grid container xs={12} md={10} xl={10}>
               {searchTerm
-                ? categories
+                ? displayarray
                     .filter(({ product_title }) =>
                       product_title.toLowerCase().includes(searchTerm)
                     )
@@ -197,7 +212,7 @@ export default function CategoryPage() {
                         <PreviewContainer category={product} />
                       );
                     })
-                : categories
+                : displayarray
                     .filter(
                       ({ product_title }) =>
                         !searchTerm ||

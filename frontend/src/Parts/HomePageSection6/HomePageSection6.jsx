@@ -41,7 +41,7 @@ export default function HomePageSection6() {
       xs={12}
       md={12}
       sx={{
-        top: { md: "1854px", xs: "1149px" },
+        top: { md: "1854px", xs: "1280px" },
         position: "absolute",
       }}
     >

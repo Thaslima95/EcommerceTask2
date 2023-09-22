@@ -23,7 +23,7 @@ import {
   GroupButtonBox,
 } from "../../Pages/Category/CategoryPageTheme";
 
-export default function BestTabComponent({ setgrid }) {
+export default function BestTabComponent({ setgrid, productslength }) {
   const categoryname = useParams().category;
   const [categories, setCategories] = useState([]);
   useMemo(() => {
@@ -38,7 +38,7 @@ export default function BestTabComponent({ setgrid }) {
         <Box sx={{ display: "flex", marginTop: "10px" }}>
           <ThemeProvider theme={categorytheme2}>
             <Typography variant="subtitle2" sx={{ marginRight: "8px" }}>
-              {categories.length} items in
+              {categories.length || productslength} items in
             </Typography>
           </ThemeProvider>
           <ThemeProvider theme={categorytheme1}>

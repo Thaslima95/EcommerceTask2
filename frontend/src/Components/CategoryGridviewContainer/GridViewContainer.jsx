@@ -22,9 +22,9 @@ export default function GridViewContainer({ category }) {
     product_id,
   } = category;
   return (
-    <Grid item md={4} xs={6} sm={6}>
+    <Grid item md={4} xs={6} sm={6} sx={{ marginBottom: "50px" }}>
       <Box>
-        <GridViewImgBox src={product_image} />
+        <GridViewImgBox src={product_image} sx={{ marginBottom: "30px" }} />
         <GridViewPriceBox sx={{ display: "flex", gap: "5px" }}>
           {" "}
           <ThemeProvider theme={mainprice}>

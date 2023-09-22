@@ -61,7 +61,7 @@ export default function HomePageSection7() {
                   <ThemeProvider theme={servicetheme}>
                     <Typography variant="subtitle2">{e.text}</Typography>
                   </ThemeProvider>
-                  <IconLayout>
+                  <IconLayout sx={{ background: "#D1E7FF" }}>
                     <img
                       src={e.icon}
                       alt=""

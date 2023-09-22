@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-const bcrypt=require("bcrypt");
+
 
 app.use(express.json()) 
 
@@ -56,12 +56,10 @@ const queryfunc3=(sql)=>{
 
 app.post('/adduser',(req,res)=>{
     const name=req.body.name;
-    console.log(name)
+   
     const email=req.body.email;
     const password=req.body.password;
-    console.log(password)
-    //  const salt=await bcrypt.genSalt(10);
-    // const hashedpassword=await bcrypt.hash(password,salt)
+   
     const sql= "INSERT INTO users (user_name,user_email,user_password) VALUES ?";
     const value=[[name,email,password]];
     const result=queryfunc(sql,value)
@@ -73,7 +71,7 @@ app.post("/login",async(req,res)=>{
     const password=req.body.password;
     const sql='SELECT user_id,user_name,user_password from users where user_email=? and user_password=?';
     const result=await queryfunc2(sql,[email,password])
-    console.log(result)
+   
     if(result.length>0)
     {
         return res.json(result)
@@ -101,12 +99,11 @@ app.post('/addproduct',(req,res)=>{
 app.get("/allproducts",async(req,res)=>{
     const sql="SELECT * FROM products";
     const result= await queryfunc3(sql)
-    console.log(result)
     return res.json(result)
 })
 
 app.get("/typeofcategory",async(req,res)=>{
-    console.log("category")
+    
     const sql="Select Distinct(category) from products where is_deleted=0";
     const result=await queryfunc3(sql)
     return res.json(result)
@@ -121,7 +118,7 @@ app.get("/getproducts/:limit",async(req,res)=>{
 })
 app.get("/singleproduct/:id",async(req,res)=>{
     const id=req.params.id;
-    console.log(id)
+    
     const sql="SELECT * from products WHERE product_id=? and is_deleted=0";
     const result=await queryfunc2(sql,[id])
     return res.json(result)
@@ -147,7 +144,7 @@ app.post("/addtocart",(req,res)=>{
     const sql=`SELECT product_price,inventory_quantity from products where product_id =${productid} AND inventory_quantity >0 and is_deleted=0`
     db.query(sql,(err,data)=>{
         if(err) throw err;
-        console.log(data)
+       
         if(data.length >0)
         {
             
@@ -171,7 +168,7 @@ app.post("/addtocart",(req,res)=>{
 
 
 app.patch("/updatecart",(req,res)=>{
-     console.log(req.body.product_id)
+    
     const productid=req.body.product_id;
     const userid=req.body.user_id;
     const quantity=req.body.quantity;
@@ -196,7 +193,7 @@ app.patch("/updatecart",(req,res)=>{
             })
             }
             else{
-                console.log(data[0].quantity+"quantity")
+               
                 const diff=quantity-oldquantity;
                 const sql1=`SELECT product_id,product_price from products where inventory_quantity > 0 and product_id=${productid}`;
                 db.query(sql1,(err,data)=>{
@@ -236,7 +233,7 @@ if(err) throw err;
 
 app.get('/cartdetails/:user_id',async(req,res)=>{
     const userid=req.params.user_id;
-    console.log(userid)
+  
     const sql=`select c.product_id,product_price,product_title ,quantity,cart_total,product_image from products as p inner join cart as c on p.product_id=c.product_id where c.user_id=? and c.is_deleted=0`
      
      const result=await queryfunc2(sql,[userid])
@@ -245,7 +242,7 @@ app.get('/cartdetails/:user_id',async(req,res)=>{
 
 app.get('/carttotal/:user_id',async(req,res)=>{
     const userid=req.params.user_id;
-    console.log(userid)
+    
     const sql=`select sum(cart_total) as total_price,user_id from cart  where user_id=? and is_deleted=0 group by user_id` 
     const result=await queryfunc2(sql,[userid])
     return res.json(result)
@@ -276,7 +273,7 @@ app.post('/proceedtocheckout/:user_id',(req,res)=>{
 
 app.get('/products/:producttitle',async(req,res)=>{
     const producttitle=req.params.producttitle;
-    console.log(producttitle)
+  
     const sql=`Select product_title,product_image,product_price from products where product_title Like '%?%'`;
     const result=await queryfunc2(sql,[producttitle])
     return res.json(result)
@@ -319,7 +316,7 @@ app.get('/getsaveforlateritems/:userid',async(req,res)=>{
 })
 
 app.post('/saveforlater',(req,res)=>{
-    console.log(req.body.product_id)
+   
     const productid=req.body.product_id;
     const userid=req.body.user_id;
     const quantity=req.body.quantity;

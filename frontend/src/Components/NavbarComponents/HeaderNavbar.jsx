@@ -15,9 +15,9 @@ export default function HeaderNavbarStyles() {
           activeKey="/"
           onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
         >
-          <Nav.Item>
+          <Nav.Item className="d-none d-md-block">
             <Nav.Link
-              href="/home"
+              href="/"
               style={{
                 color: "black",
                 marginTop: "-3px",
@@ -32,7 +32,11 @@ export default function HeaderNavbarStyles() {
           <Nav.Item>
             <Nav.Link
               href="/home"
-              style={{ color: "black", margin: "0px", padding: "0px" }}
+              style={{
+                color: { md: "black", xs: "blue" },
+                margin: "0px",
+                padding: "0px",
+              }}
             >
               <ThemeProvider theme={theme2}>
                 <Typography variant="subtitle1">All category</Typography>

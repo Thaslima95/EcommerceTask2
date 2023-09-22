@@ -27,7 +27,6 @@ export default function CartComponent({ cart, details, carttotal }) {
 
   const handleChange = (event) => {
     setQty(event.target.value);
-    console.log(qty);
     ApiCalls.updateCart(user_id, cart.product_id, event.target.value)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
@@ -36,9 +35,11 @@ export default function CartComponent({ cart, details, carttotal }) {
   };
 
   const removeCart = (productid, qty, userid) => {
+    console.log(productid);
     ApiCalls.removefromcart(user_id, productid, qty)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
+    window.location.reload();
     details();
     carttotal();
   };
@@ -49,8 +50,7 @@ export default function CartComponent({ cart, details, carttotal }) {
       .catch((err) => console.log(err));
     window.location.reload();
   };
-  console.log(cart);
-  console.log(qty);
+
   return (
     <>
       <Grid container md={12} sx={{ marginBottom: "30px" }}>

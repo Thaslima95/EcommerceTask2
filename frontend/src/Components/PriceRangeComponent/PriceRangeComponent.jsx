@@ -13,7 +13,7 @@ export default function RangeSlider() {
   const handleChange = (event) => {
     setValue(event.target.value);
   };
-  console.log(value);
+
   const handlepricerange = () => {};
 
   return (
@@ -27,7 +27,7 @@ export default function RangeSlider() {
         min={500}
         max={3000}
       />
-      <Button onClick={console.log("e")}>Apply</Button>
+      <Button>Apply</Button>
     </Box>
   );
 }

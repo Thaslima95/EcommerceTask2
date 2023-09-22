@@ -26,7 +26,7 @@ export default function HomePageSection5() {
         xs={9}
         md={12}
         sx={{
-          top: { md: "1390px", xs: "960px" },
+          top: { md: "1390px", xs: "1050px" },
           position: "absolute",
         }}
       >
