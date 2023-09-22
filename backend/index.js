@@ -302,14 +302,14 @@ app.get('/ordersbydate/:userid/:startdate/:enddate',(req,res)=>{
 app.get('/filter/:price1/:price2',async(req,res)=>{
     const price1=req.params.price1;
     const price2=req.params.price2;
-    const sql=`SELECT PRODUCT_TITLE,PRODUCT_PRICE,PRODUCT_IMAGE,PRODUCT_DESCRIPTION,PRODUCT_ID FROM PRODUCTS WHERE PRODUCT_PRICE BETWEEN ? AND ?`;
+    const sql=`SELECT product_title,product_price,product_image,product_description,product_id FROM products WHERE product_price BETWEEN ? AND ?`;
      const result=await queryfunc2(sql,[price1,price2])
     return res.json(result)
 })
 
 app.get('/getsaveforlateritems/:userid',async(req,res)=>{
     const userid=req.params.userid;
-    const sql=`select product_title,p.product_id,product_image,product_price,user_id from products as p inner join saveforlater as s on p.product_id=s.product_id where user_id=?`
+    const sql=`select distinct product_title,p.product_id,product_image,product_price,user_id from products as p inner join saveforlater as s on p.product_id=s.product_id where user_id=?`
    
      const result=await queryfunc2(sql,[userid])
     return res.json(result)

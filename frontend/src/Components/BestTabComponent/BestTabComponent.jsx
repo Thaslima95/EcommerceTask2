@@ -38,7 +38,7 @@ export default function BestTabComponent({ setgrid, productslength }) {
         <Box sx={{ display: "flex", marginTop: "10px" }}>
           <ThemeProvider theme={categorytheme2}>
             <Typography variant="subtitle2" sx={{ marginRight: "8px" }}>
-              {categories.length || productslength} items in
+              {productslength} items in
             </Typography>
           </ThemeProvider>
           <ThemeProvider theme={categorytheme1}>

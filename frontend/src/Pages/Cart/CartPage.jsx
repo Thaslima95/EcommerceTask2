@@ -29,6 +29,7 @@ import {
   CartHeaderImgBox,
   cartTotalheading,
   cartTotalPrice,
+  cartSubHeading,
 } from "../../Components/CartComponent/CartComponentTheme";
 import {
   CartImg,
@@ -79,7 +80,7 @@ export default function CartPage() {
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState([]);
   const [saveforlater, setSaveforlater] = useState([]);
-  const discount = 53;
+  const discount = 13;
   const tax = 10;
   const navigate = useNavigate();
   const result = JSON.parse(localStorage.getItem("ecommuser")) || [];
@@ -289,21 +290,39 @@ export default function CartPage() {
                             variant="outlined"
                             size="small"
                           />
-                          <Typography
-                            sx={{ top: "90px", position: "relative" }}
-                          >
-                            SubTotal:
-                          </Typography>
-                          <Typography
-                            sx={{ top: "90px", position: "relative" }}
-                          >
-                            Discout:
-                          </Typography>
-                          <Typography
-                            sx={{ top: "90px", position: "relative" }}
-                          >
-                            Tax:
-                          </Typography>
+                          <ThemeProvider theme={cartSubHeading}>
+                            <Typography
+                              variant="subtitle1"
+                              sx={{
+                                top: "90px",
+                                position: "relative",
+                              }}
+                            >
+                              Subtotal
+                            </Typography>
+                          </ThemeProvider>
+                          <ThemeProvider theme={cartSubHeading}>
+                            <Typography
+                              variant="subtitle1"
+                              sx={{
+                                top: "90px",
+                                position: "relative",
+                              }}
+                            >
+                              Discount
+                            </Typography>
+                          </ThemeProvider>
+                          <ThemeProvider theme={cartSubHeading}>
+                            <Typography
+                              variant="subtitle1"
+                              sx={{
+                                top: "90px",
+                                position: "relative",
+                              }}
+                            >
+                              Tax
+                            </Typography>
+                          </ThemeProvider>
                           <ThemeProvider theme={cartTotalheading}>
                             <Typography
                               variant="h5"
@@ -334,7 +353,7 @@ export default function CartPage() {
                               color: "#FA3434",
                             }}
                           >
-                            -${discount}
+                            -${total != undefined && 0.1 * total.total_price}
                           </Typography>
                           <Typography
                             sx={{
@@ -401,7 +420,14 @@ export default function CartPage() {
                   </Grid>
                 </>
               ) : (
-                <>Cart is Empty</>
+                <>
+                  <Grid container>
+                    <Grid item md={1}></Grid>
+                    <Grid item md={2}>
+                      <h1>Cart is Empty</h1>
+                    </Grid>
+                  </Grid>
+                </>
               )}
               <Grid container sx={{ marginTop: "50px" }}>
                 <Grid item md={1}></Grid>
@@ -598,7 +624,7 @@ export default function CartPage() {
                     <Typography>Shopping Cart</Typography>
                   </Box>
                 </Box>
-
+                {console.log(cart)}
                 {cart.map((e) => {
                   return (
                     <MobileCartPage

@@ -17,7 +17,7 @@ import {
 import { ThemeProvider } from "@mui/material";
 
 export default function SingleProductBox2({ product }) {
-  const { product_image, product_title, product_id, product_price } = product;
+  const { product_title, product_price } = product;
   return (
     <SingleproductBox>
       <Box sx={{ display: "flex" }}>
@@ -70,7 +70,7 @@ export default function SingleProductBox2({ product }) {
           <Typography variant="subtitle1">${product_price}</Typography>
         </ThemeProvider>
         <ThemeProvider theme={piecesTheme}>
-          <Typography variant="subtitle1">50-100 pcs</Typography>
+          <Typography variant="subtitle1">(50-100 pcs)</Typography>
         </ThemeProvider>
       </Box>
       <Grid item xs={12} md={12} sx={{ display: "flex" }}>

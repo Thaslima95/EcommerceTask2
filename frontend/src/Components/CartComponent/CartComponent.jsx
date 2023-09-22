@@ -30,6 +30,7 @@ export default function CartComponent({ cart, details, carttotal }) {
     ApiCalls.updateCart(user_id, cart.product_id, event.target.value)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
+    window.location.reload();
     details();
     carttotal();
   };

@@ -18,20 +18,31 @@ import BreadCrumbComponent from "../../Components/BreadCrumbComponent/BreadCrumb
 import { StyledLink } from "../../Components/BannerTheme/BannerTheme";
 import RangeSlider from "../../Components/PriceRangeComponent/PriceRangeComponent";
 import GridViewContainer from "../../Components/CategoryGridviewContainer/GridViewContainer";
+import Slider from "@mui/material/Slider";
+
+function valuetext(value) {
+  return `${value}`;
+}
 export default function CategoryPage() {
+  const [value, setValue] = useState([500, 3000]);
   const [categories, setCategories] = useState([]);
   const [listcategory, setListCategory] = useState([]);
   const [products, setProducts] = useState([]);
+  const [priceproducts, setPriceProducts] = useState([]);
+  const [displayprodcuts, setDisplayProducts] = useState([]);
   const [hide, setHide] = useState(false);
   const [brandhide, setBrandHide] = useState(false);
   const [checked, setChecked] = useState([]);
+  const [filter, setFilter] = useState(false);
   const [grid, setgrid] = useState(null);
   const location = useLocation();
   const [searchparam] = useSearchParams();
   const val = useParams().category;
 
   let displayarray = [];
-  if (val == "allproducts") {
+  if (priceproducts.length != 0) {
+    displayarray = priceproducts;
+  } else if (val == "allproducts") {
     displayarray = products;
   } else {
     displayarray = categories;
@@ -53,24 +64,52 @@ export default function CategoryPage() {
   };
 
   let searchTerm = searchparam.get("search");
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
+  const clearFilter = () => {
+    setFilter(false);
+    setPriceProducts([]);
+  };
+
+  const handlepricerange = () => {
+    console.log(value[0], value[1]);
+    ApiCalls.getProductsbetweenRange(value[0], value[1])
+      .then((res) => {
+        setDisplayProducts(res);
+        setPriceProducts(res);
+      })
+      .catch((err) => console.log(err));
+    setFilter(true);
+  };
 
   useMemo(() => {
     ApiCalls.getCategoris()
-      .then((res) => setListCategory(res))
+      .then((res) => {
+        setListCategory(res);
+      })
       .catch((err) => console.log(err));
   }, []);
 
   useMemo(() => {
     ApiCalls.getProducts()
-      .then((res) => setProducts(res))
+      .then((res) => {
+        setDisplayProducts(res);
+        setProducts(res);
+      })
       .catch((err) => console.log(err));
   }, []);
 
   useMemo(() => {
     ApiCalls.getSpecificCategorisProducts(val)
-      .then((res) => setCategories(res))
+      .then((res) => {
+        setDisplayProducts(res);
+        setCategories(res);
+      })
       .catch((err) => console.log(err));
   }, [val]);
+
+  console.log(displayprodcuts);
 
   return (
     <>
@@ -163,7 +202,25 @@ export default function CategoryPage() {
                 <List
                   style={brandhide ? { display: "block" } : { display: "none" }}
                 >
-                  <RangeSlider></RangeSlider>
+                  <Box
+                    sx={{
+                      width: 100,
+                      top: "10px",
+                      left: "10px",
+                      position: "relative",
+                    }}
+                  >
+                    <Slider
+                      getAriaLabel={() => "Temperature range"}
+                      value={value}
+                      onChange={handleChange}
+                      valueLabelDisplay="auto"
+                      getAriaValueText={valuetext}
+                      min={500}
+                      max={3000}
+                    />
+                    <Button onClick={() => handlepricerange()}>Apply</Button>
+                  </Box>
                 </List>
               </Box>
             </Grid>
@@ -172,9 +229,26 @@ export default function CategoryPage() {
             <Grid container xs={12} md={10} xl={12}>
               <BestTabComponent
                 setgrid={setgrid}
-                productslength={products.length || categories.length}
+                productslength={displayarray.length}
               />
             </Grid>
+            {filter && (
+              <Grid container md={12}>
+                <Grid item md={1}>
+                  <Box>Min:{value[0]}</Box>
+                </Grid>
+                <Grid item md={1}>
+                  <Box>Max:{value[1]}</Box>
+                </Grid>
+                <Box
+                  sx={{ color: "blue", cursor: "pointer" }}
+                  onClick={() => clearFilter()}
+                >
+                  Clear Filter
+                </Box>
+              </Grid>
+            )}
+
             <Grid item xs={12} sx={{ display: { xs: "block", md: "none" } }}>
               <PopupState variant="popover" popupId="demo-popup-menu">
                 {(popupState) => (
@@ -194,7 +268,7 @@ export default function CategoryPage() {
             <Grid item xs={12} md={8}></Grid>
             <Grid container xs={12} md={10} xl={10}>
               {searchTerm
-                ? displayarray
+                ? displayprodcuts
                     .filter(({ product_title }) =>
                       product_title.toLowerCase().includes(searchTerm)
                     )
@@ -212,7 +286,7 @@ export default function CategoryPage() {
                         <PreviewContainer category={product} />
                       );
                     })
-                : displayarray
+                : displayprodcuts
                     .filter(
                       ({ product_title }) =>
                         !searchTerm ||

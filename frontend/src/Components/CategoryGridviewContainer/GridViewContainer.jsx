@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  GridViewContainerBox,
   GridViewImgBox,
   GridViewPriceBox,
   mainprice,
@@ -8,16 +7,17 @@ import {
   title,
 } from "./GridViewContainerTheme";
 import Checkbox from "@mui/material/Checkbox";
-import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
+import { Img } from "../../Components/HeaderTypography/HeaderTypography";
 import Favorite from "@mui/icons-material/Favorite";
 import { Rating } from "@mui/material";
 import { Grid, Typography, Box } from "@mui/material";
 import { ThemeProvider } from "@mui/material";
+import Heart from "../../assets/Images/Vector (4).png";
 export default function GridViewContainer({ category }) {
   const {
     product_title,
     product_price,
-    product_description,
+
     product_image,
     product_id,
   } = category;
@@ -38,6 +38,11 @@ export default function GridViewContainer({ category }) {
               <strike>${product_price}</strike>
             </Typography>
           </ThemeProvider>
+          <Checkbox
+            sx={{ marginLeft: "80px" }}
+            icon={<Img src={Heart} />}
+            checkedIcon={<Favorite />}
+          />
         </GridViewPriceBox>
 
         <Rating

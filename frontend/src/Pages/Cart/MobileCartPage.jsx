@@ -67,35 +67,6 @@ export default function MobileCartPage({ cart, details, carttotal }) {
           </Box>
         </CartComponentBox>
       )}
-      <CartComponentBox sx={{ border: "2px solid green", display: "flex" }}>
-        <CartComponentImgBox src={cart.product_image} />
-        <Box>
-          <ThemeProvider theme={cartTitle}>
-            <Typography variant="subtitle1">
-              {cart && cart.product_title.substr(0, 20)}
-            </Typography>
-          </ThemeProvider>
-          <ThemeProvider theme={cartPrice}>
-            <Typography variant="subtitle1">${cart.product_price}</Typography>
-          </ThemeProvider>
-        </Box>
-        <Box sx={{ top: "80px", left: "-220px", position: "relative" }}>
-          {" "}
-          <div className="countHandler" style={{ display: "flex" }}>
-            <button
-              onClick={() => handleremove(cart.quantity, cart.product_id)}
-            >
-              {" "}
-              -{" "}
-            </button>
-            <input value={cart.quantity} />
-            <button onClick={() => handleadd(cart.quantity, cart.product_id)}>
-              {" "}
-              +{" "}
-            </button>
-          </div>
-        </Box>
-      </CartComponentBox>
     </>
   );
 }

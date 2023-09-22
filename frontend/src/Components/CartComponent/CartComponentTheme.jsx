@@ -11,6 +11,7 @@ export const cartHeadingTitle = createTheme();
 export const saveforlaterheading = createTheme();
 export const cartTotalheading = createTheme();
 export const cartTotalPrice = createTheme();
+export const cartSubHeading = createTheme();
 
 export const theme2 = createTheme();
 theme2.typography.subtitle1 = {
@@ -173,6 +174,21 @@ cartPrice.typography.subtitle1 = {
     lineHeight: "22px",
   },
   [cartPrice.breakpoints.up("md")]: {
+    fontSize: "16px",
+  },
+};
+cartSubHeading.typography.subtitle1 = {
+  styleName: "Text normal",
+
+  fontFamily: "Inter",
+  fontSize: "16px",
+  fontWeight: "500",
+  lineHeight: "22px",
+  letterSpacing: "0px",
+  textAlign: "left",
+  color: "#505050",
+
+  [cartSubHeading.breakpoints.up("md")]: {
     fontSize: "16px",
   },
 };
